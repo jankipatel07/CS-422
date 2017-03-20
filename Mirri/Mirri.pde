@@ -1,11 +1,20 @@
-//canvas size
+
+
+////////////////////////////////////////////////////////////////////////////////////
+// Global Variables
 int canvasWidth = 2732;
 int canvasHeight = 1536;
+////////////////////////////////////////////////////////////////////////////////////
+
+Button b;
 
 void setup() {
   size(canvasWidth, canvasHeight); //canvas size
   background(204, 204, 204);
+
+  b = new Button();
 }
 
 void draw(){
+  //console.log("hello world");
 }
