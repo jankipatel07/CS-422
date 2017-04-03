@@ -37,3 +37,15 @@ Draggable Objects
 
 Where ever you click
 - select user app
+
+
+Git Push:
+git branch <branch name>
+git checkout <branch name>
+once done with <branch name>, then
+git checkout master
+git merge <branch name>
+git branch -d <branch name>
+git commit -m "Message"
+git pull -r
+git push
