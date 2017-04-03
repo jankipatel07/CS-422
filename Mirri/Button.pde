@@ -1,5 +1,5 @@
 class Button {
     Button(){
-      print("hello button");
+      print("hello from the Button");
   }
 }
