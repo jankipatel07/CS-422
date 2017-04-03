@@ -1,0 +1,39 @@
+Static Objects
+- Select a language (start up)
+- available wifi (start up)
+- wifi password screen (start up)
+- enter name (start up)
+- set pin (start up)
+- confirm pin (start up)
+- temperature app 
+- time app
+- date app (top right corner)
+- side menu drawer 
+- music app
+- overall playground (contains arrows to control side drawer and Quick Hide)
+- settings app
+- alarm app
+- add new user app
+- displaying music list app
+- display timer app
+
+Input Fields
+- wifi password screen (start up)
+- enter name (start up)
+- set pin (start up)
+- confirm pin (start up)
+- google calendar login (calendar setup)
+- google calendar password (calendar setup)
+- add new user (enter name)
+- add new user (pin)
+- add new user (confirm pin)
+- social media username
+- social media password
+
+Draggable Objects
+- social media app
+- news app
+- health app
+
+Where ever you click
+- select user app

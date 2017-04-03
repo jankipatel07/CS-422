@@ -5,3 +5,4 @@ Jay
     - first push
     - download processin.js file instead of using cloudfare
     - create a hello world sample file to test two difference source files
+    - creates notes.txt file
