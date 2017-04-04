@@ -7,3 +7,8 @@ Jay
     - create a hello world sample file to test two difference source files
     - creates notes.txt file
     - created inheritance classes
+
+0.0.1
+Jay
+4/3/2017
+    - Button class works, need to figure out how to resize using the multiplier
