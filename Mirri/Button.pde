@@ -47,18 +47,20 @@ class Button {
   }
 
   public boolean wasButtonClicked(int x, int y){
-    _wasButtonClicked(x, y);
+    isSelected = _wasButtonClicked(x, y);
     return isSelected;
   }
 
-  private void _wasButtonClicked(int x, int y){
+  private boolean _wasButtonClicked(int x, int y){
     int diffX = xCord + deltax;
     int diffY = yCord + deltay;
     if(x > xCord && x < diffX){
       if(y > yCord && y < diffY){
-        isSelected = true;
+        return true;
       }
     }
+
+    return false;
   }
 
   public void setButtonSelected(boolean val){

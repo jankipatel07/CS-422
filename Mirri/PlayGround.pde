@@ -16,10 +16,18 @@ class PlayGround{
       setUpCanvas();
 
       applications = new ArrayList<Application>();
+
+      applications.add(new Application());
     }
 
     public ArrayList<Application> getApplication(){
         return applications;
+    }
+
+    public void playGroundMouseClicked(int x, int y){
+      for(Application a : applications){
+        a.applicationMouseClicked(x, y);
+      }
     }
 
     private void setUpCanvas(){

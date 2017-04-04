@@ -12,3 +12,4 @@ Jay
 Jay
 4/3/2017
     - Button class works, need to figure out how to resize using the multiplier
+    - if the user clicks somewhere else on the screen, all the apps close
