@@ -9,11 +9,24 @@ class PlayGround{
     private Application draggedApplication;
     private float testX;
     private float testY;
+    private float xCordCal, yCordCal, widthCal, heightCal;
+    private float xCordWeather, yCordWeather, widthWeather, heightWeather;
+    private string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+    private string[] dayName = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+    private int week;
+    private float yCordTime = 100;
 
     PlayGround(){
 
       canvasWidth = 2732;
       canvasHeight = 1536;
+	  midWidth = canvasWidth/2;
+      midHeight = canvasHeight/2;
+
+      //calendar variables
+      xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
+      //weather variables
+      xCordWeather = 20, yCordWeather = 20;
 
       // setting up the canvas itself
       setUpCanvas();
@@ -76,6 +89,11 @@ class PlayGround{
         rect(0, 0, getCanvasWidth(), getCanvasHeight());
 
         drawAllApplications();
+
+        //show date and time
+        showDate();
+        showTime();
+        greetingUserMsg();
     }
 
     public void drawPlayGround(){
@@ -99,6 +117,62 @@ class PlayGround{
       draggedApplication.setStartX(draggedApplication.getPosX());
       draggedApplication.setStartY(draggedApplication.getPosY());
       draggedApplication.setLock(false);
+    }
+
+        private void showDate() {
+    	float xcord = xCordCal+170;
+    	float ycord = yCordWeather+85;
+    	
+    	//get week day and month name
+    	week = new Date().getDay();
+    	string monthname = months[(month()-1)];
+
+    	textSize(65);
+    	fill(0);
+    	text(dayName[week] + " " + monthname + ", " + day(), 2362, ycord);
+    	textAlign(CENTER);
+    }
+
+    private void showTime() {
+    	textSize(100);
+    	fill(0);
+    	text(getTime(), midWidth, yCordTime);
+    	textAlign(CENTER);
+    }
+
+    private String getTime() {
+    	String time;
+    	int hr = hour();
+    	String am_pm = "AM"; 
+
+		 if(hr > 11) {  //noon
+		   hr -= 12;
+		   am_pm = "PM"; 
+		 }
+		 time = hr + ":" + minute() + " " + am_pm;
+		 return time;
+    }
+
+    private void greetingUserMsg() {
+    	textSize(65);
+    	fill(0);
+    	text(greetingByTime() + "Siri", midWidth, yCordTime+115);
+    	textAlign(CENTER);
+    }
+
+    private String greetingByTime() {
+    	int hr = hour();
+    	String msg = "";
+    	if(hr >= 12 && hr < 17) {
+    		msg = "Good Afternoon ";
+    	} else if(hr >= 17 && hr < 21) {
+    		msg = "Good Evening ";
+    	} else if(hr >= 21 && hr < 4) {
+    		msg = "Good Night ";
+    	} else {
+    		msg = "Good Morning ";
+    	}
+    	return msg;
     }
 
     public void checkMousePressed(){

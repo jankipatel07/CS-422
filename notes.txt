@@ -43,6 +43,8 @@ Git Push:
 git branch <branch name>
 git checkout <branch name>
 once done with <branch name>, then
+git merge master
+//resolve merge conflicts
 git checkout master
 git merge <branch name>
 git branch -d <branch name>

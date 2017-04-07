@@ -29,3 +29,8 @@ Jay
     - Seperated Draggable and Static class
     - Draggable application will go back to its safe state if it trys to go out of bounds
     - Draggable application goes back to its safe state if it the user trys to clash one app with the other
+
+0.0.4
+Janki
+4/7/2017
+    - Date, time, and greeting message
