@@ -26,6 +26,14 @@ class PlayGround{
       applications.add(new Draggable("2nd application", 100.0, 150.0, 600, 600));
     }
 
+    public int getCanvasWidth(){
+      return canvasWidth;
+    }
+
+    public int getCanvasHeight(){
+      return canvasHeight;
+    }
+
     public ArrayList<Application> getApplication(){
         return applications;
     }
@@ -62,8 +70,10 @@ class PlayGround{
 
     private void drawCanvas(){
         //background(0);
-        background(204, 204, 204);
+        //background(204, 204, 204);
         noStroke();
+        fill(204, 204, 204);
+        rect(0, 0, getCanvasWidth(), getCanvasHeight());
 
         drawAllApplications();
     }
@@ -73,9 +83,21 @@ class PlayGround{
     }
 
     public void setAllLocksFalse(){
-      // for(Application a : applications){
-      //   a.setLock(false);
-      // }
+
+      for(Application a : applications){
+        if(a.getApplicationName().equals(draggedApplication.getApplicationName())) {continue;}
+
+        // check if dragged application is clashing with any other application
+        // also
+        // check if dragged applicatin is not going out of the window
+        if(draggedApplication.isClashingWithOtherApplication(a) ||
+            draggedApplication.isApplicationGoingOutOfBounds(getCanvasWidth(), getCanvasHeight())){
+          draggedApplication.setPosX(draggedApplication.getStartX());
+          draggedApplication.setPosY(draggedApplication.getStartY());
+        }
+      }
+      draggedApplication.setStartX(draggedApplication.getPosX());
+      draggedApplication.setStartY(draggedApplication.getPosY());
       draggedApplication.setLock(false);
     }
 

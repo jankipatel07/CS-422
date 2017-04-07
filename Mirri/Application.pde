@@ -4,7 +4,7 @@ class Application{
     private ArrayList<Button> buttons;
     private Button exitButton;
     private ArrayList<InputField> inputFields;
-    private float posX, posY;
+    private float posX, posY, startX, startY;
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
 
@@ -14,6 +14,8 @@ class Application{
         applicationName = appName;
         posX = x;
         posY = y;
+        startX = x;
+        startY = y;
         sizeX = dx;
         sizeY = dy;
         buttons = new ArrayList<Button>();
@@ -21,6 +23,22 @@ class Application{
 
         //buttons.add(new Button("exit", 100.0, 400.0, 75, 75));
         createExitButton();
+    }
+
+    public void setStartX(float x){
+      startX = x;
+    }
+
+    public void setStartY(float y){
+      startY = y;
+    }
+
+    public float getStartX(){
+      return startX;
+    }
+
+    public float getStartY(){
+      return startY;
     }
 
     public float getPosX(){
