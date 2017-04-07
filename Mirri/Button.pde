@@ -1,29 +1,54 @@
 
 
-// xCord:       starting x position
-// yCOrd:       starting y position
-// deltax:    how far is x position extending
-// deltay:    how far is y position extending
+// posX:       starting x position
+// posY:       starting y position
+// sizeX:    how far is x position extending
+// sizeY:    how far is y position extending
 class Button {
 
-  private int xCord, yCord, deltaX, deltaY;
+  private float posX, posY;
+  private int sizeX, sizeY;
   private String imageValue;
   private boolean isVisible;
-  private double multiplier;
   private boolean isSelected;
   private PImage selectedImage, notSelectedImage;
+  private String applicationName;
 
-  Button(int x, int y, int dx, int dy, String imageVal, double mul){
-    xCord = x;
-    yCord = y;
-    deltax = dx;
-    deltay = dy;
+  Button(String imageVal, float x, float y, int dx, int dy){
+    posX = x;
+    posY = y;
+    sizeX = dx;
+    sizeY = dy;
     imageValue = imageVal;
-    multipler = mul;
     isSelected = false;
     isVisible = true;
     selectedImage = loadImage("images/" + imageVal + "_selected.png");
     notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
+  }
+
+  Button(String imageVal, String appName, float x, float y, int dx, int dy){
+    posX = x;
+    posY = y;
+    sizeX = dx;
+    sizeY = dy;
+    applicationName = appName;
+    imageValue = imageVal;
+    isSelected = false;
+    isVisible = true;
+    selectedImage = loadImage("images/" + imageVal + "_selected.png");
+    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
+  }
+
+  public void setPosX(float x){
+    posX = x;
+  }
+
+  public void setPosY(float y){
+    posY = y;
+  }
+
+  public int getSizeX(){
+    return sizeX;
   }
 
   // is button visible to the naked eye on the screen
@@ -47,20 +72,18 @@ class Button {
   }
 
   public boolean wasButtonClicked(int x, int y){
-    isSelected = _wasButtonClicked(x, y);
+    _wasButtonClicked(x,y);
     return isSelected;
   }
 
-  private boolean _wasButtonClicked(int x, int y){
-    int diffX = xCord + deltax;
-    int diffY = yCord + deltay;
-    if(x > xCord && x < diffX){
-      if(y > yCord && y < diffY){
-        return true;
+  private void _wasButtonClicked(int x, int y){
+    int diffX = posX + sizeX;
+    int diffY = posY + sizeY;
+    if(x > posX && x < diffX){
+      if(y > posY && y < diffY){
+        setButtonSelected(true);
       }
     }
-
-    return false;
   }
 
   public void setButtonSelected(boolean val){
@@ -69,12 +92,12 @@ class Button {
 
   // gets called if the button is selected
   private void drawButtonSelected(){
-    image(selectedImage, xCord, yCord, deltax, deltay);
+    image(selectedImage, posX, posY, sizeX, sizeY);
   }
 
   // gets called if the button is not selected
   private void drawButtonNotSelected(){
-    image(notSelectedImage, xCord, yCord, deltax, deltay);
+    image(notSelectedImage, posX, posY, sizeX, sizeY);
   }
 
   public boolean drawButton(){

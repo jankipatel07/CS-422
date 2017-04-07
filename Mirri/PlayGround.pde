@@ -3,30 +3,49 @@
 
 class PlayGround{
 
+    private Button quickHide;
     private int canvasWidth, canvasHeight;
     ArrayList<Application> applications;
+    private Application draggedApplication;
+    private float testX;
+    private float testY;
 
     PlayGround(){
 
-      println("Hello from playGround");
       canvasWidth = 2732;
       canvasHeight = 1536;
 
       // setting up the canvas itself
       setUpCanvas();
 
+      // creating the quickHide button
+      //quickHide = new Button()
       applications = new ArrayList<Application>();
 
-      applications.add(new Application());
+      applications.add(new Application("test application", 700.0, 800.0, 500, 600));
+      applications.add(new Application("2nd application", 100.0, 150.0, 600, 600));
     }
 
     public ArrayList<Application> getApplication(){
         return applications;
     }
 
+    // gets called from Mirri.pde when the user clicks anywhere on the app
+    // the program will perform sequential checks on all the buttons for all the applications, starting with QuickHide
+    // if any of the buttons are found clicked, the function returns
     public void playGroundMouseClicked(int x, int y){
+
+      // add code here to check quickHide first
+      // if(quickHide.wasButtonClicked()){
+      //   // add code to handle quick hide scenarios
+      //   return;
+      // }
+
       for(Application a : applications){
-        a.applicationMouseClicked(x, y);
+        if(a.applicationMouseClicked(x, y)){
+          console.log("from playGroundMouseClicked");
+          return;
+        }
       }
     }
 
@@ -51,5 +70,34 @@ class PlayGround{
 
     public void drawPlayGround(){
         drawCanvas();
+    }
+
+    public void setAllLocksFalse(){
+      // for(Application a : applications){
+      //   a.setLock(false);
+      // }
+      draggedApplication.setLock(false);
+    }
+
+    public void checkMousePressed(){
+      // check if the app is draggable before proceeding
+      for(Application a : applications){
+        if(a.getHover()){
+          a.setLock(true);
+          draggedApplication = a;
+          draggedApplication.setDiffX(mouseX-draggedApplication.getPosX());
+          draggedApplication.setDiffY(mouseY-draggedApplication.getPosY());
+          return;
+        }
+      }
+    }
+
+    public void checkMouseDragged(){
+      // instead of going through the loop, just use the draggedApplication
+      if(draggedApplication.getLock()){
+        draggedApplication.setPosX(mouseX - draggedApplication.getDiffX());
+        draggedApplication.setPosY(mouseY - draggedApplication.getDiffY());
+        //draggedApplication.drawExitButton();
+      }
     }
 }

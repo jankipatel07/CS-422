@@ -13,3 +13,12 @@ Jay
 4/3/2017
     - Button class works, need to figure out how to resize using the multiplier
     - if the user clicks somewhere else on the screen, all the apps close
+
+0.0.2
+Jay
+4/6/2017
+    - Multiple applications are able to create
+    - All applications act independent of each other
+    - Implement a Design Pattern to create Application and Button classes: Builder
+    - added getter and setter to Application and Button class
+    - Exit button moves with the application when dragged
