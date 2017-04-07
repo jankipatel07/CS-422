@@ -22,8 +22,8 @@ class PlayGround{
       //quickHide = new Button()
       applications = new ArrayList<Application>();
 
-      applications.add(new Application("test application", 700.0, 800.0, 500, 600));
-      applications.add(new Application("2nd application", 100.0, 150.0, 600, 600));
+      applications.add(new Static("test application", 700.0, 800.0, 500, 600));
+      applications.add(new Draggable("2nd application", 100.0, 150.0, 600, 600));
     }
 
     public ArrayList<Application> getApplication(){
@@ -82,12 +82,14 @@ class PlayGround{
     public void checkMousePressed(){
       // check if the app is draggable before proceeding
       for(Application a : applications){
-        if(a.getHover()){
-          a.setLock(true);
-          draggedApplication = a;
-          draggedApplication.setDiffX(mouseX-draggedApplication.getPosX());
-          draggedApplication.setDiffY(mouseY-draggedApplication.getPosY());
-          return;
+        if(a.getApplicationDraggable()){
+          if(a.getHover()){
+            a.setLock(true);
+            draggedApplication = a;
+            draggedApplication.setDiffX(mouseX-draggedApplication.getPosX());
+            draggedApplication.setDiffY(mouseY-draggedApplication.getPosY());
+            return;
+          }
         }
       }
     }
@@ -97,7 +99,6 @@ class PlayGround{
       if(draggedApplication.getLock()){
         draggedApplication.setPosX(mouseX - draggedApplication.getDiffX());
         draggedApplication.setPosY(mouseY - draggedApplication.getDiffY());
-        //draggedApplication.drawExitButton();
       }
     }
 }

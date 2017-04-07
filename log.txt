@@ -22,3 +22,8 @@ Jay
     - Implement a Design Pattern to create Application and Button classes: Builder
     - added getter and setter to Application and Button class
     - Exit button moves with the application when dragged
+
+0.0.3
+Jay
+4/7/2017
+    - Seperated Draggable and Static class

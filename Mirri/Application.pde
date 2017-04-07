@@ -6,14 +6,11 @@ class Application{
     private ArrayList<InputField> inputFields;
     private float posX, posY;
     private int sizeX, sizeY;
-    private boolean isApplicationDraggable;
-
-    // gets placed in draggable class
-    private boolean hover, appVisible, locked;
-    private float diffX, diffY;
+    private boolean applicationDraggable, appVisible;
 
     Application(String appName, float x, float y, int dx, int dy){
 
+        applicationDraggable = false;
         applicationName = appName;
         posX = x;
         posY = y;
@@ -21,34 +18,9 @@ class Application{
         sizeY = dy;
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
-        hover = false;
-        appVisible = true;
-        locked = false;
-        diffX = 0.0;
-        diffY = 0.0;
 
         //buttons.add(new Button("exit", 100.0, 400.0, 75, 75));
         createExitButton();
-    }
-
-    public float getDiffX(){
-      return diffX;
-    }
-
-    public float getDiffY(){
-      return diffY;
-    }
-
-    public void setDiffX(float x){
-      diffX = x;
-    }
-
-    public void setDiffY(float y){
-      diffY = y;
-    }
-
-    public String getApplicationName(){
-      return applicationName;
     }
 
     public float getPosX(){
@@ -59,20 +31,20 @@ class Application{
       return posY;
     }
 
-    public void setPosX(float x){
-      posX = x;
-    }
-
-    public void setPosY(float y){
-      posY = y;
-    }
-
     public int getSizeX(){
       return sizeX;
     }
 
     public int getSizeY(){
       return sizeY;
+    }
+
+    public boolean getApplicationDraggable(){
+      return applicationDraggable;
+    }
+
+    public String getApplicationName(){
+      return applicationName;
     }
 
     private void createExitButton(){
@@ -100,41 +72,9 @@ class Application{
       appVisible = val;
     }
 
-    public boolean getHover(){
-      _getHover();
-      return hover;
-    }
-
-    public boolean getLock(){
-      return locked;
-    }
-
-    // checks if the app is visible before lock gets placed
-    public void setLock(boolean val){
-      if(isAppVisible()){
-        locked = val;
-      } else {
-        locked = false;
-      }
-    }
-
-    // checks to see if the cursor is hover over the app
-    private void _getHover(){
-      if(isAppVisible()){
-        if(mouseX > getPosX() && mouseX < (getPosX() + getSizeX()) && mouseY > getPosY() && mouseY < (getPosY()+getSizeY())){
-          hover = true;
-        } else {
-          hover = false;
-        }
-      }
-    }
-
     public void drawApplication(){
-      // checks to see if mouse is hovering over the app
-      getHover();
       drawApplicationBox();
       drawAllButtons();
-      drawExitButton();
     }
 
     public void drawExitButton(){
