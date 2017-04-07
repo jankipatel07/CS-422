@@ -129,7 +129,7 @@ class PlayGround{
 
     	textSize(65);
     	fill(0);
-    	text(dayName[week] + " " + monthname + ", " + day(), 2362, ycord);
+    	text(dayName[week] + ", " + monthname + " " + day(), 2362, ycord);
     	textAlign(CENTER);
     }
 
@@ -143,13 +143,22 @@ class PlayGround{
     private String getTime() {
     	String time;
     	int hr = hour();
+    	String min;
     	String am_pm = "AM"; 
 
 		 if(hr > 11) {  //noon
 		   hr -= 12;
 		   am_pm = "PM"; 
 		 }
-		 time = hr + ":" + minute() + " " + am_pm;
+		 
+		 if(minute() < 10) {
+		 	min = "0" + minute();
+		 	console.log("minute: " + min);
+		 } else {
+		 	min = minute();
+		 }
+
+		 time = hr + ":" + min + " " + am_pm;
 		 return time;
     }
 
