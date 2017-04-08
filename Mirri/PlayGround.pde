@@ -37,6 +37,7 @@ class PlayGround{
 
       applications.add(new Static("test application", 700.0, 800.0, 500, 600));
       applications.add(new Draggable("2nd application", 100.0, 150.0, 600, 600));
+      applications.add(new Static("calendar", xCordCal, yCordCal, widthCal, heightCal));
     }
 
     public int getCanvasWidth(){
@@ -151,11 +152,14 @@ class PlayGround{
 		   am_pm = "PM"; 
 		 }
 		 
-		 if(minute() < 10) {
+		 if(minute() < 10){
 		 	min = "0" + minute();
 		 	console.log("minute: " + min);
 		 } else {
 		 	min = minute();
+		 }
+		 if(hr == 0){
+		 	hr = 12;
 		 }
 
 		 time = hr + ":" + min + " " + am_pm;

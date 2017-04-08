@@ -34,3 +34,9 @@ Jay
 Janki
 4/7/2017
     - Date, time, and greeting message
+
+0.0.5
+Janki
+4/8/2017
+    - Fixed date for 12 o’clock
+    - Added calendar app

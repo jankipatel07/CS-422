@@ -21,7 +21,7 @@ class Application{
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
 
-        //buttons.add(new Button("exit", 100.0, 400.0, 75, 75));
+        buttons.add(new Button(appName, x, y, dx, dy));
         createExitButton();
     }
 
@@ -67,6 +67,7 @@ class Application{
 
     private void createExitButton(){
       exitButton = new Builder().createNewButtonWithParam("exit", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
+      console.log("createExitButton");
     }
 
     private void drawAllButtons(){

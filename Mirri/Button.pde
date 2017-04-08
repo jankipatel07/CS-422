@@ -22,8 +22,13 @@ class Button {
     imageValue = imageVal;
     isSelected = false;
     isVisible = true;
-    selectedImage = loadImage("images/" + imageVal + "_selected.png");
-    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
+    if(imageVal.equals("calendar")){
+    	selectedImage = loadImage("images/" + imageVal + ".png");
+    	notSelectedImage = loadImage("images/" + imageVal + ".png");
+    } else {
+	    selectedImage = loadImage("images/" + imageVal + "_selected.png");
+	    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
+	}
   }
 
   Button(String imageVal, String appName, float x, float y, int dx, int dy){
@@ -35,8 +40,13 @@ class Button {
     imageValue = imageVal;
     isSelected = false;
     isVisible = true;
-    selectedImage = loadImage("images/" + imageVal + "_selected.png");
-    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
+    if(imageVal.equals("calendar")){
+    	selectedImage = loadImage("images/" + imageVal + ".png");
+    	notSelectedImage = loadImage("images/" + imageVal + ".png");
+    } else {
+	    selectedImage = loadImage("images/" + imageVal + "_selected.png");
+	    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
+	}	
   }
 
   public void setPosX(float x){
