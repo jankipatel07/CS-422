@@ -40,3 +40,10 @@ Janki
 4/8/2017
     - Fixed date for 12 o’clock
     - Added calendar app
+
+0.0.6
+Jay
+4/8/2017
+    - Added gitignore for Jay's Notes
+    - added frame for app drawer
+    - added resize button for draggable application (resize does not work at the moment)

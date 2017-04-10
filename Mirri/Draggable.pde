@@ -3,6 +3,8 @@ class Draggable extends Application{
     // exclusive for Draggable class
     private boolean hover, locked;
     private float diffX, diffY;
+    private Button exitButton;
+    private Button dragButton;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -12,6 +14,9 @@ class Draggable extends Application{
         locked = false;
         diffX = 0.0;
         diffY = 0.0;
+
+        createExitButton();
+        createDragButton();
     }
 
     public float getDiffX(){
@@ -57,10 +62,30 @@ class Draggable extends Application{
       }
     }
 
+    private void drawExitButton(){
+      exitButton.setPosX(getPosX() + getSizeX() - exitButton.getSizeX());
+      exitButton.setPosY(getPosY());
+      exitButton.drawButton();
+    }
+
+    private void drawDragButton(){
+      dragButton.setPosX(getPosX() + getSizeX() - dragButton.getSizeX());
+      dragButton.setPosY(getPosY() + getSizeY() - dragButton.getSizeX());
+      dragButton.drawButton();
+    }
+
+    private void createExitButton(){
+      exitButton = new Builder().createNewButtonWithParam("exit", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
+    }
+
+    private void createDragButton(){
+      dragButton = new Builder().createNewButtonWithParam("drag", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
+    }
+
     // checks to see if the cursor is hover over the app
     private void _getHover(){
       if(isAppVisible()){
-        if(mouseX > getPosX() && mouseX < (getPosX() + getSizeX()) && mouseY > getPosY() && mouseY < (getPosY()+getSizeY())){
+        if(mouseX > getPosX() && mouseX < (getPosX() + getSizeX()) && mouseY > getPosY() && mouseY < (getPosY()+getSizeY() - dragButton.getSizeX())){
           hover = true;
         } else {
           hover = false;
@@ -74,6 +99,7 @@ class Draggable extends Application{
       drawApplicationBox();
       drawAllButtons();
       drawExitButton();
+      drawDragButton();
     }
 
     public boolean isClashingWithOtherApplication(Application a){
@@ -118,7 +144,7 @@ class Draggable extends Application{
           _y = this.getPosY() + this.getSizeY();
         }
 
-        if(_x <= 0 || _y <= 0 || _x >= canvasWidth || _y >= canvasHeight){
+        if(_x <= 0 || _y <= 300 || _x >= canvasWidth || _y >= canvasHeight){
           return true;
         }
       }

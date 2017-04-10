@@ -13,8 +13,9 @@ class Button {
   private boolean isSelected;
   private PImage selectedImage, notSelectedImage;
   private String applicationName;
+  private boolean clickable;
 
-  Button(String imageVal, float x, float y, int dx, int dy){
+  Button(String imageVal, float x, float y, int dx, int dy, boolean click){
     posX = x;
     posY = y;
     sizeX = dx;
@@ -22,6 +23,7 @@ class Button {
     imageValue = imageVal;
     isSelected = false;
     isVisible = true;
+    clickable = click;
     if(imageVal.equals("calendar")){
     	selectedImage = loadImage("images/" + imageVal + ".png");
     	notSelectedImage = loadImage("images/" + imageVal + ".png");
@@ -31,7 +33,7 @@ class Button {
 	}
   }
 
-  Button(String imageVal, String appName, float x, float y, int dx, int dy){
+  Button(String imageVal, String appName, float x, float y, int dx, int dy, boolean click){
     posX = x;
     posY = y;
     sizeX = dx;
@@ -40,13 +42,18 @@ class Button {
     imageValue = imageVal;
     isSelected = false;
     isVisible = true;
+    clickable = click;
     if(imageVal.equals("calendar")){
     	selectedImage = loadImage("images/" + imageVal + ".png");
     	notSelectedImage = loadImage("images/" + imageVal + ".png");
     } else {
 	    selectedImage = loadImage("images/" + imageVal + "_selected.png");
 	    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
-	}	
+	   }
+  }
+
+  public boolean getClickable(){
+    return clickable;
   }
 
   public void setPosX(float x){

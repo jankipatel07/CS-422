@@ -6,7 +6,7 @@ class PlayGround{
     private Button quickHide;
     private int canvasWidth, canvasHeight;
     ArrayList<Application> applications;
-    private Application draggedApplication;
+    private Application draggedApplication = new Draggable();
     private float testX;
     private float testY;
     private float xCordCal, yCordCal, widthCal, heightCal;
@@ -20,7 +20,7 @@ class PlayGround{
 
       canvasWidth = 2732;
       canvasHeight = 1536;
-	  midWidth = canvasWidth/2;
+	    midWidth = canvasWidth/2;
       midHeight = canvasHeight/2;
 
       //calendar variables
@@ -35,9 +35,12 @@ class PlayGround{
       //quickHide = new Button()
       applications = new ArrayList<Application>();
 
-      applications.add(new Static("test application", 700.0, 800.0, 500, 600));
-      applications.add(new Draggable("2nd application", 100.0, 150.0, 600, 600));
-      applications.add(new Static("calendar", xCordCal, yCordCal, widthCal, heightCal));
+      // applications.add(new Static("test application", 700.0, 800.0, 500, 600));
+      applications.add(new Draggable("2nd application", 400.0, 350.0, 600, 600));
+      // applications.add(new Static("calendar", xCordCal, yCordCal, widthCal, heightCal));
+      applications.add(new Builder().createNewApplication("app_drawer"));
+      // side_bar_left
+      applications.add(new Builder().createNewApplication("side_bar_left"));
     }
 
     public int getCanvasWidth(){
@@ -123,7 +126,7 @@ class PlayGround{
         private void showDate() {
     	float xcord = xCordCal+170;
     	float ycord = yCordWeather+85;
-    	
+
     	//get week day and month name
     	week = new Date().getDay();
     	string monthname = months[(month()-1)];
@@ -145,13 +148,13 @@ class PlayGround{
     	String time;
     	int hr = hour();
     	String min;
-    	String am_pm = "AM"; 
+    	String am_pm = "AM";
 
 		 if(hr > 11) {  //noon
 		   hr -= 12;
-		   am_pm = "PM"; 
+		   am_pm = "PM";
 		 }
-		 
+
 		 if(minute() < 10){
 		 	min = "0" + minute();
 		 	console.log("minute: " + min);

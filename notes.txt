@@ -5,10 +5,10 @@ Static Objects
 - enter name (start up)
 - set pin (start up)
 - confirm pin (start up)
-- temperature app 
+- temperature app
 - time app
 - date app (top right corner)
-- side menu drawer 
+- side menu drawer
 - music app
 - overall playground (contains arrows to control side drawer and Quick Hide)
 - settings app

@@ -2,11 +2,12 @@ class Application{
 
     private String applicationName;
     private ArrayList<Button> buttons;
-    private Button exitButton;
     private ArrayList<InputField> inputFields;
     private float posX, posY, startX, startY;
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
+
+    Application(){}
 
     Application(String appName, float x, float y, int dx, int dy){
 
@@ -21,8 +22,15 @@ class Application{
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
 
-        buttons.add(new Button(appName, x, y, dx, dy));
-        createExitButton();
+        //buttons.add(new Button(appName, x, y, dx, dy));
+    }
+
+    public ArrayList<Button> getAllButtons(){
+      return buttons;
+    }
+
+    public void addNewButton(Button b){
+      buttons.add(b);
     }
 
     public void setStartX(float x){
@@ -65,11 +73,6 @@ class Application{
       return applicationName;
     }
 
-    private void createExitButton(){
-      exitButton = new Builder().createNewButtonWithParam("exit", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
-      console.log("createExitButton");
-    }
-
     private void drawAllButtons(){
       for(Button b : buttons){
         b.drawButton();
@@ -77,9 +80,10 @@ class Application{
     }
 
     private void drawApplicationBox(){
-      strokeWeight(12);
-      stroke(0);
-      fill(255);
+      strokeWeight(8);
+      stroke(135, 135, 135);
+      if(getApplicationName().equals("side_bar_left")) fill(135, 135, 135);
+      else fill(168, 168, 168);
       rect(posX, posY, sizeX, sizeY);
     }
 
@@ -96,19 +100,12 @@ class Application{
       drawAllButtons();
     }
 
-    public void drawExitButton(){
-      exitButton.setPosX(getPosX() + getSizeX() - exitButton.getSizeX());
-      exitButton.setPosY(getPosY());
-      exitButton.drawButton();
-    }
-
     // gets called from PlayGround.pde when a user clicks anywhere on the app
     // path
     // Mirri -> PlayGround -> Application -> Button
     public boolean applicationMouseClicked(int x, int y){
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
-          console.log("button was clicked on image");
           return true;
         }
       }
