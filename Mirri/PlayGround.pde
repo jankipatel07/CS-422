@@ -121,9 +121,10 @@ class PlayGround{
       draggedApplication.setStartX(draggedApplication.getPosX());
       draggedApplication.setStartY(draggedApplication.getPosY());
       draggedApplication.setLock(false);
+      draggedApplication.setResize(false);
     }
 
-        private void showDate() {
+    private void showDate() {
     	float xcord = xCordCal+170;
     	float ycord = yCordWeather+85;
 
@@ -203,12 +204,16 @@ class PlayGround{
             return;
           }
         }
+
       }
     }
 
     public void checkMouseDragged(){
       // instead of going through the loop, just use the draggedApplication
-      if(draggedApplication.getLock()){
+      if(draggedApplication.getResize()){
+        draggedApplication.setSizeX(mouseX - draggedApplication.getPosX());
+        draggedApplication.setSizeY(mouseY - draggedApplication.getPosY());
+      } else if(draggedApplication.getLock()){
         draggedApplication.setPosX(mouseX - draggedApplication.getDiffX());
         draggedApplication.setPosY(mouseY - draggedApplication.getDiffY());
       }

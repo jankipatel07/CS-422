@@ -64,8 +64,20 @@ class Button {
     posY = y;
   }
 
+  public float getPosX(){
+    return posX;
+  }
+
+  public float getPosY(){
+    return posY;
+  }
+
   public int getSizeX(){
     return sizeX;
+  }
+
+  public int getSizeY(){
+    return sizeY;
   }
 
   // is button visible to the naked eye on the screen

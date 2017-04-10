@@ -4,7 +4,8 @@ class Draggable extends Application{
     private boolean hover, locked;
     private float diffX, diffY;
     private Button exitButton;
-    private Button dragButton;
+    private Button resizeButton;
+    private boolean resizeBool;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -16,7 +17,7 @@ class Draggable extends Application{
         diffY = 0.0;
 
         createExitButton();
-        createDragButton();
+        createResizeButton();
     }
 
     public float getDiffX(){
@@ -42,7 +43,14 @@ class Draggable extends Application{
     public void setPosY(float y){
       posY = y;
     }
+    
+    public void setSizeX(int x){
+      sizeX = x;
+    }
 
+    public void setSizeY(int y){
+      sizeY = y;
+    }
 
     public boolean getHover(){
       _getHover();
@@ -51,6 +59,15 @@ class Draggable extends Application{
 
     public boolean getLock(){
       return locked;
+    }
+
+    public boolean getResize(){
+      _getResize();
+      return resizeBool;
+    }
+
+    public void setResize(boolean val){
+      resizeBool = val;
     }
 
     // checks if the app is visible before lock gets placed
@@ -68,24 +85,24 @@ class Draggable extends Application{
       exitButton.drawButton();
     }
 
-    private void drawDragButton(){
-      dragButton.setPosX(getPosX() + getSizeX() - dragButton.getSizeX());
-      dragButton.setPosY(getPosY() + getSizeY() - dragButton.getSizeX());
-      dragButton.drawButton();
+    private void drawResizeButton(){
+      resizeButton.setPosX(getPosX() + getSizeX() - resizeButton.getSizeX());
+      resizeButton.setPosY(getPosY() + getSizeY() - resizeButton.getSizeX());
+      resizeButton.drawButton();
     }
 
     private void createExitButton(){
       exitButton = new Builder().createNewButtonWithParam("exit", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
     }
 
-    private void createDragButton(){
-      dragButton = new Builder().createNewButtonWithParam("drag", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
+    private void createResizeButton(){
+      resizeButton = new Builder().createNewButtonWithParam("drag", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
     }
 
     // checks to see if the cursor is hover over the app
     private void _getHover(){
       if(isAppVisible()){
-        if(mouseX > getPosX() && mouseX < (getPosX() + getSizeX()) && mouseY > getPosY() && mouseY < (getPosY()+getSizeY() - dragButton.getSizeX())){
+        if(mouseX > getPosX() && mouseX < (getPosX() + getSizeX()) && mouseY > getPosY() && mouseY < (getPosY()+getSizeY() /* - resizeButton.getSizeX()*/)){
           hover = true;
         } else {
           hover = false;
@@ -93,13 +110,42 @@ class Draggable extends Application{
       }
     }
 
+    private void _getResize(){
+      if(isAppVisible()){
+        if(dist(getPosX()+getSizeX(), getPosY()+getSizeY(), mouseX, mouseY) < resizeButton.getSizeX()){
+            setResize(true);
+          } else {
+            setResize(false);
+          }
+      }
+    }
+
+    // gets called from PlayGround.pde when a user clicks anywhere on the app
+    // path
+    // Mirri -> PlayGround -> Application -> Button
+    // @Overwrite
+    public boolean applicationMouseClicked(int x, int y){
+      if(exitButton.wasButtonClicked(x, y)){
+        console.log("exit button was clicked from ", getApplicationName());
+      }
+
+      for(Button b : buttons){
+        if(b.wasButtonClicked(x, y)){
+          return true;
+        }
+      }
+
+      return false;
+    }
+
     public void drawApplication(){
       // checks to see if mouse is hovering over the app
       getHover();
+      getResize();
       drawApplicationBox();
       drawAllButtons();
       drawExitButton();
-      drawDragButton();
+      drawResizeButton();
     }
 
     public boolean isClashingWithOtherApplication(Application a){

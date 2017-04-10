@@ -4,7 +4,7 @@ class Builder{
   private int buttonInsideAppDrawerSize = 100;
   private float deltaBetweenButtonsAppDrawer = 66.6;
   private int deltaXButtonInsideAppDrawer = 20;
-  private int dragButtonSize = 50;
+  private int dragButtonSize = 36;
 
   Builder(){}
 
@@ -22,7 +22,7 @@ class Builder{
     } else if (buttonName.equals("drag")){
       float posX = x + dx - dragButtonSize;
       float posY = y - dragButtonSize;
-      return new Button(buttonName, applicationName, posX, posY, dragButtonSize, dragButtonSize, true);
+      return new Button(buttonName, applicationName, posX, posY, dragButtonSize, dragButtonSize, false);
     }
   }
 

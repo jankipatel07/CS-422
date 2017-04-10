@@ -47,3 +47,4 @@ Jay
     - Added gitignore for Jay's Notes
     - added frame for app drawer
     - added resize button for draggable application (resize does not work at the moment)
+    - resize works when you gently use the resize button
