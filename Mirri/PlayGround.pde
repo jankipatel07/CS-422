@@ -1,4 +1,3 @@
-
 // this the playground where all the logic will be laid out
 
 class PlayGround{
@@ -15,19 +14,25 @@ class PlayGround{
     private string[] dayName = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
     private int week;
     private float yCordTime = 100;
+    private PImage wCelsius, wFaren ;
+   
 
     PlayGround(){
 
       canvasWidth = 2732;
       canvasHeight = 1536;
-	    midWidth = canvasWidth/2;
+      midWidth = canvasWidth/2;
       midHeight = canvasHeight/2;
-
+      
+      wCelsius = loadImage("images/weather_notselected.png");
+      wFaren = loadImage("images/weather_selected.png");
+      
       //calendar variables
-      xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
+      xCordCal = canvasWidth-540, yCordCal = 105, widthCal = 520, heightCal = 600;
+      
       //weather variables
-      xCordWeather = 20, yCordWeather = 20;
-
+      xCordWeather = 20, yCordWeather = 20 ,widthWeather = 720, heightWeather= 200;
+       
       // setting up the canvas itself
       setUpCanvas();
 
@@ -98,6 +103,8 @@ class PlayGround{
         showDate();
         showTime();
         greetingUserMsg();
+        getWeather(1); // default gets Farenheit
+       // getMusicPlayer();
     }
 
     public void drawPlayGround(){
@@ -126,7 +133,7 @@ class PlayGround{
 
     private void showDate() {
     	float xcord = xCordCal+170;
-    	float ycord = yCordWeather+85;
+    	float ycord = yCordCal;
 
     	//get week day and month name
     	week = new Date().getDay();
@@ -192,6 +199,18 @@ class PlayGround{
     	return msg;
     }
 
+    // getWeather : int m (Temparature Measure) - 1 = Farenheit Image
+    //                                            0 = Celsius Image
+    private void getWeather(int m){
+       if(m == 1){
+          image(wFaren,xCordWeather,yCordWeather,widthWeather, heightWeather);
+       }
+       else if (m == 0){
+          image(wCelsius,xCordWeather,yCordWeather,widthWeather, heightWeather);
+       }
+    
+    }
+    
     public void checkMousePressed(){
       // check if the app is draggable before proceeding
       for(Application a : applications){
