@@ -8,10 +8,10 @@ class PlayGround{
     private Application draggedApplication = new Draggable();
     private float testX;
     private float testY;
-    private float xCordCal, yCordCal, widthCal, heightCal;
+    private float xCord = canvasWidth-540;
     private float xCordWeather, yCordWeather, widthWeather, heightWeather;
     private string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    private string[] dayName = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+    private string[] dayName = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
     private int week;
     private float yCordTime = 100;
     private PImage wCelsius, wFaren ;
@@ -26,12 +26,6 @@ class PlayGround{
       
       wCelsius = loadImage("images/weather_notselected.png");
       wFaren = loadImage("images/weather_selected.png");
-      
-      //calendar variables
-      xCordCal = canvasWidth-540, yCordCal = 105, widthCal = 520, heightCal = 600;
-      
-      //weather variables
-      xCordWeather = 20, yCordWeather = 20 ,widthWeather = 720, heightWeather= 200;
        
       // setting up the canvas itself
       setUpCanvas();
@@ -46,6 +40,8 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("app_drawer"));
       // side_bar_left
       applications.add(new Builder().createNewApplication("side_bar_left"));
+      //calendar
+      applications.add(new Builder().createNewApplication("calendar"));
     }
 
     public int getCanvasWidth(){
@@ -132,8 +128,7 @@ class PlayGround{
     }
 
     private void showDate() {
-    	float xcord = xCordCal+170;
-    	float ycord = yCordCal;
+    	float xcord = xCord+170;
 
     	//get week day and month name
     	week = new Date().getDay();
@@ -141,7 +136,7 @@ class PlayGround{
 
     	textSize(65);
     	fill(0);
-    	text(dayName[week] + ", " + monthname + " " + day(), 2362, ycord);
+    	text(dayName[week] + ", " + monthname + " " + day(), 2362, 150);
     	textAlign(CENTER);
     }
 
@@ -165,7 +160,6 @@ class PlayGround{
 
 		 if(minute() < 10){
 		 	min = "0" + minute();
-		 	console.log("minute: " + min);
 		 } else {
 		 	min = minute();
 		 }

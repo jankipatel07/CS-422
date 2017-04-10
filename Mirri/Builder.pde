@@ -5,6 +5,16 @@ class Builder{
   private float deltaBetweenButtonsAppDrawer = 66.6;
   private int deltaXButtonInsideAppDrawer = 20;
   private int dragButtonSize = 36;
+  private int canvasWidth = 2732, canvasHeight = 1536;
+  private float  midWidth = 2732/2, midHeight = 1536/2;
+  //calendar variables
+  private float xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
+  //weather variables
+  private float xCordWeather = 20, yCordWeather = 20;
+  //calendar variables
+  private float xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
+  //weather variables
+  private float xCordWeather = 20, yCordWeather = 20;
 
   Builder(){}
 
@@ -31,6 +41,8 @@ class Builder{
       return createAppDrawer(appName);
     } else if(appName.equals("side_bar_left")){
       return createLeftSideBar(appName);
+    } else if(appName.equals("calendar")){
+      return createCalendar("appName");
     }
   }
 
@@ -49,6 +61,12 @@ class Builder{
     Static s = new Static(appName, 170.0, 320.0, 50, 900);
     s.addNewButton(new Button("pusharrow", s.getPosX() - 20, s.getPosY() + 380, 100, 150, true));
 
+    return s;
+  }
+
+  private Application createCalendar(String appName){
+    Static s = new Static(name, xCordCal, yCordCal, widthCal, heightCal);
+    s.addNewButton(new Button("calendar", xCordCal, yCordCal, widthCal, heightCal, false));
     return s;
   }
 }

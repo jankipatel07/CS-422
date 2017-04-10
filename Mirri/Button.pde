@@ -24,13 +24,9 @@ class Button {
     isSelected = false;
     isVisible = true;
     clickable = click;
-    if(imageVal.equals("calendar")){
-    	selectedImage = loadImage("images/" + imageVal + ".png");
-    	notSelectedImage = loadImage("images/" + imageVal + ".png");
-    } else {
-	    selectedImage = loadImage("images/" + imageVal + "_selected.png");
-	    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
-	}
+
+    selectedImage = loadImage("images/" + imageVal + "_selected.png");
+    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
   }
 
   Button(String imageVal, String appName, float x, float y, int dx, int dy, boolean click){
@@ -43,13 +39,8 @@ class Button {
     isSelected = false;
     isVisible = true;
     clickable = click;
-    if(imageVal.equals("calendar")){
-    	selectedImage = loadImage("images/" + imageVal + ".png");
-    	notSelectedImage = loadImage("images/" + imageVal + ".png");
-    } else {
-	    selectedImage = loadImage("images/" + imageVal + "_selected.png");
-	    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
-	   }
+    selectedImage = loadImage("images/" + imageVal + "_selected.png");
+    notSelectedImage = loadImage("images/" + imageVal + "_notselected.png");
   }
 
   public boolean getClickable(){
