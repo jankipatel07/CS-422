@@ -49,7 +49,7 @@ class Builder{
 
   private Application createAppDrawer(String appName){
     Static s = new Static(appName, 20.0, 320.0, 150, 900);
-    String[] buttons = {"footsteps", "newspaper", "health", "alarm", "settings"};
+    String[] buttons = {"social", "newspaper", "health", "alarm", "settings"};
     int i = 1;
     for(String b : buttons){
       s.addNewButton(new Button(b, s.getPosX()+deltaXButtonInsideAppDrawer, s.getPosY() + (deltaBetweenButtonsAppDrawer * i) + (buttonInsideAppDrawerSize * (i-1)), buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));

@@ -57,3 +57,4 @@ Jay
 4/10/2017
     - Buttons are added inside applications
     - buttons move with the application
+    - footstep is now changed to social media app icon
