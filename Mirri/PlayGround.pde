@@ -26,17 +26,7 @@ class PlayGround{
 
       wCelsius = loadImage("images/weather_notselected.png");
       wFaren = loadImage("images/weather_selected.png");
-<<<<<<< HEAD
-       
-=======
-
-      //calendar variables
-      xCordCal = canvasWidth-540, yCordCal = 105, widthCal = 520, heightCal = 600;
-
-      //weather variables
-      xCordWeather = 20, yCordWeather = 20 ,widthWeather = 720, heightWeather= 200;
-
->>>>>>> jay
+      
       // setting up the canvas itself
       setUpCanvas();
 
