@@ -6,6 +6,7 @@ class Draggable extends Application{
     private Button exitButton;
     private Button resizeButton;
     private boolean resizeBool;
+    private int startSizeX, startSizeY;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -15,9 +16,19 @@ class Draggable extends Application{
         locked = false;
         diffX = 0.0;
         diffY = 0.0;
+        startSizeX = dx;
+        startSizeY = dy;
 
         createExitButton();
         createResizeButton();
+    }
+
+    public int getStartSizeX(){
+      return startSizeX;
+    }
+
+    public int getStartSizeY(){
+      return startSizeY;
     }
 
     public float getDiffX(){
@@ -43,7 +54,7 @@ class Draggable extends Application{
     public void setPosY(float y){
       posY = y;
     }
-    
+
     public void setSizeX(int x){
       sizeX = x;
     }
@@ -127,6 +138,8 @@ class Draggable extends Application{
     public boolean applicationMouseClicked(int x, int y){
       if(exitButton.wasButtonClicked(x, y)){
         console.log("exit button was clicked from ", getApplicationName());
+        // turning off the visibility
+        setAppVisible(false);
       }
 
       for(Button b : buttons){
@@ -139,13 +152,16 @@ class Draggable extends Application{
     }
 
     public void drawApplication(){
-      // checks to see if mouse is hovering over the app
-      getHover();
-      getResize();
-      drawApplicationBox();
-      drawAllButtons();
-      drawExitButton();
-      drawResizeButton();
+      // checking if the app is visible in the first place before drawing
+      // no need to go through all the methods if the app is not even visible
+      if(isAppVisible()){
+        getHover(); // checks to see if mouse is hovering over the app
+        getResize();
+        drawApplicationBox();
+        drawAllButtons();
+        drawExitButton();
+        drawResizeButton();
+      }
     }
 
     public boolean isClashingWithOtherApplication(Application a){

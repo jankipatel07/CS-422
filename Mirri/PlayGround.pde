@@ -15,7 +15,7 @@ class PlayGround{
     private int week;
     private float yCordTime = 100;
     private PImage wCelsius, wFaren ;
-   
+
 
     PlayGround(){
 
@@ -23,16 +23,16 @@ class PlayGround{
       canvasHeight = 1536;
       midWidth = canvasWidth/2;
       midHeight = canvasHeight/2;
-      
+
       wCelsius = loadImage("images/weather_notselected.png");
       wFaren = loadImage("images/weather_selected.png");
-      
+
       //calendar variables
       xCordCal = canvasWidth-540, yCordCal = 105, widthCal = 520, heightCal = 600;
-      
+
       //weather variables
       xCordWeather = 20, yCordWeather = 20 ,widthWeather = 720, heightWeather= 200;
-       
+
       // setting up the canvas itself
       setUpCanvas();
 
@@ -208,9 +208,31 @@ class PlayGround{
        else if (m == 0){
           image(wCelsius,xCordWeather,yCordWeather,widthWeather, heightWeather);
        }
-    
+
     }
-    
+
+    // performs a check on the screen that was just dragged
+    // the method makes sure that the application was not flipped or given a smaller dimension than the start state
+    // apps can only be large, not smaller
+    public void checkDraggedScreenSize(){
+
+      if(draggedApplication.getSizeX() < draggedApplication.getStartSizeX() || draggedApplication.getSizeY() < draggedApplication.getStartSizeY()){
+        draggedApplication.setSizeX(draggedApplication.getStartSizeX());
+        draggedApplication.setSizeY(draggedApplication.getStartSizeY());
+      }
+
+      // adusting the height and width based on the ratio of the length
+      int ratio = draggedApplication.getSizeX() / draggedApplication.getStartSizeX();
+      draggedApplication.setSizeY(ratio*draggedApplication.getStartSizeY());
+
+      // checking to see if the app is being resized to go out of bounds
+      if(draggedApplication.getSizeX() + draggedApplication.getPosX() > getCanvasWidth()
+        || draggedApplication.getSizeY() + draggedApplication.getPosY() > getCanvasHeight()){
+        draggedApplication.setSizeX(draggedApplication.getStartSizeX());
+        draggedApplication.setSizeY(draggedApplication.getStartSizeY());
+      }
+    }
+
     public void checkMousePressed(){
       // check if the app is draggable before proceeding
       for(Application a : applications){

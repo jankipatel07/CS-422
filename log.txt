@@ -48,3 +48,6 @@ Jay
     - added frame for app drawer
     - added resize button for draggable application (resize does not work at the moment)
     - resize works when you gently use the resize button
+    - resize does not go out of bounds
+    - exit button closes the app
+    - resize resizes according to the ratio set by the height
