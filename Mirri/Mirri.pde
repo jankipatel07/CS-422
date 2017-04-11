@@ -14,6 +14,7 @@ void draw(){
 void mouseReleased(){
   playGround.playGroundMouseClicked(mouseX, mouseY);
   playGround.setAllLocksFalse();
+  playGround.checkDraggedScreenSize();
 }
 
 void mousePressed(){
