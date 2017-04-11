@@ -51,3 +51,9 @@ Jay
     - resize does not go out of bounds
     - exit button closes the app
     - resize resizes according to the ratio set by the height
+
+0.0.7
+Jay
+4/10/2017
+    - Buttons are added inside applications
+    - buttons move with the application

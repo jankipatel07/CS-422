@@ -103,14 +103,12 @@ class Application{
     // gets called from PlayGround.pde when a user clicks anywhere on the app
     // path
     // Mirri -> PlayGround -> Application -> Button
-    public boolean applicationMouseClicked(int x, int y){
+    public void applicationMouseClicked(int x, int y){
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
-          return true;
+          b.setButtonSelected(true);
         }
       }
-
-      return false;
     }
 
     public void hideApplication(){

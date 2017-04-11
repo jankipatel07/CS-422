@@ -41,7 +41,9 @@ class Builder{
     } else if(appName.equals("side_bar_left")){
       return createLeftSideBar(appName);
     } else if(appName.equals("calendar")){
-      return createCalendar("appName");
+      return createCalendar(appName);
+    } else if(appName.equals("social_media")){
+      return createSocialMedia(appName);
     }
   }
 
@@ -64,8 +66,18 @@ class Builder{
   }
 
   private Application createCalendar(String appName){
-    Static s = new Static(name, xCordCal, yCordCal, widthCal, heightCal);
+    Static s = new Static(appName, xCordCal, yCordCal, widthCal, heightCal);
     s.addNewButton(new Button("calendar", xCordCal, yCordCal, widthCal, heightCal, false));
     return s;
+  }
+
+  //new Draggable("social_media", 282.0, 520.0, 520, 700);
+  private Application createSocialMedia(String appName){
+    Draggable d = new Draggable("social_media", 282.0, 520.0, 520, 700);
+    d.addNewButton(new Button("facebook", d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+
+    return d;
   }
 }

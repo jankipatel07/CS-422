@@ -26,7 +26,7 @@ class PlayGround{
 
       wCelsius = loadImage("images/weather_notselected.png");
       wFaren = loadImage("images/weather_selected.png");
-      
+
       // setting up the canvas itself
       setUpCanvas();
 
@@ -35,7 +35,7 @@ class PlayGround{
       applications = new ArrayList<Application>();
 
       // applications.add(new Static("test application", 700.0, 800.0, 500, 600));
-      applications.add(new Draggable("2nd application", 400.0, 350.0, 600, 600));
+      applications.add(new Builder().createNewApplication("social_media"));
       // applications.add(new Static("calendar", xCordCal, yCordCal, widthCal, heightCal));
       applications.add(new Builder().createNewApplication("app_drawer"));
       // side_bar_left
@@ -68,10 +68,7 @@ class PlayGround{
       // }
 
       for(Application a : applications){
-        if(a.applicationMouseClicked(x, y)){
-          console.log("from playGroundMouseClicked");
-          return;
-        }
+        a.applicationMouseClicked(x, y);
       }
     }
 

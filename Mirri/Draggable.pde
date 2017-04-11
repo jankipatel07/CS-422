@@ -102,6 +102,12 @@ class Draggable extends Application{
       resizeButton.drawButton();
     }
 
+    private void drawApplicationButtons(Button b, int dis){
+      b.setPosX(dis);
+      b.setPosY(getPosY() + 40);
+      b.drawButton();
+    }
+
     private void createExitButton(){
       exitButton = new Builder().createNewButtonWithParam("exit", getApplicationName(), getPosX(), getPosY(), getSizeX(), getSizeY());
     }
@@ -131,11 +137,25 @@ class Draggable extends Application{
       }
     }
 
+    private void drawAllButtons(){
+      int i = 0;
+      for(Button b : buttons){
+        if(i == 0){
+          drawApplicationButtons(b, getPosX() + 40);
+        } else if (i == 1){
+          drawApplicationButtons(b, getPosX() + (b.getSizeX() * 2));
+        } else if(i == 2){
+          drawApplicationButtons(b, getPosX() + (b.getSizeX() * 3) + 40);
+        }
+        i++;
+      }
+    }
+
     // gets called from PlayGround.pde when a user clicks anywhere on the app
     // path
     // Mirri -> PlayGround -> Application -> Button
     // @Overwrite
-    public boolean applicationMouseClicked(int x, int y){
+    public void applicationMouseClicked(int x, int y){
       if(exitButton.wasButtonClicked(x, y)){
         console.log("exit button was clicked from ", getApplicationName());
         // turning off the visibility
@@ -144,11 +164,11 @@ class Draggable extends Application{
 
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
-          return true;
+          b.setButtonSelected(true);
+        }else {
+          b.setButtonSelected(false);
         }
       }
-
-      return false;
     }
 
     public void drawApplication(){
