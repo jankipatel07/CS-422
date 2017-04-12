@@ -58,8 +58,11 @@ Jay
     - Buttons are added inside applications
     - buttons move with the application
 
+
 0.0.8
 Janki
 4/11/2017
     - Added button for calendar login
     - Need to fix image size when dragged for newsfeed
+
+    - footstep is now changed to social media app icon
