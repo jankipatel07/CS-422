@@ -101,7 +101,7 @@ class Builder{
   private Application createKeyboard(String appName){
     Static s = new Static(appName, xcordkey, ycordkey, deltaKey, deltakeyY);
     s.addNewButton(new Button("keyboard", xcordkey, ycordkey, deltaKey, deltakeyY, false));
-    String[] buttons = {"a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "DELETE", "CLEAR"};
+    String[] buttons = {"a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "DELETE", "CLEAR"};
     int index = -1;
     for(int i=0; i <= 7; i++) { //cols
       for(int j=0; j < 6; j++) { //rows
