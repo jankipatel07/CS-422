@@ -11,11 +11,7 @@ class Builder{
   private float xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
   //weather variables
   private float xCordWeather = 20, yCordWeather = 20;
-  //calendar variables
-  private float xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
-  //weather variables
-  private float xCordWeather = 20, yCordWeather = 20;
-
+  
   Builder(){}
 
   public Button createNewButton(String buttonName, String applicationName){
@@ -42,8 +38,12 @@ class Builder{
       return createLeftSideBar(appName);
     } else if(appName.equals("calendar")){
       return createCalendar(appName);
+    } else if(appName.equals("loginCalendar")){
+      return createCalendarLogin(appName);
     } else if(appName.equals("social_media")){
       return createSocialMedia(appName);
+    } else if(appName.equals("newsfeed")){
+      return createNewsFeed(appName);
     }
   }
 
@@ -65,6 +65,12 @@ class Builder{
     return s;
   }
 
+  private Application createCalendarLogin(String appName){
+    Static s = new Static(appName, xCordCal, 1020.0, widthCal, 200);
+    s.addNewButton(new Button("loginCalendar", xCordCal+20, 1040.0, widthCal-40, 180, true));
+    return s;
+  }
+
   private Application createCalendar(String appName){
     Static s = new Static(appName, xCordCal, yCordCal, widthCal, heightCal);
     s.addNewButton(new Button("calendar", xCordCal, yCordCal, widthCal, heightCal, false));
@@ -78,6 +84,12 @@ class Builder{
     d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
 
+    return d;
+  }
+
+  private Application createNewsFeed(String appName){
+    Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
+    d.addNewButton(new Button("newsfeed", 282.0, 520.0, d.getSizeX(), d.getSizeX(), true));
     return d;
   }
 }

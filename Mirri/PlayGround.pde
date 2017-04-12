@@ -16,7 +16,6 @@ class PlayGround{
     private float yCordTime = 100;
     private PImage wCelsius, wFaren ;
 
-
     PlayGround(){
 
       canvasWidth = 2732;
@@ -33,15 +32,19 @@ class PlayGround{
       // creating the quickHide button
       //quickHide = new Button()
       applications = new ArrayList<Application>();
-
       // applications.add(new Static("test application", 700.0, 800.0, 500, 600));
       applications.add(new Builder().createNewApplication("social_media"));
       // applications.add(new Static("calendar", xCordCal, yCordCal, widthCal, heightCal));
       applications.add(new Builder().createNewApplication("app_drawer"));
       // side_bar_left
       applications.add(new Builder().createNewApplication("side_bar_left"));
+      //news feed
+      applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar
       applications.add(new Builder().createNewApplication("calendar"));
+      //login for calendar
+      applications.add(new Builder().createNewApplication("loginCalendar"));
+      
     }
 
     public int getCanvasWidth(){
@@ -133,7 +136,7 @@ class PlayGround{
 
     	textSize(65);
     	fill(0);
-    	text(dayName[week] + ", " + monthname + " " + day(), 2362, 150);
+      text(dayName[week] + ", " + monthname + " " + day(), 2362, 105);
     	textAlign(CENTER);
     }
 
