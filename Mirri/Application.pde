@@ -6,6 +6,7 @@ class Application{
     private float posX, posY, startX, startY;
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
+    private boolean buttonClicked = false;
 
     Application(){}
 
@@ -112,7 +113,8 @@ class Application{
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
-        }
+          buttonClicked = true;
+        } else buttonClicked = false;
       }
     }
 
@@ -127,7 +129,7 @@ class Application{
     }
 
     public boolean showCalendar(){
-      if(applicationName.equals("loginCalendar")){
+      if(applicationName.equals("loginCalendar") && buttonClicked){
         setAppVisible(false);
         return true;
       }

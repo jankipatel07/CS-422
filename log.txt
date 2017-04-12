@@ -79,3 +79,5 @@ Janki
     - keyboard buttons are added
     - calendar and keyboard is visible after login is clicked 
     - todo: show calendar after ok is clicked from keyboard
+    -----
+    - fixed bug to check calendar click
