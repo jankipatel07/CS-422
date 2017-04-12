@@ -70,3 +70,5 @@ Janki
 Jay
 4/11/2017
     - Display buttons are being resized with the application as they change size
+    - the display image is no longer dependent on having four buttons
+    - display image button is it's own entity

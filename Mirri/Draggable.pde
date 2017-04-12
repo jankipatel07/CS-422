@@ -7,6 +7,7 @@ class Draggable extends Application{
     private Button resizeButton;
     private boolean resizeBool;
     private int startSizeX, startSizeY;
+    private Button displayImage;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -18,9 +19,14 @@ class Draggable extends Application{
         diffY = 0.0;
         startSizeX = dx;
         startSizeY = dy;
+        displayImage = null;
 
         createExitButton();
         createResizeButton();
+    }
+
+    public void setDisplayImage(Button b){
+      displayImage = b;
     }
 
     public int getStartSizeX(){
@@ -102,6 +108,13 @@ class Draggable extends Application{
       resizeButton.drawButton();
     }
 
+    private void drawDisplayImageButton(){
+      if(displayImage == null) return;
+      drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 150);
+      displayImage.setSizeX(getSizeX() - 40);
+      displayImage.setSizeY(getSizeY() - 180);
+    }
+
     private void drawApplicationButtons(Button b, int disX, int disY){
       b.setPosX(disX);
       b.setPosY(disY);
@@ -146,10 +159,6 @@ class Draggable extends Application{
           drawApplicationButtons(b, getPosX() + (b.getSizeX() * 2), getPosY() + 40);
         } else if(i == 2){
           drawApplicationButtons(b, getPosX() + (b.getSizeX() * 3) + 40, getPosY() + 40);
-        } else if(i == 3){
-          drawApplicationButtons(b, getPosX() + 20, getPosY() + 150);
-          b.setSizeX(getSizeX() - 40);
-          b.setSizeY(getSizeY() - 180);
         }
         i++;
       }
@@ -184,6 +193,7 @@ class Draggable extends Application{
         drawApplicationBox();
         drawAllButtons();
         drawExitButton();
+        drawDisplayImageButton();
         drawResizeButton();
       }
     }
