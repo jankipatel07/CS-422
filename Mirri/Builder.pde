@@ -11,7 +11,7 @@ class Builder{
   private float xCordCal = canvasWidth-540, yCordCal = 170, widthCal = 520, heightCal = 600;
   //weather variables
   private float xCordWeather = 20, yCordWeather = 20;
-  
+
   Builder(){}
 
   public Button createNewButton(String buttonName, String applicationName){
@@ -89,7 +89,10 @@ class Builder{
 
   private Application createNewsFeed(String appName){
     Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
-    d.addNewButton(new Button("newsfeed", 282.0, 520.0, d.getSizeX(), d.getSizeX(), true));
+    d.addNewButton(new Button("facebook", d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("newsfeed", d.getPosX() + 140, d.getPosY() + 140, d.getSizeX() - 40, d.getSizeX(), true));
     return d;
   }
 }

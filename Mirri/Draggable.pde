@@ -102,9 +102,9 @@ class Draggable extends Application{
       resizeButton.drawButton();
     }
 
-    private void drawApplicationButtons(Button b, int dis){
-      b.setPosX(dis);
-      b.setPosY(getPosY() + 40);
+    private void drawApplicationButtons(Button b, int disX, int disY){
+      b.setPosX(disX);
+      b.setPosY(disY);
       b.drawButton();
     }
 
@@ -141,11 +141,15 @@ class Draggable extends Application{
       int i = 0;
       for(Button b : buttons){
         if(i == 0){
-          drawApplicationButtons(b, getPosX() + 40);
+          drawApplicationButtons(b, getPosX() + 40, getPosY() + 40);
         } else if (i == 1){
-          drawApplicationButtons(b, getPosX() + (b.getSizeX() * 2));
+          drawApplicationButtons(b, getPosX() + (b.getSizeX() * 2), getPosY() + 40);
         } else if(i == 2){
-          drawApplicationButtons(b, getPosX() + (b.getSizeX() * 3) + 40);
+          drawApplicationButtons(b, getPosX() + (b.getSizeX() * 3) + 40, getPosY() + 40);
+        } else if(i == 3){
+          drawApplicationButtons(b, getPosX() + 20, getPosY() + 150);
+          b.setSizeX(getSizeX() - 40);
+          b.setSizeY(getSizeY() - 180);
         }
         i++;
       }

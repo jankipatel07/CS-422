@@ -71,6 +71,14 @@ class Button {
     return sizeY;
   }
 
+  public void setSizeX(int val){
+    sizeX = val;
+  }
+
+  public void setSizeY(int val){
+    sizeY = val;
+  }
+
   // is button visible to the naked eye on the screen
   private boolean isButtonVisible(){
     return isVisible;

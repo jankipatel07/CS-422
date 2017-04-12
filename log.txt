@@ -64,5 +64,9 @@ Janki
 4/11/2017
     - Added button for calendar login
     - Need to fix image size when dragged for newsfeed
-
     - footstep is now changed to social media app icon
+
+0.0.9
+Jay
+4/11/2017
+    - Display buttons are being resized with the application as they change size
