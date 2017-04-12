@@ -7,6 +7,8 @@ class Application{
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
     private boolean buttonClicked = false;
+    private boolean buttonClicked = false;
+    private String clickedApp;
 
     Application(){}
 
@@ -76,6 +78,18 @@ class Application{
       return applicationName;
     }
 
+    public String clickedApp(){
+      return clickedApp;
+    }
+
+    public void setClickedApp(String appName){
+      clickedApp = appName;
+    }
+
+    public void setButtonClick(boolean val){
+      this.buttonClicked = val;
+    }
+
     private void drawAllButtons(){
       for(Button b : buttons){
         b.drawButton();
@@ -114,7 +128,11 @@ class Application{
         if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
           buttonClicked = true;
-        } else buttonClicked = false;
+          setClickedApp(applicationName);
+        } else{
+            buttonClicked = false;
+            b.setButtonSelected(false);
+        }  
       }
     }
 
@@ -128,11 +146,11 @@ class Application{
       }
     }
 
-    public boolean showCalendar(){
-      if(applicationName.equals("loginCalendar") && buttonClicked){
-        setAppVisible(false);
-        return true;
-      }
-      return false;
-    }
+    // public boolean showCalendar(){
+    //   if(applicationName.equals("loginCalendar") && buttonClicked){
+    //     setAppVisible(false);
+    //     return true;
+    //   }
+    //   return false;
+    // }
 }

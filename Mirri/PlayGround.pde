@@ -80,8 +80,9 @@ class PlayGround{
 
       for(Application a : applications){
         a.applicationMouseClicked(x, y);
-        if(a.showCalendar()){
-          showAppsAfterLogin("calendar");
+
+        if(a.clickedApp().equals("loginCalendar")){
+          showAppsAfterLogin("loginCalendar");
         }
       }
     }

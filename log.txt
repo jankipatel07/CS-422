@@ -81,3 +81,7 @@ Janki
     - todo: show calendar after ok is clicked from keyboard
     -----
     - fixed bug to check calendar click
+    -----
+    - static buttons are being clicked one at a time
+    - (need to add code to get the button's names to open right widget for
+      appdrawer)
