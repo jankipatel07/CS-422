@@ -110,9 +110,13 @@ class Draggable extends Application{
 
     private void drawDisplayImageButton(){
       if(displayImage == null) return;
-      drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 150);
+      if(getApplicationName().equals("newsfeed")){
+        drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 80);
+      } else {
+        drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 150);
+      }
       displayImage.setSizeX(getSizeX() - 40);
-      displayImage.setSizeY(getSizeY() - 180);
+      displayImage.setSizeY(getSizeY() - 120);
     }
 
     private void drawApplicationButtons(Button b, int disX, int disY){

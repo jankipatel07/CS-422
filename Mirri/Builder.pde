@@ -89,10 +89,8 @@ class Builder{
 
   private Application createNewsFeed(String appName){
     Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
-    d.addNewButton(new Button("facebook", d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
-    d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
-    d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
-    d.setDisplayImage(new Button("newsfeed", d.getPosX() + 140, d.getPosY() + 140, d.getSizeX() - 40, d.getSizeX(), true));
+    d.setDisplayImage(new Button("newsfeed", d.getPosX() + 40, d.getPosY() + 40, d.getSizeX() - 40, d.getSizeX(), true));
+
     return d;
   }
 }
