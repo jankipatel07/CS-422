@@ -72,3 +72,10 @@ Jay
     - Display buttons are being resized with the application as they change size
     - the display image is no longer dependent on having four buttons
     - display image button is it's own entity
+
+0.1.0
+Janki
+4/12/2017
+    - keyboard buttons are added
+    - calendar and keyboard is visible after login is clicked 
+    - todo: show calendar after ok is clicked from keyboard

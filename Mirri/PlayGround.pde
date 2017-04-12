@@ -40,11 +40,19 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("side_bar_left"));
       //news feed
       applications.add(new Builder().createNewApplication("newsfeed"));
-      //calendar
-      applications.add(new Builder().createNewApplication("calendar"));
-      //login for calendar
+      //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
-      
+    } 
+
+    public void showAppsAfterLogin(String appName){
+      //keyboard
+      applications.add(new Builder().createNewApplication("keyboard"));
+      //TODO: Show the bottom apps after go is clicked from the keyboard
+
+      //calendar
+      if(appName.equals("calendar")){
+        applications.add(new Builder().createNewApplication(appName));
+      }
     }
 
     public int getCanvasWidth(){
@@ -72,6 +80,9 @@ class PlayGround{
 
       for(Application a : applications){
         a.applicationMouseClicked(x, y);
+        if(a.showCalendar()){
+          showAppsAfterLogin("calendar");
+        }
       }
     }
 

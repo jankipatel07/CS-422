@@ -21,6 +21,8 @@ class Application{
         sizeY = dy;
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
+        appVisible = true;
+
 
         //buttons.add(new Button(appName, x, y, dx, dy));
     }
@@ -96,8 +98,11 @@ class Application{
     }
 
     public void drawApplication(){
-      drawApplicationBox();
-      drawAllButtons();
+      if(isAppVisible()){
+        drawApplicationBox();
+        drawAllButtons();
+     }
+    
     }
 
     // gets called from PlayGround.pde when a user clicks anywhere on the app
@@ -119,5 +124,13 @@ class Application{
       for(InputField iF : inputFields){
         iF.setInputFieldVisible(false);
       }
+    }
+
+    public boolean showCalendar(){
+      if(applicationName.equals("loginCalendar")){
+        setAppVisible(false);
+        return true;
+      }
+      return false;
     }
 }
