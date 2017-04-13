@@ -100,6 +100,7 @@ class Button {
   }
 
   public boolean wasButtonClicked(int x, int y){
+    if(!getClickable()) return false;
     return _wasButtonClicked(x,y);
   }
 
