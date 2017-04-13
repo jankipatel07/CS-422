@@ -45,10 +45,7 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("loginCalendar"));
       //health
       applications.add(new Builder().createNewApplication("health"));
-      //timer
-      applications.add(new Builder().createNewApplication("timer"));
-      //timer started
-      applications.add(new Builder().createNewApplication("timerStarted"));
+      //
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
