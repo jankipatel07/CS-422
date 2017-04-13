@@ -103,7 +103,7 @@ class Button {
     return _wasButtonClicked(x,y);
   }
 
-  private void _wasButtonClicked(int x, int y){
+  private boolean _wasButtonClicked(int x, int y){
     int diffX = posX + sizeX;
     int diffY = posY + sizeY;
     if(x > posX && x < diffX){

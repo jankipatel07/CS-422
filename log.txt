@@ -77,7 +77,7 @@ Jay
 Janki
 4/12/2017
     - keyboard buttons are added
-    - calendar and keyboard is visible after login is clicked 
+    - calendar and keyboard is visible after login is clicked
     - todo: show calendar after ok is clicked from keyboard
     -----
     - fixed bug to check calendar click
@@ -85,3 +85,9 @@ Janki
     - static buttons are being clicked one at a time
     - (need to add code to get the button's names to open right widget for
       appdrawer)
+
+0.2.0
+Jay
+4/12/2017
+    - fixed keyboard issue
+    - draggable apps no longer stop working after one app is closed 

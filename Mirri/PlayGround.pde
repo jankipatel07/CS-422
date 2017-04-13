@@ -15,6 +15,7 @@ class PlayGround{
     private int week;
     private float yCordTime = 100;
     private PImage wCelsius, wFaren ;
+    private Application keyboardApplication;
 
     PlayGround(){
 
@@ -42,11 +43,14 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
-    } 
+
+      //keyboard application
+      keyboardApplication = new Builder().createNewApplication("keyboard");
+    }
 
     public void showAppsAfterLogin(String appName){
       //keyboard
-      applications.add(new Builder().createNewApplication("keyboard"));
+      keyboardApplication.setAppVisible(true);
       //TODO: Show the bottom apps after go is clicked from the keyboard
 
       //calendar
@@ -78,6 +82,8 @@ class PlayGround{
       //   return;
       // }
 
+      keyboardApplication.applicationMouseClicked(x, y);
+
       for(Application a : applications){
         a.applicationMouseClicked(x, y);
 
@@ -93,6 +99,10 @@ class PlayGround{
     }
 
     private void drawAllApplications(){
+      // drawing the keyboard app
+      keyboardApplication.drawApplication();
+
+      // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
       }
@@ -133,6 +143,7 @@ class PlayGround{
           draggedApplication.setPosY(draggedApplication.getStartY());
         }
       }
+
       draggedApplication.setStartX(draggedApplication.getPosX());
       draggedApplication.setStartY(draggedApplication.getPosY());
       draggedApplication.setLock(false);
@@ -248,7 +259,7 @@ class PlayGround{
             draggedApplication = a;
             draggedApplication.setDiffX(mouseX-draggedApplication.getPosX());
             draggedApplication.setDiffY(mouseY-draggedApplication.getPosY());
-            return;
+            //return;
           }
         }
 

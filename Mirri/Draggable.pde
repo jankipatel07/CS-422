@@ -203,6 +203,7 @@ class Draggable extends Application{
     }
 
     public boolean isClashingWithOtherApplication(Application a){
+      if(!a.isAppVisible()) return false;
       for(int i = 0;i < 4; i++){
         float _x, _y;
         if(i == 0){
