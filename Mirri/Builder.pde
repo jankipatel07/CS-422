@@ -123,7 +123,7 @@ class Builder{
 
   private Application createTimerStarted(String appName){
     Static s = new Static(appName, 282.0, 520.0, 520, 700);
-    s.addNewButton(new Button("pause", 260.0, 1416.0, 300, 125, true)); 
+    s.addNewButton(new Button("pause", 281.0, 1416.0, 268, 125, true)); 
     s.addNewButton(new Button("stop", 580.0, 1416.0, 222, 125, true));
     s.addNewButton(new Button("resume", 260.0, 1416.0, 300, 125, true));
     return s;
