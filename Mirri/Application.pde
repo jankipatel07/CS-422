@@ -6,8 +6,7 @@ class Application{
     private float posX, posY, startX, startY;
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
-    private boolean buttonClicked = false;
-    private boolean buttonClicked = false;
+    //private boolean buttonClicked = false;
     private String clickedApp;
 
     Application(){}
@@ -117,7 +116,7 @@ class Application{
         drawApplicationBox();
         drawAllButtons();
      }
-    
+
     }
 
     // gets called from PlayGround.pde when a user clicks anywhere on the app
@@ -129,10 +128,11 @@ class Application{
           b.setButtonSelected(true);
           buttonClicked = true;
           setClickedApp(applicationName);
-        } else{
+        }
+        else{
             buttonClicked = false;
             b.setButtonSelected(false);
-        }  
+        }
       }
     }
 
