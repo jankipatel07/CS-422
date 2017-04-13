@@ -94,4 +94,5 @@ Jay
 
 0.3.0
 4/13/2017
-    - added health app 
+    - added health app
+    - added DisplayTag class, KeyBoard class, and InputField class

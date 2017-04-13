@@ -254,7 +254,7 @@ class PlayGround{
     public void checkMousePressed(){
       // check if the app is draggable before proceeding
       for(Application a : applications){
-        if(a.getApplicationDraggable()){
+        if(a.getApplicationDraggable() && a.isAppVisible()){
           if(a.getHover()){
             a.setLock(true);
             draggedApplication = a;
