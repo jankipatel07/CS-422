@@ -24,7 +24,6 @@ class Application{
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
         if(appName.equals("musicList")){
-            alert("I am here");
             appVisible = false;
         }
         else{

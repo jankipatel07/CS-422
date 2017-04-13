@@ -90,4 +90,10 @@ Janki
 Jay
 4/12/2017
     - fixed keyboard issue
-    - draggable apps no longer stop working after one app is closed 
+    - draggable apps no longer stop working after one app is closed
+
+0.3.0
+4/13/2017
+    - added health app
+    - adding timer buttons 
+    - added DisplayTag class, KeyBoard class, and InputField class

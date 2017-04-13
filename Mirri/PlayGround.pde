@@ -45,10 +45,18 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
+
       // load the music Player
       applications.add(new Builder().createNewApplication("music"));
       //load music list
       applications.add(new Builder().createNewApplication("musicList"));
+      //health
+      applications.add(new Builder().createNewApplication("health"));
+      //timer
+      applications.add(new Builder().createNewApplication("timer"));
+     //timer started
+     applications.add(new Builder().createNewApplication("timerStarted"));
+
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
@@ -262,7 +270,7 @@ class PlayGround{
     public void checkMousePressed(){
       // check if the app is draggable before proceeding
       for(Application a : applications){
-        if(a.getApplicationDraggable()){
+        if(a.getApplicationDraggable() && a.isAppVisible()){
           if(a.getHover()){
             a.setLock(true);
             draggedApplication = a;
