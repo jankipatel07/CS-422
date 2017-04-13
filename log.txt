@@ -90,4 +90,5 @@ Janki
 Jay
 4/12/2017
     - fixed keyboard issue
-    - draggable apps no longer stop working after one app is closed 
+    - draggable apps no longer stop working after one app is closed
+    - added DisplayTag class, KeyBoard class, and InputField class
