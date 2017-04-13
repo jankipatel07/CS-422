@@ -16,6 +16,8 @@ class PlayGround{
     private float yCordTime = 100;
     private PImage wCelsius, wFaren ;
     private Application keyboardApplication;
+    private boolean nightMode = false;
+
 
     PlayGround(){
 
@@ -43,7 +45,10 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
-
+      // load the music Player
+      applications.add(new Builder().createNewApplication("music"));
+      //load music list
+      applications.add(new Builder().createNewApplication("musicList"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
@@ -206,12 +211,16 @@ class PlayGround{
     	String msg = "";
     	if(hr >= 12 && hr < 17) {
     		msg = "Good Afternoon ";
+            nightMode = false;
     	} else if(hr >= 17 && hr < 21) {
     		msg = "Good Evening ";
+            nightMode = true;
     	} else if(hr >= 21 && hr < 4) {
     		msg = "Good Night ";
+            nightMode = true;
     	} else {
     		msg = "Good Morning ";
+            nightMode = false;
     	}
     	return msg;
     }

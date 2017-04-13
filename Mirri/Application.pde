@@ -23,7 +23,13 @@ class Application{
         sizeY = dy;
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
-        appVisible = true;
+        if(appName.equals("musicList")){
+            alert("I am here");
+            appVisible = false;
+        }
+        else{
+            appVisible = true;
+        }
 
 
         //buttons.add(new Button(appName, x, y, dx, dy));
@@ -98,9 +104,20 @@ class Application{
     private void drawApplicationBox(){
       strokeWeight(8);
       stroke(135, 135, 135);
-      if(getApplicationName().equals("side_bar_left")) fill(135, 135, 135);
-      else fill(168, 168, 168);
-      rect(posX, posY, sizeX, sizeY);
+      if(getApplicationName().equals("side_bar_left")){ 
+        fill(135, 135, 135);
+        rect(posX, posY, sizeX, sizeY);
+       }
+      else if (getApplicationName().equals("music") || getApplicationName().equals("musicList")){
+        strokeWeight(5);
+        fill(186, 186, 186);
+        rect(posX, posY, sizeX, sizeY , 10);
+       }
+      else {
+        fill(168, 168, 168);
+        rect(posX, posY, sizeX, sizeY);
+      }
+      
     }
 
     public boolean isAppVisible(){
@@ -128,6 +145,7 @@ class Application{
           b.setButtonSelected(true);
           buttonClicked = true;
           setClickedApp(applicationName);
+          
         }
         else{
             buttonClicked = false;

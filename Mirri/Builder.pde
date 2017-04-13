@@ -1,3 +1,5 @@
+
+import processing.sound.*;
 class Builder{
 
   private int exitButtonSize = 65;
@@ -13,6 +15,9 @@ class Builder{
   private float xCordWeather = 20, yCordWeather = 20;
   private float xcordkey = 1060.0, ycordkey = 673;
   private int deltaKey = 576, deltakeyY = 670;
+  private Button closeList ; 
+  
+
 
   Builder(){}
 
@@ -48,9 +53,35 @@ class Builder{
       return createNewsFeed(appName);
     } else if(appName.equals("keyboard")){
       return createKeyboard(appName);
+    } else if(appName.equals("music")){
+        return createMusicPlayer("music");
+    } else if(appName.equals("musicList")){
+        return createMusicList("musicList");
     }
   }
 
+  private Application createMusicPlayer(String appName){
+        Static s = new Static(appName, 670.0, 1400.0, 1350, 120);
+        String[] buttons = {"reverseforward", "play", "fastforward", "play", "volumedown","volumeup"}; // add button for shuffle
+       
+        // button for list of music
+        s.addNewButton(new Button("test",s.getPosX()+20, s.getPosY()+20,80,80,true)); // list button
+        // update the name for the current song
+        int i = 1;
+        for(String b : buttons){
+             s.addNewButton(new Button(b,s.getPosX()+(i*110)+600, s.getPosY()+20,80,80,true));
+             i++;
+        }
+        return s;
+  }
+  
+  private Application createMusicList(String appName){
+        Draggable s = new Draggable(appName, 670.0, 1000.0, 1350, 400);
+        ArrayList<SoundFile> songs;
+        return s;
+  }
+  
+  
   private Application createAppDrawer(String appName){
     Static s = new Static(appName, 20.0, 320.0, 150, 900);
     String[] buttons = {"social", "newspaper", "health", "alarm", "settings"};
@@ -117,4 +148,6 @@ class Builder{
     s.setAppVisible(false);
     return s;
   }
+   
+ 
 }

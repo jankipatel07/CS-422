@@ -11,7 +11,7 @@ class Draggable extends Application{
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
-        applicationDraggable = true;
+        
         hover = false;
         appVisible = true;
         locked = false;
@@ -20,7 +20,11 @@ class Draggable extends Application{
         startSizeX = dx;
         startSizeY = dy;
         displayImage = null;
-
+        if(appName.equals("musicList")){
+            applicationDraggable = false;
+        }else{
+            applicationDraggable = true;
+        }
         createExitButton();
         createResizeButton();
     }
