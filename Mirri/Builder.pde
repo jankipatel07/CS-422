@@ -50,6 +50,10 @@ class Builder{
       return createKeyboard(appName);
     } else if(appName.equals("health")){
       return createHealthApp(appName);
+    } else if(appName.equals("timer")){
+      return createTimer(appName);
+    } else if(appName.equals("timerStarted")){
+      return createTimerStarted(appName);
     }
   }
 
@@ -101,11 +105,28 @@ class Builder{
   }
 
   private Application createHealthApp(String appName){
-    Draggable d = new Draggable("health", 282.0, 520.0, 520, 700);
+    Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
     d.addNewButton(new Button("scale", d.getPosX(), d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("sleeping", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("footsteps", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     return d;
+  }
+
+  private Application createTimer(String appName){
+    Static s = new Static(appName, 282.0, 520.0, 520, 700);
+    s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 100, false)); 
+    s.addNewButton(new Button("uparrow", 492.0, 670.0, 100, 100, true));
+    s.addNewButton(new Button("downarrow", 492.0, 970.0, 100, 100, true));
+    s.addNewButton(new Button("start", 440.0, 1120.0, 200, 100, true));
+    return s;
+  }
+
+  private Application createTimerStarted(String appName){
+    Static s = new Static(appName, 282.0, 520.0, 520, 700);
+    s.addNewButton(new Button("pause", 260.0, 1416.0, 300, 125, true)); 
+    s.addNewButton(new Button("stop", 580.0, 1416.0, 222, 125, true));
+    s.addNewButton(new Button("resume", 260.0, 1416.0, 300, 125, true));
+    return s;
   }
 
   private Application createKeyboard(String appName){
