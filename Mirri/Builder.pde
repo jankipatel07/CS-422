@@ -48,6 +48,8 @@ class Builder{
       return createNewsFeed(appName);
     } else if(appName.equals("keyboard")){
       return createKeyboard(appName);
+    } else if(appName.equals("health")){
+      return createHealthApp(appName);
     }
   }
 
@@ -95,6 +97,14 @@ class Builder{
     Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
     d.setDisplayImage(new Button("newsfeed", d.getPosX() + 40, d.getPosY() + 40, d.getSizeX() - 40, d.getSizeX(), true));
 
+    return d;
+  }
+
+  private Application createHealthApp(String appName){
+    Draggable d = new Draggable("health", 282.0, 520.0, 520, 700);
+    d.addNewButton(new Button("scale", d.getPosX(), d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("sleeping", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    d.addNewButton(new Button("footsteps", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     return d;
   }
 

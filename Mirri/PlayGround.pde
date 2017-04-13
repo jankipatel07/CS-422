@@ -43,7 +43,8 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
-
+      //health
+      applications.add(new Builder().createNewApplication("health"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
