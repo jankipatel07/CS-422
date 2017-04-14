@@ -93,7 +93,14 @@ Jay
     - draggable apps no longer stop working after one app is closed
 
 0.3.0
+Henvy
 4/13/2017
     - added health app
-    - adding timer buttons 
+    - adding timer buttons
     - added DisplayTag class, KeyBoard class, and InputField class
+
+0.4.0
+Jay
+4/13/2017
+    - display text and input field show up when keyboard is displayed
+    

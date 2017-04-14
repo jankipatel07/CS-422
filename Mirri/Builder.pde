@@ -1,5 +1,6 @@
 
 import processing.sound.*;
+
 class Builder{
 
   private int exitButtonSize = 65;
@@ -15,8 +16,8 @@ class Builder{
   private float xCordWeather = 20, yCordWeather = 20;
   private float xcordkey = 1060.0, ycordkey = 673;
   private int deltaKey = 576, deltakeyY = 670;
-  private Button closeList ; 
-  
+  private Button closeList ;
+
 
 
   Builder(){}
@@ -69,7 +70,7 @@ class Builder{
   private Application createMusicPlayer(String appName){
         Static s = new Static(appName, 670.0, 1400.0, 1350, 120);
         String[] buttons = {"reverseforward", "play", "fastforward", "play", "volumedown","volumeup"}; // add button for shuffle
-       
+
         // button for list of music
         s.addNewButton(new Button("test",s.getPosX()+20, s.getPosY()+20,80,80,true)); // list button
         // update the name for the current song
@@ -80,14 +81,14 @@ class Builder{
         }
         return s;
   }
-  
+
   private Application createMusicList(String appName){
         Draggable s = new Draggable(appName, 670.0, 1000.0, 1350, 400);
         ArrayList<SoundFile> songs;
         return s;
   }
-  
-  
+
+
   private Application createAppDrawer(String appName){
     Static s = new Static(appName, 20.0, 320.0, 150, 900);
     String[] buttons = {"social", "newspaper", "health", "alarm", "settings"};
@@ -145,7 +146,7 @@ class Builder{
 
   private Application createTimer(String appName){
     Static s = new Static(appName, 282.0, 520.0, 520, 700);
-    s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 100, false)); 
+    s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 100, false));
     s.addNewButton(new Button("uparrow", 492.0, 670.0, 100, 100, true));
     s.addNewButton(new Button("downarrow", 492.0, 970.0, 100, 100, true));
     s.addNewButton(new Button("start", 440.0, 1120.0, 200, 100, true));
@@ -154,16 +155,17 @@ class Builder{
 
   private Application createTimerStarted(String appName){
     Static s = new Static(appName, 282.0, 520.0, 520, 700);
-    s.addNewButton(new Button("pause", 155.0, 1416.0, 268, 125, true)); 
+    s.addNewButton(new Button("pause", 155.0, 1416.0, 268, 125, true));
     s.addNewButton(new Button("stop", 425.0, 1416.0, 222, 125, true));
     s.addNewButton(new Button("resume", 143.0, 1416.0, 300, 125, true));
     return s;
   }
 
   private Application createKeyboard(String appName){
-    Static s = new Static(appName, xcordkey, ycordkey, deltaKey, deltakeyY);
+    Keyboard s = new Keyboard(appName, xcordkey, ycordkey, deltaKey, deltakeyY);
     s.addNewButton(new Button("keyboard", xcordkey, ycordkey, deltaKey, deltakeyY, false));
-    String[] buttons = {"a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "delete", "clear"};
+    String[] buttons = { "a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
+                        "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "delete", "clear" };
     int index = -1;
     for(int i=0; i <= 7; i++) { //cols
       for(int j=0; j < 6; j++) { //rows
@@ -176,9 +178,13 @@ class Builder{
     }
     s.addNewButton(new Button(buttons[36], 1138.6, 1249.0, 170, 75, true));
     s.addNewButton(new Button(buttons[37], 1387.2, 1249.0, 170, 75, true));
+
+    s.createInputField(new InputField("box", xcordkey, ycordkey + 500, deltaKey, 100, false));
+    s.createDisplayTag(new InputField("box", xcordkey, ycordkey - 120, deltaKey, 100, false));
+
+    s.setInputFieldText("hello");
+
     s.setAppVisible(false);
     return s;
   }
-   
- 
 }
