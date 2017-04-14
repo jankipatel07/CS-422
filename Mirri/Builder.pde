@@ -16,8 +16,9 @@ class Builder{
   private float xcordkey = 1060.0, ycordkey = 673;
   private int deltaKey = 576, deltakeyY = 670;
   private Button closeList ; 
-  
-
+  //language variables
+  private float xCordLang = 716.0, yCordLang = 520.0;
+  private int widthLang = 1300, heightLang = 700;
 
   Builder(){}
 
@@ -63,6 +64,8 @@ class Builder{
       return createTimer(appName);
     } else if(appName.equals("timerStarted")){
       return createTimerStarted(appName);
+    } else if(appName.equals("createLanguageOptions")){
+      return createLanguageOptions(appName);
     }
   }
 
@@ -153,10 +156,37 @@ class Builder{
   }
 
   private Application createTimerStarted(String appName){
-    Static s = new Static(appName, 282.0, 520.0, 520, 700);
+    Static s = new Static(appName, 155.0, 1316.0, 490, 200);
     s.addNewButton(new Button("pause", 155.0, 1416.0, 268, 125, true)); 
     s.addNewButton(new Button("stop", 425.0, 1416.0, 222, 125, true));
     s.addNewButton(new Button("resume", 143.0, 1416.0, 300, 125, true));
+    return s;
+  }
+
+  private Application createLanguageOptions(String appName){
+    Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
+    float langX = xCordLang+20;
+    float langY = yCordLang+10;
+    String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
+
+    s.addNewButton(new Button("language", 900, langY, 500, 200, false));
+    int index = -1;
+    for(int i=0; i < 3; i++){ //cols
+      for(int j=0; j<3; j++){ //rows
+        index++;
+        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), 770+(150*i+1), 300, 150, true));
+      }
+    }
+    s.addNewButton(new Button("portuguese", 1696.0, 771.0, 300, 150, true));
+  // image(language, langX, langY+210, 300, 150);
+  // image(language, langX+300+20, langY+210, 300, 150);
+  // image(language, langX+300+300+40, langY+210, 300, 150);
+  // image(language, langX+300+300+300+60, langY+210, 300, 150);
+  // image(language, langX+300+300+300+60, langY+210, 300, 150);
+  // //col
+  // image(language, langX, langY+150+220, 300, 150);
+  // image(language, langX, langY+150+150+230, 300, 150);
+
     return s;
   }
 
@@ -178,7 +208,6 @@ class Builder{
     s.addNewButton(new Button(buttons[37], 1387.2, 1249.0, 170, 75, true));
     s.setAppVisible(false);
     return s;
-  }
-   
+  } 
  
 }

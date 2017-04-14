@@ -86,8 +86,8 @@ class Application{
       return clickedApp;
     }
 
-    public void setClickedApp(String appName){
-      clickedApp = appName;
+    public void setClickedApp(String buttonName){
+      clickedApp = buttonName;
     }
 
     public void setButtonClick(boolean val){
@@ -143,8 +143,7 @@ class Application{
         if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
           buttonClicked = true;
-          setClickedApp(applicationName);
-          
+          setClickedApp(b.imageValue);
         }
         else{
             buttonClicked = false;
