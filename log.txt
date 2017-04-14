@@ -107,4 +107,4 @@ Henvy
 Jay
 4/13/2017
     - display text and input field show up when keyboard is displayed
-    
+    - keyboard works now

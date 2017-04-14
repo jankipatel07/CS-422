@@ -18,9 +18,9 @@ class InputField extends Button{
   private void drawText(){
     PFont font;
     font = loadFont("FFScala.ttf");
-    textFont(font, 80);
+    textFont(font, 70);
     fill(0);
-    text(getDisplayText(), getPosX() + 90, getPosY() - 650);
+    text(getDisplayText(), getPosX() + 250, getPosY() + 80);
   }
 
   // @Override
