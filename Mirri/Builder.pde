@@ -179,10 +179,11 @@ class Builder{
     s.addNewButton(new Button(buttons[36], 1138.6, 1249.0, 170, 75, true));
     s.addNewButton(new Button(buttons[37], 1387.2, 1249.0, 170, 75, true));
 
-    s.createInputField(new InputField("box", xcordkey, ycordkey + 500, deltaKey, 100, false));
-    s.createDisplayTag(new InputField("box", xcordkey, ycordkey - 120, deltaKey, 100, false));
+    s.createDisplayTag(new InputField("displayBox", xcordkey, ycordkey - 230, deltaKey, 500, false));
+    s.createInputField(new InputField("box", xcordkey, ycordkey - 120, deltaKey, 100, false));
 
-    s.setInputFieldText("hello");
+    s.setDiplayTagText("DisplayTagText");
+    //s.setInputFieldText("InputField");
 
     s.setAppVisible(false);
     return s;

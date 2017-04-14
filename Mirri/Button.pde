@@ -79,6 +79,10 @@ class Button {
     sizeY = val;
   }
 
+  public String getImageValue(){
+    return imageValue;
+  }
+
   // is button visible to the naked eye on the screen
   private boolean isButtonVisible(){
     return isVisible;
