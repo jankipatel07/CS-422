@@ -109,4 +109,5 @@ Janki
 4/14/2017
     - added widget for selecting language(not perfect yet)
     - able to get button name when it's pressed
-    - added wedget for available wifi
+    - added widget for available wifi
+    - added clearmode buttons

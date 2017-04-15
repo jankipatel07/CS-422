@@ -111,7 +111,12 @@ class Application{
         strokeWeight(5);
         fill(186, 186, 186);
         rect(posX, posY, sizeX, sizeY , 10);
-       }
+      }
+      else if(getApplicationName().equals("clearmode") || getApplicationName().equals("timerStarted")){
+        stroke(204, 204, 204);
+        fill(204, 204, 204);
+        rect(posX, posY, sizeX, sizeY);
+      }
       else {
         fill(168, 168, 168);
         rect(posX, posY, sizeX, sizeY);

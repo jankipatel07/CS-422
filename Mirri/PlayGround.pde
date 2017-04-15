@@ -59,6 +59,7 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //wifi
       //applications.add(new Builder().createNewApplication("availablewifi"));
+      applications.add(new Builder().createNewApplication("clearmode"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }

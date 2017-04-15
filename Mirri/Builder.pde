@@ -70,6 +70,8 @@ class Builder{
       return createLanguageOptions(appName);
     } else if(appName.equals("availablewifi")){
       return createWifi(appName);
+    } else if(appName.equals("clearmode")){
+      return createClearMode(appName);
     }
   }
 
@@ -164,6 +166,13 @@ class Builder{
     s.addNewButton(new Button("pause", 155.0, 1416.0, 268, 125, true));
     s.addNewButton(new Button("stop", 425.0, 1416.0, 222, 125, true));
     s.addNewButton(new Button("resume", 143.0, 1416.0, 300, 125, true));
+    return s;
+  }
+
+  //canvasWidth = 2732, canvasHeight = 1536;
+  private Application createClearMode(String appName){
+    Static s = new Static(appName, 2617.0, 1420.0, 100, 100);
+    s.addNewButton(new Button("clearmode", 2617.0, 1420.0, 100, 100, true));
     return s;
   }
 
