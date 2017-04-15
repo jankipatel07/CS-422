@@ -68,6 +68,8 @@ class Builder{
       return createTimerStarted(appName);
     } else if(appName.equals("createLanguageOptions")){
       return createLanguageOptions(appName);
+    } else if(appName.equals("availablewifi")){
+      return createWifi(appName);
     }
   }
 
@@ -171,7 +173,7 @@ class Builder{
     float langY = yCordLang+10;
     String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
 
-    s.addNewButton(new Button("language", 900, langY, 500, 200, false));
+    s.addNewButton(new Button("language", 1066.0, langY, 600, 200, false));
     int index = -1;
     for(int i=0; i < 3; i++){ //cols
       for(int j=0; j<3; j++){ //rows
@@ -180,15 +182,18 @@ class Builder{
       }
     }
     s.addNewButton(new Button("portuguese", 1696.0, 771.0, 300, 150, true));
-  // image(language, langX, langY+210, 300, 150);
-  // image(language, langX+300+20, langY+210, 300, 150);
-  // image(language, langX+300+300+40, langY+210, 300, 150);
-  // image(language, langX+300+300+300+60, langY+210, 300, 150);
-  // image(language, langX+300+300+300+60, langY+210, 300, 150);
-  // //col
-  // image(language, langX, langY+150+220, 300, 150);
-  // image(language, langX, langY+150+150+230, 300, 150);
+    return s;
+  }
 
+  private Application createWifi(String appName){
+    Static s = new Static(appName, 1060.0, 520.0, 700, 700);
+    s.addNewButton(new Button("english", 1235.0, 540.0, 350, 175, false));
+    String[] btn = {"english", "english", "english", "english"};
+    int i=0;
+    for(String b : btn){
+      s.addNewButton(new Button(btn[i], 1272.5, 715.0+(i*125), 275, 125, true));
+      i++;
+    }
     return s;
   }
 
@@ -196,7 +201,7 @@ class Builder{
     Keyboard s = new Keyboard(appName, xcordkey, ycordkey, deltaKey, deltakeyY);
     s.addNewButton(new Button("keyboard", xcordkey, ycordkey, deltaKey, deltakeyY, false));
     String[] buttons = { "a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-                        "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "delete", "clear" };
+                        "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "delete", "clear", "ok"};
     int index = -1;
     for(int i=0; i <= 7; i++) { //cols
       for(int j=0; j < 6; j++) { //rows
@@ -209,6 +214,7 @@ class Builder{
     }
     s.addNewButton(new Button(buttons[36], 1138.6, 1249.0, 170, 75, true));
     s.addNewButton(new Button(buttons[37], 1387.2, 1249.0, 170, 75, true));
+    //s.addNewButton(new Button(buttons[38], 1387.2, 1249.0, 170, 75, true));
 
     s.createDisplayTag(new InputField("displayBox", xcordkey, ycordkey - 230, deltaKey, 500, false));
     s.createInputField(new InputField("box", xcordkey, ycordkey - 120, deltaKey, 100, false));

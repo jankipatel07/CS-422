@@ -99,12 +99,14 @@ Henvy
     - adding timer buttons
     - added DisplayTag class, KeyBoard class, and InputField class
 
-0.4.0
-4/14/2017
-    - added widget for selecting language(not perfect yet)
-    - able to get button name when it's pressed
-
 Jay
 4/13/2017
     - display text and input field show up when keyboard is displayed
     - keyboard works now
+
+0.4.0
+Janki
+4/14/2017
+    - added widget for selecting language(not perfect yet)
+    - able to get button name when it's pressed
+    - added wedget for available wifi

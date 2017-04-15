@@ -50,13 +50,15 @@ class PlayGround{
       //load music list
       applications.add(new Builder().createNewApplication("musicList"));
       //health
-      //applications.add(new Builder().createNewApplication("health"));
+      applications.add(new Builder().createNewApplication("health"));
       //timer
-      //applications.add(new Builder().createNewApplication("timer"));
+      applications.add(new Builder().createNewApplication("timer"));
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
       applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      //wifi
+      //applications.add(new Builder().createNewApplication("availablewifi"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
