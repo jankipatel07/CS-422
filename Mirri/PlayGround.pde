@@ -50,7 +50,7 @@ class PlayGround{
       // load the music Player
       applications.add(new Builder().createNewApplication("music"));
       //load music list
-      //applications.add(new Builder().createNewApplication("musicList"));
+      applications.add(new Builder().createNewApplication("musicList"));
       //health
       applications.add(new Builder().createNewApplication("health"));
       //timer
@@ -62,6 +62,7 @@ class PlayGround{
       //wifi
       applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
+      applications.add(new Builder().createNewApplication("settings"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }

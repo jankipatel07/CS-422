@@ -20,7 +20,7 @@ class Draggable extends Application{
         startSizeX = dx;
         startSizeY = dy;
         displayImage = null;
-        if(appName.equals("musicList") || appName.equals("createLanguageOptions")){
+        if(appName.equals("musicList") || appName.equals("createLanguageOptions") || appName.equals("settings")){
             applicationDraggable = false;
         }else{
             applicationDraggable = true;
@@ -197,7 +197,7 @@ class Draggable extends Application{
       // checking if the app is visible in the first place before drawing
       // no need to go through all the methods if the app is not even visible
       if(isAppVisible()){
-        if(getApplicationName().equals("createLanguageOptions")) {
+        if(getApplicationName().equals("createLanguageOptions") || getApplicationName().equals("settings")) {
           drawApplicationBox();
           drawExitButton();
           for(Button b : buttons){

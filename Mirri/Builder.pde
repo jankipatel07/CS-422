@@ -72,6 +72,8 @@ class Builder{
       return createWifi(appName);
     } else if(appName.equals("clearmode")){
       return createClearMode(appName);
+    } else if(appName.equals("settings")){
+      return createSettings(appName);
     }
   }
 
@@ -173,6 +175,17 @@ class Builder{
     Static s = new Static(appName, 2617.0, 1420.0, 100, 100);
     s.addNewButton(new Button("clearmode", 2617.0, 1420.0, 100, 100, true));
     return s;
+  }
+
+  private Application createSettings(String appName){
+    Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
+    String btn = {"language", "settingsweather", "newuser", "logout"};
+    int index = 0;
+    for(String s : btn){
+      d.addNewButton(new Button(btn[index], 367.0, 520.0+(125*index)+40*(index+1), 350, 125, true));
+      index++;
+    }
+    return d;
   }
 
   private Application createLanguageOptions(String appName){
