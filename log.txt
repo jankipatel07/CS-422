@@ -115,3 +115,10 @@ Janki
     - Fixed positions with new buttons for language and wifi and added ok btn in keyboard
     - settings widget
     - up/down arrows for timer increments numbers
+
+0.5.0
+Jay
+4/16/2017
+    - timer goes up and down with the up and down arrows
+    - timer gets displayed
+    - time does not currently work at the moment 
