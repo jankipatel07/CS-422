@@ -19,8 +19,9 @@ class PlayGround{
     private boolean nightMode = false;
     private ArrayList<User> users;
     private String currentMode; // startup, idle, inuse
-
-
+    private int timerVal=0;
+    private boolean isTimerOn;
+    
     PlayGround(){
 
       canvasWidth = 2732;
@@ -62,7 +63,7 @@ class PlayGround{
       //wifi
       applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
-      applications.add(new Builder().createNewApplication("settings"));
+      //applications.add(new Builder().createNewApplication("settings"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
@@ -90,6 +91,34 @@ class PlayGround{
         return applications;
     }
 
+    public void incrementTimerVal(String btnPressed){
+      if(timerVal >= 0 && timerVal < 10){
+        if(btnPressed.equals("uparrow")){
+          timerVal++;
+        }
+      }
+        if(timerVal > 0 && timerVal <= 10){
+          if(btnPressed.equals("downarrow")){
+          timerVal--; 
+        }
+      }
+      setTimerVal(timerVal);
+      console.log("timer selected: " + timerVal);
+    }
+
+    public void setTimerVal(int val){
+      timerVal = val;
+    };
+
+    public int getTimerVal(){
+      return timerVal;
+    }
+
+    public void stopTimer(){
+      timerVal = 0;
+      isTimerOn = false;
+    }
+
     // gets called from Mirri.pde when the user clicks anywhere on the app
     // the program will perform sequential checks on all the buttons for all the applications, starting with QuickHide
     // if any of the buttons are found clicked, the function returns
@@ -108,6 +137,9 @@ class PlayGround{
         console.log("app clickedApp: " + a.clickedApp());
         if(a.clickedApp().equals("loginCalendar")){
           showAppsAfterLogin("loginCalendar");
+        }
+        if(a.clickedApp().equals("uparrow") || a.clickedApp().equals("downarrow")){
+          incrementTimerVal(a.clickedApp());
         }
       }
     }

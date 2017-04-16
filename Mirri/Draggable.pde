@@ -186,7 +186,7 @@ class Draggable extends Application{
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
-          setClickedApp(b.imageValue());
+          setClickedApp(b.getImageValue());
         }else {
           b.setButtonSelected(false);
         }

@@ -114,3 +114,4 @@ Janki
     ————
     - Fixed positions with new buttons for language and wifi and added ok btn in keyboard
     - settings widget
+    - up/down arrows for timer increments numbers

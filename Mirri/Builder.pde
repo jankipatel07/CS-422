@@ -156,8 +156,8 @@ class Builder{
 
   private Application createTimer(String appName){
     Static s = new Static(appName, 282.0, 520.0, 520, 700);
-    s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 100, false));
-    s.addNewButton(new Button("uparrow", 492.0, 670.0, 100, 100, true));
+    s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 150, false));
+    s.addNewButton(new Button("uparrow", 492.0, 700.0, 100, 100, true));
     s.addNewButton(new Button("downarrow", 492.0, 970.0, 100, 100, true));
     s.addNewButton(new Button("start", 440.0, 1120.0, 200, 100, true));
     return s;
