@@ -16,8 +16,10 @@ class Builder{
   private float xCordWeather = 20, yCordWeather = 20;
   private float xcordkey = 1060.0, ycordkey = 673;
   private int deltaKey = 576, deltakeyY = 670;
-  private Button closeList ;
-
+  private Button closeList ; 
+  //language variables
+  private float xCordLang = 716.0, yCordLang = 520.0;
+  private int widthLang = 1300, heightLang = 700;
 
 
   Builder(){}
@@ -64,6 +66,12 @@ class Builder{
       return createTimer(appName);
     } else if(appName.equals("timerStarted")){
       return createTimerStarted(appName);
+    } else if(appName.equals("createLanguageOptions")){
+      return createLanguageOptions(appName);
+    } else if(appName.equals("availablewifi")){
+      return createWifi(appName);
+    } else if(appName.equals("clearmode")){
+      return createClearMode(appName);
     }
   }
 
@@ -154,10 +162,46 @@ class Builder{
   }
 
   private Application createTimerStarted(String appName){
-    Static s = new Static(appName, 282.0, 520.0, 520, 700);
+    Static s = new Static(appName, 155.0, 1316.0, 490, 200);
     s.addNewButton(new Button("pause", 155.0, 1416.0, 268, 125, true));
     s.addNewButton(new Button("stop", 425.0, 1416.0, 222, 125, true));
     s.addNewButton(new Button("resume", 143.0, 1416.0, 300, 125, true));
+    return s;
+  }
+
+  private Application createClearMode(String appName){
+    Static s = new Static(appName, 2617.0, 1420.0, 100, 100);
+    s.addNewButton(new Button("clearmode", 2617.0, 1420.0, 100, 100, true));
+    return s;
+  }
+
+  private Application createLanguageOptions(String appName){
+    Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
+    float langX = xCordLang+20;
+    float langY = yCordLang+20; 
+    String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
+
+    s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
+    int index = -1;
+    for(int i=1; i <= 3; i++){ //cols
+      for(int j=0; j<3; j++){ //rows
+        index++;
+        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), langY+30+(150*(i)+(10*(i+1))), 300, 150, true));
+      }
+    }
+    s.addNewButton(new Button("portuguese", 1696.0, 740.0, 300, 150, true));
+    return s;
+  }
+
+  private Application createWifi(String appName){
+    Static s = new Static(appName, 1060.0, 520.0, 700, 700);
+    s.addNewButton(new Button("availablewifi", 1160.0, 540.0, 500, 160, false));
+    String[] btn = {"wifi1", "wifi2", "wifi3", "wifi3"};
+    int i=0;
+    for(String b : btn){
+      s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
+      i++;
+    }
     return s;
   }
 
@@ -165,7 +209,7 @@ class Builder{
     Keyboard s = new Keyboard(appName, xcordkey, ycordkey, deltaKey, deltakeyY);
     s.addNewButton(new Button("keyboard", xcordkey, ycordkey, deltaKey, deltakeyY, false));
     String[] buttons = { "a", "b", "c", "d", "e", "f", "g", "h","i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
-                        "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "delete", "clear" };
+                        "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "delete", "clear", "ok"};
     int index = -1;
     for(int i=0; i <= 7; i++) { //cols
       for(int j=0; j < 6; j++) { //rows
@@ -176,9 +220,10 @@ class Builder{
         }
       }
     }
-    s.addNewButton(new Button(buttons[36], 1138.6, 1249.0, 170, 75, true));
-    s.addNewButton(new Button(buttons[37], 1387.2, 1249.0, 170, 75, true));
-
+    s.addNewButton(new Button(buttons[36], 1076.5, 1249.0, 170, 75, true));
+    s.addNewButton(new Button(buttons[37], 1279.0, 1249.0, 170, 75, true));
+    s.addNewButton(new Button(buttons[38], 1465.5, 1249.0, 170, 75, true));
+    //1060   //576
     s.createDisplayTag(new InputField("displayBox", xcordkey, ycordkey - 230, deltaKey, 500, false));
     s.createInputField(new InputField("box", xcordkey, ycordkey - 120, deltaKey, 100, false));
 
@@ -187,5 +232,5 @@ class Builder{
 
     s.setAppVisible(false);
     return s;
-  }
+  } 
 }

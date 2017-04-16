@@ -47,18 +47,21 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
-
       // load the music Player
       applications.add(new Builder().createNewApplication("music"));
       //load music list
-      applications.add(new Builder().createNewApplication("musicList"));
+      //applications.add(new Builder().createNewApplication("musicList"));
       //health
       applications.add(new Builder().createNewApplication("health"));
       //timer
       applications.add(new Builder().createNewApplication("timer"));
-     //timer started
-     applications.add(new Builder().createNewApplication("timerStarted"));
-
+      //timer started
+      applications.add(new Builder().createNewApplication("timerStarted"));
+      //language options
+      //applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      //wifi
+      applications.add(new Builder().createNewApplication("availablewifi"));
+      applications.add(new Builder().createNewApplication("clearmode"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
@@ -69,9 +72,9 @@ class PlayGround{
       //TODO: Show the bottom apps after go is clicked from the keyboard
 
       //calendar
-      if(appName.equals("calendar")){
-        applications.add(new Builder().createNewApplication(appName));
-      }
+      // if(appName.equals("loginCalendar")){
+      //   applications.add(new Builder().createNewApplication(appName));
+      // }
     }
 
     public int getCanvasWidth(){
@@ -101,7 +104,7 @@ class PlayGround{
 
       for(Application a : applications){
         a.applicationMouseClicked(x, y);
-
+        console.log("app clickedApp: " + a.clickedApp());
         if(a.clickedApp().equals("loginCalendar")){
           showAppsAfterLogin("loginCalendar");
         }
