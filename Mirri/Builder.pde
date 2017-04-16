@@ -16,7 +16,7 @@ class Builder{
   private float xCordWeather = 20, yCordWeather = 20;
   private float xcordkey = 1060.0, ycordkey = 673;
   private int deltaKey = 576, deltakeyY = 670;
-  private Button closeList ; 
+  private Button closeList ;
   //language variables
   private float xCordLang = 716.0, yCordLang = 520.0;
   private int widthLang = 1300, heightLang = 700;
@@ -194,6 +194,7 @@ class Builder{
     Static s = new Static(appName, 282.0, 520.0, 520, 700);
     s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 150, false));
     s.addNewButton(new Button("uparrow", 492.0, 700.0, 100, 100, true));
+    s.addNewButton(new InputField("displayBox", appName, 392.0, 820, 300, 100, false));
     s.addNewButton(new Button("downarrow", 492.0, 970.0, 100, 100, true));
     s.addNewButton(new Button("start", 440.0, 1120.0, 200, 100, true));
     return s;
@@ -227,7 +228,7 @@ class Builder{
   private Application createLanguageOptions(String appName){
     Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
     float langX = xCordLang+20;
-    float langY = yCordLang+20; 
+    float langY = yCordLang+20;
     String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
 
     s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
@@ -281,5 +282,5 @@ class Builder{
 
     s.setAppVisible(false);
     return s;
-  } 
+  }
 }

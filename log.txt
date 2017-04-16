@@ -119,3 +119,10 @@ Janki
 0.5.0
 4/16/2017
    - mockups for social media and health
+
+0.6.0
+Jay
+4/16/2017
+    - timer goes up and down with the up and down arrows
+    - timer gets displayed
+    - time does not currently work at the moment 

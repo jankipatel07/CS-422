@@ -30,7 +30,6 @@ class Application{
             appVisible = true;
         }
 
-
         //buttons.add(new Button(appName, x, y, dx, dy));
     }
 
@@ -103,7 +102,7 @@ class Application{
     private void drawApplicationBox(){
       strokeWeight(8);
       stroke(135, 135, 135);
-      if(getApplicationName().equals("side_bar_left")){ 
+      if(getApplicationName().equals("side_bar_left")){
         fill(135, 135, 135);
         rect(posX, posY, sizeX, sizeY);
        }
@@ -121,7 +120,7 @@ class Application{
         fill(168, 168, 168);
         rect(posX, posY, sizeX, sizeY);
       }
-      
+
     }
 
     public boolean isAppVisible(){
@@ -149,6 +148,20 @@ class Application{
           b.setButtonSelected(true);
           buttonClicked = true;
           setClickedApp(b.imageValue);
+          if(getApplicationName().equals("timer") && b.getImageValue().equals("uparrow")){
+            for(Button b : buttons){
+              if(b.getImageValue().equals("displayBox")){
+                b.setDisplayText("", "up");
+              }
+            }
+          } else if(getApplicationName().equals("timer") && b.getImageValue().equals("downarrow")){
+            for(Button b : buttons){
+              if(b.getImageValue().equals("displayBox")){
+                b.setDisplayText("", "down");
+              }
+            }
+          }
+
         }
         else{
             buttonClicked = false;
