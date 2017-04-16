@@ -169,7 +169,6 @@ class Builder{
     return s;
   }
 
-  //canvasWidth = 2732, canvasHeight = 1536;
   private Application createClearMode(String appName){
     Static s = new Static(appName, 2617.0, 1420.0, 100, 100);
     s.addNewButton(new Button("clearmode", 2617.0, 1420.0, 100, 100, true));
@@ -179,28 +178,28 @@ class Builder{
   private Application createLanguageOptions(String appName){
     Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
     float langX = xCordLang+20;
-    float langY = yCordLang+10;
+    float langY = yCordLang+20; 
     String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
 
-    s.addNewButton(new Button("language", 1066.0, langY, 600, 200, false));
+    s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
     int index = -1;
-    for(int i=0; i < 3; i++){ //cols
+    for(int i=1; i <= 3; i++){ //cols
       for(int j=0; j<3; j++){ //rows
         index++;
-        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), 770+(150*i+1), 300, 150, true));
+        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), langY+30+(150*(i)+(10*(i+1))), 300, 150, true));
       }
     }
-    s.addNewButton(new Button("portuguese", 1696.0, 771.0, 300, 150, true));
+    s.addNewButton(new Button("portuguese", 1696.0, 740.0, 300, 150, true));
     return s;
   }
 
   private Application createWifi(String appName){
     Static s = new Static(appName, 1060.0, 520.0, 700, 700);
-    s.addNewButton(new Button("english", 1235.0, 540.0, 350, 175, false));
-    String[] btn = {"english", "english", "english", "english"};
+    s.addNewButton(new Button("availablewifi", 1160.0, 540.0, 500, 160, false));
+    String[] btn = {"wifi1", "wifi2", "wifi3", "wifi3"};
     int i=0;
     for(String b : btn){
-      s.addNewButton(new Button(btn[i], 1272.5, 715.0+(i*125), 275, 125, true));
+      s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
       i++;
     }
     return s;
@@ -221,10 +220,10 @@ class Builder{
         }
       }
     }
-    s.addNewButton(new Button(buttons[36], 1138.6, 1249.0, 170, 75, true));
-    s.addNewButton(new Button(buttons[37], 1387.2, 1249.0, 170, 75, true));
-    //s.addNewButton(new Button(buttons[38], 1387.2, 1249.0, 170, 75, true));
-
+    s.addNewButton(new Button(buttons[36], 1076.5, 1249.0, 170, 75, true));
+    s.addNewButton(new Button(buttons[37], 1279.0, 1249.0, 170, 75, true));
+    s.addNewButton(new Button(buttons[38], 1465.5, 1249.0, 170, 75, true));
+    //1060   //576
     s.createDisplayTag(new InputField("displayBox", xcordkey, ycordkey - 230, deltaKey, 500, false));
     s.createInputField(new InputField("box", xcordkey, ycordkey - 120, deltaKey, 100, false));
 

@@ -111,3 +111,5 @@ Janki
     - able to get button name when it's pressed
     - added widget for available wifi
     - added clearmode buttons
+    ————
+    - Fixed positions with new buttons for language and wifi and added ok btn in keyboard
