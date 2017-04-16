@@ -17,6 +17,8 @@ class PlayGround{
     private PImage wCelsius, wFaren ;
     private Application keyboardApplication;
     private boolean nightMode = false;
+    private ArrayList<User> users;
+    private String currentMode; // startup, idle, inuse
 
 
     PlayGround(){
