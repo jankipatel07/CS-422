@@ -45,23 +45,23 @@ class PlayGround{
       // side_bar_left
       applications.add(new Builder().createNewApplication("side_bar_left"));
       //news feed
-      applications.add(new Builder().createNewApplication("newsfeed"));
+      //applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
       // load the music Player
       applications.add(new Builder().createNewApplication("music"));
       //load music list
-      applications.add(new Builder().createNewApplication("musicList"));
+      //applications.add(new Builder().createNewApplication("musicList"));
       //health
       applications.add(new Builder().createNewApplication("health"));
       //timer
-      applications.add(new Builder().createNewApplication("timer"));
+      //applications.add(new Builder().createNewApplication("timer"));
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
       //applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //wifi
-      applications.add(new Builder().createNewApplication("availablewifi"));
+      //applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
       //applications.add(new Builder().createNewApplication("settings"));
       //keyboard application

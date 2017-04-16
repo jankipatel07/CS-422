@@ -136,8 +136,31 @@ class Builder{
     d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
 
+    d.setNavigateArrow(new Button("greyrightarrow", d.getPosX()+650, d.getPosY(), d.getSizeX()-650, d.getSizeX(), true));
+    d.setNavigateArrow(new Button("greyleftarrow", d.getPosX()+650, d.getPosY(), d.getSizeX()-650, d.getSizeX(), true));  
+    //showFacebookMockup(d.getPosX(), d.getPosY(), d.getSizeX(), d.getSizeY(), d);
+    //mockups for facebook
+    for (int i=1; i<7; i++){
+      d.setDisplayImage(new Button("mockups/facebook/facebook"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    }
+
+    //mockups for twitter
+    for(int i=1; i<7; i++){
+      d.setDisplayImage(new Button("mockups/twitter/twitter"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    }
+
+    //mockups for youtube
+    for(int i=1; i<7; i++){
+      d.setDisplayImage(new Button("mockups/youtube/youtube"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    }
     return d;
   }
+
+  // public void showFacebookMockup(float posX, float posY, int sizeX, int sizeY, Draggable d){
+  //   for (int i=1; i<7; i++){
+  //     d.setDisplayImage(new Button("mockups/facebook/facebook"+i, posX+40, posY, sizeX-40, sizeX, false));
+  //   }
+  // }
 
   private Application createNewsFeed(String appName){
     Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
@@ -151,6 +174,19 @@ class Builder{
     d.addNewButton(new Button("scale", d.getPosX(), d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("sleeping", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("footsteps", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    
+    //scale
+    d.setDisplayImage(new Button("mockups/weightoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    d.setDisplayImage(new Button("mockups/weightmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+
+    //sleep
+    d.setDisplayImage(new Button("mockups/sleepoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    d.setDisplayImage(new Button("mockups/sleepmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+
+    //footsteps
+    d.setDisplayImage(new Button("mockups/stepsoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    d.setDisplayImage(new Button("mockups/stepsmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+
     return d;
   }
 
