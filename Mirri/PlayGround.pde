@@ -45,7 +45,7 @@ class PlayGround{
       // side_bar_left
       applications.add(new Builder().createNewApplication("side_bar_left"));
       //news feed
-      //applications.add(new Builder().createNewApplication("newsfeed"));
+      applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
       // load the music Player
@@ -55,7 +55,7 @@ class PlayGround{
       //health
       applications.add(new Builder().createNewApplication("health"));
       //timer
-      //applications.add(new Builder().createNewApplication("timer"));
+      applications.add(new Builder().createNewApplication("timer"));
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
@@ -63,7 +63,7 @@ class PlayGround{
       //wifi
       //applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
-      //applications.add(new Builder().createNewApplication("settings"));
+      applications.add(new Builder().createNewApplication("settings"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
@@ -140,6 +140,48 @@ class PlayGround{
         }
         if(a.clickedApp().equals("uparrow") || a.clickedApp().equals("downarrow")){
           incrementTimerVal(a.clickedApp());
+        }
+        //cheking btn clicked from appdrawer
+        if(a.getApplicationName().equals("app_drawer")){
+          if(a.clickedApp().equals("social")){
+            makeAppVisible(true, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("newspaper")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(true, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("health")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(true, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("alarm")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(true, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("settings")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(true, "settings");
+          } 
+        }
+      }
+    }
+
+    private void makeAppVisible(boolean val, String name){
+      for(Application a : applications){
+        if(a.getApplicationName().equals(name)){
+          a.setAppVisible(val);
         }
       }
     }

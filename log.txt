@@ -125,4 +125,7 @@ Jay
 4/16/2017
     - timer goes up and down with the up and down arrows
     - timer gets displayed
-    - time does not currently work at the moment 
+    - time does not currently work at the moment
+
+0.7.0
+    - app drawer opens apps as selected 

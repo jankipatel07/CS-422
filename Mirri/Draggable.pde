@@ -14,7 +14,7 @@ class Draggable extends Application{
         super(appName, x, y, dx, dy);
         
         hover = false;
-        appVisible = true;
+        appVisible = false;
         locked = false;
         diffX = 0.0;
         diffY = 0.0;
