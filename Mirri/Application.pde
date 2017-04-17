@@ -2,7 +2,6 @@ class Application{
 
     private String applicationName;
     private ArrayList<Button> buttons;
-    private ArrayList<InputField> inputFields;
     private float posX, posY, startX, startY;
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
@@ -132,6 +131,11 @@ class Application{
 
     public void setAppVisible(boolean val){
       appVisible = val;
+      if(!val){
+          hideApplication();
+      } else {
+        showApplication();
+      }
     }
 
     public void drawApplication(){
@@ -139,10 +143,9 @@ class Application{
         drawApplicationBox();
         drawAllButtons();
      }
-
     }
-    
-    
+
+
 
     // gets called from PlayGround.pde when a user clicks anywhere on the app
     // path
@@ -154,24 +157,10 @@ class Application{
           buttonClicked = true;
           setClickedApp(b.imageValue);
 
-          if(getApplicationName().equals("timer") && b.getImageValue().equals("uparrow")){
-            for(Button b : buttons){
-              if(b.getImageValue().equals("displayBox")){
-                b.setDisplayText("", "up");
-              }
-            }
-          } else if(getApplicationName().equals("timer") && b.getImageValue().equals("downarrow")){
-            for(Button b : buttons){
-              if(b.getImageValue().equals("displayBox")){
-                b.setDisplayText("", "down");
-              }
-            }
-          }
-
         }
         else{
             buttonClicked = false;
-            b.setButtonSelected(false);
+            //b.setButtonSelected(false);
         }
       }
     }
@@ -181,16 +170,15 @@ class Application{
         b.setButtonVisibile(false);
       }
 
-      for(InputField iF : inputFields){
-        iF.setInputFieldVisible(false);
+      // for(InputField iF : inputFields){
+      //   iF.setInputFieldVisible(false);
+      // }
+    }
+
+    public void showApplication(){
+      for(Button b : buttons){
+        b.setButtonVisibile(true);
       }
     }
 
-    // public boolean showCalendar(){
-    //   if(applicationName.equals("loginCalendar") && buttonClicked){
-    //     setAppVisible(false);
-    //     return true;
-    //   }
-    //   return false;
-    // }
 }

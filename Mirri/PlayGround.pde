@@ -24,9 +24,6 @@ class PlayGround{
     private boolean isTimerOn;
     private Application musicWidget;
     private Application musicList;
-
-    
-   
     
     PlayGround(){
 
@@ -55,13 +52,14 @@ class PlayGround{
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
       //health
-       applications.add(new Builder().createNewApplication("health"));
+      applications.add(new Builder().createNewApplication("health"));
       //timer
-        applications.add(new Builder().createNewApplication("timer"));
+      applications.add(new Builder().createNewApplication("timer"));
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
-      applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      //applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      //applications.add(new Builder().createNewApplication("createStartupLanguage"));
       //wifi
       //applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
@@ -70,6 +68,9 @@ class PlayGround{
       keyboardApplication = new Builder().createNewApplication("keyboard");
       musicWidget = new Builder().createNewApplication("music");
       musicList = new Builder().createNewApplication("musicList");
+
+      Startup s = new Startup();
+      //s.showLanguageOptions();
     }
 
     public void showAppsAfterLogin(String appName){
@@ -158,7 +159,6 @@ class PlayGround{
             }
         }
       }
-      console.log("displayTime: " + displayTime);
     }
 
     // gets called from Mirri.pde when the user clicks anywhere on the app

@@ -5,7 +5,7 @@ class MusicPlayer extends Static{
     private boolean showList;
     private Audio currMusic;
     private boolean play;
-    
+
    MusicPlayer(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
         selectedMusic = 1;
@@ -13,17 +13,17 @@ class MusicPlayer extends Static{
         play = false;
         currMusic = new Audio("images/song1.mp3");
     }
-    
+
     public boolean showMusicList(){
             return showList;
     }
-    
+
     public void changeMusicListDisplay(boolean f){
             showList = f;
     }
-   
+
     public void loadSounds(int n){
-    
+
       if(n=1){
             currMusic = new Audio("images/song1.mp3");
             currMusic.load();
@@ -44,7 +44,7 @@ class MusicPlayer extends Static{
             currMusic = new Audio("images/song1.mp3");
             currMusic.load();
       }
-        
+
     }
     public void playMusic() {
            currMusic.play();
@@ -55,12 +55,14 @@ class MusicPlayer extends Static{
      public void reloadMusic() {
            currMusic.pause();
      }
-     
-     
-     // @Override
+
+
+    // @Override
    public void applicationMouseClicked(int x, int y){
     for(Button b : buttons){
-        if(b.wasButtonClicked(x, y)){
+      if(b.isButtonSelected() && b.wasButtonClicked(x, y)){
+        b.setButtonSelected(false);
+      } else if(b.wasButtonClicked(x, y)){
             b.setButtonSelected(true);
             buttonClicked = true;
             //setClickedApp(applicationName);
@@ -92,14 +94,14 @@ class MusicPlayer extends Static{
                     changeMusicListDisplay(false);
                 }
             }
-            
+
         }else{
           buttonClicked = false;
-          b.setButtonSelected(false);
+          //b.setButtonSelected(false);
         }
     }
   }
-     
-    
-    
+
+
+
 }
