@@ -54,12 +54,9 @@ class SocialMedia extends Draggable{
           temp = displayYoutube;
         }
 
-        setClickedApp("");
+        //setClickedApp("");
         setDisplayImage(temp);
 
-      }else {
-        b.setButtonSelected(false);
-        //setClickedApp("");
       }
     }
   }
