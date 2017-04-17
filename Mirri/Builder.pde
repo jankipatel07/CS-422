@@ -155,29 +155,29 @@ class Builder{
   // }
 
   private Application createNewsFeed(String appName){
-    Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
+    NewsFeed d = new NewsFeed(appName, 282.0, 520.0, 520, 700);
     d.setDisplayImage(new Button("newsfeed", d.getPosX() + 40, d.getPosY() + 40, d.getSizeX() - 40, d.getSizeX(), true));
 
     return d;
   }
 
   private Application createHealthApp(String appName){
-    Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
+    Health d = new Health(appName, 282.0, 520.0, 520, 700);
     d.addNewButton(new Button("scale", d.getPosX(), d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("sleeping", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("footsteps", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
 
-    //scale
-    d.setDisplayImage(new Button("mockups/weightoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-    d.setDisplayImage(new Button("mockups/weightmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-
-    //sleep
-    d.setDisplayImage(new Button("mockups/sleepoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-    d.setDisplayImage(new Button("mockups/sleepmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-
-    //footsteps
-    d.setDisplayImage(new Button("mockups/stepsoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-    d.setDisplayImage(new Button("mockups/stepsmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    // //scale
+    // d.setDisplayImage(new Button("mockups/weightoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    // d.setDisplayImage(new Button("mockups/weightmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    //
+    // //sleep
+    // d.setDisplayImage(new Button("mockups/sleepoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    // d.setDisplayImage(new Button("mockups/sleepmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    //
+    // //footsteps
+    // d.setDisplayImage(new Button("mockups/stepsoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    // d.setDisplayImage(new Button("mockups/stepsmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
 
     return d;
   }

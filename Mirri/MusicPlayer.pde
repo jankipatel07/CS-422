@@ -65,7 +65,7 @@ class MusicPlayer extends Static{
       } else if(b.wasButtonClicked(x, y)){
             b.setButtonSelected(true);
             buttonClicked = true;
-            //setClickedApp(applicationName);
+            setClickedApp(getApplicationName());
             if(b.getImageValue().equals("fastforward")){
                 if(selectedMusic > 4){
                  selectedMusic = 1;

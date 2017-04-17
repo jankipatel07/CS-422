@@ -9,6 +9,7 @@ class SocialMedia extends Draggable{
     createTwitter();
     createFacebook();
     createYoutube();
+    setDisplayImage(displayFacebook);
   }
 
   private void createTwitter(){
@@ -36,7 +37,6 @@ class SocialMedia extends Draggable{
       if(b.wasButtonClicked(x, y)){
         Button temp = displayFacebook;
         b.setButtonSelected(true);
-        //setClickedApp(b.getImageValue());
         if(b.getImageValue().equals("twitter")){
           displayFacebook.setButtonVisibile(false);
           displayYoutube.setButtonVisibile(false);
@@ -47,6 +47,11 @@ class SocialMedia extends Draggable{
           displayYoutube.setButtonVisibile(false);
           displayTwitter.setButtonVisibile(false);
           temp = displayFacebook;
+        } else if(b.getImageValue().equals("youtube")){
+          displayFacebook.setButtonVisibile(false);
+          displayYoutube.setButtonVisibile(true);
+          displayTwitter.setButtonVisibile(false);
+          temp = displayYoutube;
         }
 
         setDisplayImage(temp);

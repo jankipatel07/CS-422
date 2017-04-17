@@ -4,7 +4,8 @@ class Application{
     private ArrayList<Button> buttons;
     private float posX, posY, startX, startY;
     private int sizeX, sizeY;
-    private boolean applicationDraggable, appVisible;
+    private boolean applicationDraggable;
+    private boolean appVisible;
     //private boolean buttonClicked = false;
     private String clickedApp;
 
@@ -131,8 +132,8 @@ class Application{
 
     public void setAppVisible(boolean val){
       appVisible = val;
-      if(!val){
-          hideApplication();
+      if(val == false){
+        hideApplication();
       } else {
         showApplication();
       }
@@ -152,15 +153,15 @@ class Application{
     // Mirri -> PlayGround -> Application -> Button
     public void applicationMouseClicked(int x, int y){
       for(Button b : buttons){
-        if(b.wasButtonClicked(x, y)){
+        if(b.wasButtonClicked(x, y) && b.isButtonVisible()){
           b.setButtonSelected(true);
           buttonClicked = true;
-          setClickedApp(b.imageValue);
-
+          setClickedApp(getApplicationName());
         }
         else{
             buttonClicked = false;
             //b.setButtonSelected(false);
+            setClickedApp("");
         }
       }
     }
