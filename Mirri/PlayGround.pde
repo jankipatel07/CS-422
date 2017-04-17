@@ -564,7 +564,7 @@ class PlayGround{
             nightMode = false;
       } else if(hr >= 17 && hr < 21) {
         msg = "Good Evening ";
-            nightMode = true;
+            nightMode = false;
     	} else if(hr >= 21 || hr < 4) {
     		msg = "Good Night ";
             nightMode = true;
