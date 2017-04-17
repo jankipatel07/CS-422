@@ -110,7 +110,7 @@ class Application{
         rect(posX, posY, sizeX, sizeY);
        }
       else if (getApplicationName().equals("music") || getApplicationName().equals("musicList")){
-        
+
         strokeWeight(5);
         fill(186, 186, 186);
         rect(posX, posY, sizeX, sizeY , 10);
@@ -120,7 +120,7 @@ class Application{
         fill(204, 204, 204);
         rect(posX, posY, sizeX, sizeY);
       }
-      
+
       else {
         fill(168, 168, 168);
         rect(posX, posY, sizeX, sizeY);

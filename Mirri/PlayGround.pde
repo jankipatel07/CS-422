@@ -19,16 +19,22 @@ class PlayGround{
     private boolean nightMode = false;
     private ArrayList<User> users;
     private String currentMode; // startup, idle, inuse
-    private int timerVal=0, timer, minuteCounter, secondCounter, previousTime;
-    private String displayTime;
-    private boolean isTimerOn;
+
+    // music
     private Application musicWidget;
     private Application musicList;
-    private String nextApp = "", prevApp = "";
     private Startup startup;
     private AppDrawer appdrawer;
 
+    // timer
+    private boolean timerRunning, timerOn;
+    private String displayTime = "";
+    private int timerVal=0, timer = 0, minuteCounter = 0, secondCounter = 0, previousTime;
+
     PlayGround(){
+
+      timerOn = false;
+      timerRunning = false;
 
       canvasWidth = 2732;
       canvasHeight = 1536;
@@ -142,7 +148,7 @@ class PlayGround{
         secondCounter = 60;
         displayTime = "" + timer + " mins";
       }
-      timerOn = b;
+      //timerOn = b;
     }
 
     public void startTimer(){
@@ -185,7 +191,8 @@ class PlayGround{
       musicList.applicationMouseClicked(x, y);
 
       for(Application a : applications){
-        if(a.applicationMouseClicked(x, y))
+        if(a.applicationMouseClicked(x, y)){
+
           console.log("app name; " + a.getApplicationName());
 
           //appdrawer
@@ -222,6 +229,24 @@ class PlayGround{
               makeAppVisible(true, "settings");
             }
           }
+
+          //calendar
+          if(a.clickedApp().equals("loginCalendar") && a.isAppVisible()){
+            console.log("in login cal in pg");
+            makeAppVisible(false, a.getApplicationName());
+            keyboardApplication.setAppVisible(true);
+            keyboardApplication.setDiplayTagText("Calendar Login");
+            keyboardApplication.setInputFieldText("");
+            console.log("------ " + keyboardApplication.okPressed());
+            if(keyboardApplication.okPressed()){
+
+              keyboardApplication.setOkPressed(false);
+              keyboardApplication.setDiplayTagText("Calendar Password");
+              keyboardApplication.setInputFieldText("");
+            }
+          }
+
+        }
       }
     }
 
@@ -243,6 +268,33 @@ class PlayGround{
     }
 
     private void drawAllApplications(){
+
+      // timer calculations
+      int time = floor(millis/1000);
+      if(previousTime < time){
+
+        displayTime++;
+        previousTime++;
+
+        if(secondCounter == 0){
+          timer--;
+          secondCounter = 60;
+        }
+
+        secondCounter--;
+        displayTime = "" + timer + " mins: " + secondCounter + " seconds";
+
+      }
+
+      if(timer == 0 && secondCounter == 0){
+        timerOn = false;
+        timerRunning = false;
+        setTimeOn(false, ""+0);
+        makeAppVisible(false, "timerStarted");
+      }
+
+
+
       // drawing the keyboard app
       keyboardApplication.drawApplication();
 
@@ -260,6 +312,33 @@ class PlayGround{
       // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
+
+        // displaying timer
+        if(a.clickedApp().equals("TurnTimerOn")){
+          timerOn = true;
+          a.setClickedApp("");
+        }
+
+        if(timerOn){
+          if(a.getApplicationName().equals("timer")){
+              ArrayList<Button> allButton = a.getAllButtons();
+              for(Button b : allButton){
+                if(b.getImageValue().equals("displayBox")){
+                  console.log("b.getDisplayText(): ", b.getDisplayText());
+                  setTimeOn(true, b.getDisplayText());
+                  timerRunning = true;
+                  timerOn = false;
+                }
+              }
+          }
+        }
+
+        if(timerRunning){
+          if(a.getApplicationName().equals("timerStarted")){
+            makeAppVisible(true, "timerStarted");
+            a.setTimerText(displayTime);
+          }
+        }
 
         // start up logic
         if(a.getApplicationName().equals("createStartupLanguage") && a.isAppVisible()){
@@ -338,7 +417,7 @@ class PlayGround{
           makeAppVisible(false, "loginCalendar");
           a.setClickedApp("");
           keyboardApplication.setOkButtonCounter(0);
-          //show calendar widget 
+          //show calendar widget
           makeAppVisible(true, "calendar");
           console.log("")
         }
