@@ -61,7 +61,7 @@ class PlayGround{
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
-      applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      //applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //Apps for startup
       //DO NOT CHANGE ORDER 
       applications.add(new Builder().createNewApplication("createStartupLanguage"));
@@ -70,9 +70,11 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("createUserName"));
       applications.add(new Builder().createNewApplication("userPassword"));
       applications.add(new Builder().createNewApplication("confirmPassword"));
+
       //clearmode
       applications.add(new Builder().createNewApplication("clearmode"));
       applications.add(new Builder().createNewApplication("settings"));
+
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
       musicWidget = new Builder().createNewApplication("music");
@@ -206,7 +208,7 @@ class PlayGround{
               makeAppVisible(false, "confirmPassword");
             }
           } 
-         if(a.getApplicationName().equals("availablewifi") && a.isAppVisible()){
+          else if(a.getApplicationName().equals("availablewifi") && a.isAppVisible()){
             if(a.clickedApp().equals("rightarrow")){
               makeAppVisible(false, "createStartupLanguage");
               makeAppVisible(false, "availablewifi");
@@ -216,8 +218,8 @@ class PlayGround{
               makeAppVisible(false, "confirmPassword");
             }
           }
-          if(a.getApplicationName().equals("wifiPassword") && a.isAppVisible()){
-            if(a.clickedApp().equals("rightarrow")){
+         else if(a.getApplicationName().equals("wifiPassword") && a.isAppVisible()){
+            if(a.clickedApp().equals("wifiPasswordRightArrow")){
               console.log("wifi Password");
               makeAppVisible(false, "createStartupLanguage");
               makeAppVisible(false, "availablewifi");
@@ -227,8 +229,8 @@ class PlayGround{
               makeAppVisible(false, "confirmPassword");
             }
           } 
-          if(a.getApplicationName().equals("createUserName") && a.isAppVisible()){
-            if(a.clickedApp().equals("rightarrow")){
+          else if(a.getApplicationName().equals("createUserName") && a.isAppVisible()){
+            if(a.clickedApp().equals("createUserNameRightArrow")){
               console.log("createUserName");
               makeAppVisible(false, "createStartupLanguage");
               makeAppVisible(false, "availablewifi");
@@ -238,7 +240,7 @@ class PlayGround{
               makeAppVisible(false, "confirmPassword");
             }
           } 
-          if(a.getApplicationName().equals("userPassword") && a.isAppVisible()){
+          else if(a.getApplicationName().equals("userPassword") && a.isAppVisible()){
             if(a.clickedApp().equals("rightarrow")){
               makeAppVisible(false, "createStartupLanguage");
               makeAppVisible(false, "availablewifi");
@@ -248,16 +250,16 @@ class PlayGround{
               makeAppVisible(true, "confirmPassword");
             } 
           }
-          if(a.getApplicationName().equals("confirmPassword") && a.isAppVisible()){
-            if(a.clickedApp().equals("rightarrow")){
-              makeAppVisible(false, "createStartupLanguage");
-              makeAppVisible(false, "availablewifi");
-              makeAppVisible(false, "wifiPassword");
-              makeAppVisible(false, "createUserName");
-              makeAppVisible(false, "userPassword");
-              makeAppVisible(false, "confirmPassword");
-            }
-          }
+          // if(a.getApplicationName().equals("confirmPassword") && a.isAppVisible()){
+          //   if(a.clickedApp().equals("rightarrow")){
+          //     makeAppVisible(false, "createStartupLanguage");
+          //     makeAppVisible(false, "availablewifi");
+          //     makeAppVisible(false, "wifiPassword");
+          //     makeAppVisible(false, "createUserName");
+          //     makeAppVisible(false, "userPassword");
+          //     makeAppVisible(false, "confirmPassword");
+          //   }
+          // }
 
           //appdrawer
           if(a.getApplicationName().equals("app_drawer")){
@@ -294,41 +296,6 @@ class PlayGround{
             } 
           }
 
-        }
-
-        //cheking btn clicked from appdrawer
-        if(a.getApplicationName().equals("app_drawer")){
-          if(a.clickedApp().equals("social")){
-            makeAppVisible(true, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("newspaper")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(true, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("health")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(true, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("alarm")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(true, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("settings")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(true, "settings");
-          }
         }
       }
     }
