@@ -8,7 +8,6 @@ class Draggable extends Application{
     private boolean resizeBool;
     private int startSizeX, startSizeY;
     private Button displayImage;
-    private Button navigateArrows;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -21,13 +20,12 @@ class Draggable extends Application{
         startSizeX = dx;
         startSizeY = dy;
         displayImage = null;
-        navigateArrows = null;
         if(appName.equals("musicList") || appName.equals("createLanguageOptions") || appName.equals("settings")){
             applicationDraggable = false;
         }else{
             applicationDraggable = true;
         }
-        
+
          //if(appName.equals("musicList")){
          //   appVisible = false;
        // }
@@ -38,12 +36,12 @@ class Draggable extends Application{
         createResizeButton();
     }
 
-    public void setDisplayImage(Button b){
-      displayImage = b;
+    public Button getExitButton(){
+      return exitButton;
     }
 
-    public void setNavigateArrow(Button b){
-      navigateArrows = b;
+    public void setDisplayImage(Button b){
+      displayImage = b;
     }
 
     public int getStartSizeX(){
@@ -125,7 +123,7 @@ class Draggable extends Application{
       resizeButton.drawButton();
     }
 
-    private void drawDisplayImageButton(){
+    public void drawDisplayImageButton(){
       if(displayImage == null) return;
       if(getApplicationName().equals("newsfeed")){
         drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 80);
@@ -137,14 +135,7 @@ class Draggable extends Application{
       displayImage.setSizeX(getSizeX() - 40);
     }
 
-    private void drawNavigateArrow(){
-      if(navigateArrows == null) return;
-      drawApplicationButtons(navigateArrows, getPosX() + 50, getPosY() + 200);
-      navigateArrows.setSizeY(getSizeY() - 540);
-      navigateArrows.setSizeX(getSizeX() - 650);
-    }
-
-    private void drawApplicationButtons(Button b, int disX, int disY){
+    public void drawApplicationButtons(Button b, int disX, int disY){
       b.setPosX(disX);
       b.setPosY(disY);
       b.drawButton();
@@ -219,23 +210,13 @@ class Draggable extends Application{
       // checking if the app is visible in the first place before drawing
       // no need to go through all the methods if the app is not even visible
       if(isAppVisible()){
-        if(getApplicationName().equals("createLanguageOptions") || getApplicationName().equals("settings")) {
-          drawApplicationBox();
-          drawExitButton();
-          for(Button b : buttons){
-            b.drawButton();
-          }
-        }
-        else {
-          getHover(); // checks to see if mouse is hovering over the app
-          getResize();
-          drawApplicationBox();
-          drawAllButtons();
-          drawExitButton();
-          drawDisplayImageButton();
-          drawNavigateArrow();
-          drawResizeButton();
-        }
+        getHover(); // checks to see if mouse is hovering over the app
+        getResize();
+        drawApplicationBox();
+        drawAllButtons();
+        drawExitButton();
+        drawDisplayImageButton();
+        drawResizeButton();
       }
     }
 
