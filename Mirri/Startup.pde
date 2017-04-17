@@ -3,11 +3,10 @@ class Startup extends Static {
   Startup(String appName, float x, float y, int dx, int dy){
     super(appName, x, y, dx, dy);
     appVisible = false;
-
     if(appName.equals("createStartupLanguage")){
       setAppVisible(true);
     }
-  }
+  } 
 
   // @Override
   public void applicationMouseClicked(int x, int y){

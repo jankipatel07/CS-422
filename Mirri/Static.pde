@@ -13,6 +13,9 @@ class Static extends Application{
           buttonClicked = true;
           setClickedApp(b.imageValue);
           setClickedApp(getApplicationName());
+          if(getApplicationName().equals("loginCalendar") && isAppVisible()){
+            return true;
+          }
         }
         else{
             buttonClicked = false;

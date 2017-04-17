@@ -290,9 +290,8 @@ class Builder{
 
   private Application createWifiPassword(String appName){
     Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
-    s.addNewButton(new Button("wifiPassword", 1160.0, 540.0, 500, 160, false));
+    s.addNewButton(new Button("displayBox", 1160.0, 540.0, 500, 160, false));
     //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
-    console.log("createWifiPassword");
     s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
     s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
     return s;
@@ -300,8 +299,7 @@ class Builder{
 
   private Application createUserName(String appName){
     Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
-    console.log("createUserName");
-    s.addNewButton(new Button("createUserName", 1160.0, 540.0, 500, 160, false));
+    s.addNewButton(new Button("displayBox", 1160.0, 540.0, 500, 160, false));
     //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
     s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
     s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
@@ -310,7 +308,7 @@ class Builder{
 
   private Application createUserPassword(String appName){
     Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
-    s.addNewButton(new Button("userPassword", 1160.0, 540.0, 500, 160, false));
+    s.addNewButton(new Button("displayBox", 1160.0, 540.0, 500, 160, false));
     //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
     s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
     s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
@@ -319,7 +317,7 @@ class Builder{
 
   private Application createConfirmPassword(String appName){
     Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
-    s.addNewButton(new Button("confirmPassword", 1160.0, 540.0, 500, 160, false));
+    s.addNewButton(new Button("displayBox", 1160.0, 540.0, 500, 160, false));
     //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
     s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
     s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
