@@ -233,6 +233,25 @@ class Builder{
     return d;
   }
 
+  private Application createStartupLanguage(String appName){
+  Startup s = new Startup(appName, xCordLang, yCordLang, widthLang, heightLang);
+  float langX = xCordLang+20;
+  float langY = yCordLang+20;
+  String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
+
+  s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
+  int index = -1;
+  for(int i=1; i <= 3; i++){ //cols
+    for(int j=0; j<3; j++){ //rows
+      index++;
+      s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), langY+30+(150*(i)+(10*(i+1))), 300, 150, true));
+    }
+  }
+  s.addNewButton(new Button("portuguese", 1696.0, 740.0, 300, 150, true));
+  s.addNewButton(new Button("rightarrow", 1896.0, 1080.0, 100, 100, true));
+  return s;
+  }
+
   private Application createLanguageOptions(String appName){
     Static s = new Static(appName, xCordLang, yCordLang, widthLang, heightLang);
     float langX = xCordLang+20;
