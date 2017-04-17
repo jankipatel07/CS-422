@@ -3,7 +3,7 @@ class Health extends Draggable{
   private Button displayWeight;
   private Button displaySleep;
   private Button displaySteps;
-  private String currentImage;
+  private Button currentImage;
 
 
   Health(String appName, float x, float y, int dx, int dy){
@@ -16,6 +16,8 @@ class Health extends Draggable{
     setCurrentImage("weight");
     displaySleep.setButtonVisibile(false);
     displaySteps.setButtonVisibile(false);
+
+    currentImage = displayWeight;
   }
 
   private void setCurrentImage(String val){
@@ -31,11 +33,11 @@ class Health extends Draggable{
   }
 
   private void createSleep(){
-    displaySleep = new Button("mockups/sleepoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), false);
+    displaySleep = new Button("mockups/sleepoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
   }
 
   private void createSteps(){
-    displaySteps = new Button("mockups/stepsoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), false);
+    displaySteps = new Button("mockups/stepsoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
   }
 
   // @Override
@@ -46,7 +48,7 @@ class Health extends Draggable{
       setAppVisible(false);
       return;
     }
-    Button temp = displayWeight;
+    Button temp = currentImage;
 
     for(Button b : buttons){
       if(b.wasButtonClicked(x, y) && b.isButtonVisible()){
@@ -76,20 +78,53 @@ class Health extends Draggable{
     }
 
     if(displayWeight.wasButtonClicked(x, y) && displayWeight.isButtonVisible()){
-      console.log("displayWeight x: ", displayWeight.getPosX());
-      console.log("displayWeight y: ", displayWeight.getPosY());
-      console.log("x: ", mouseX);
-      console.log("Y: ", mouseY);
 
-      if(dist(displayWeight.getPosX(), displayWeight.getPosY() + 150, mouseX, mouseY) < 100){
-        console.log("yes dist is true");
+      // displaying the first image
+      if(displayWeight.isButtonVisible() && dist(displayWeight.getPosX(), displayWeight.getPosY() + 150, mouseX, mouseY) < displayWeight.getSizeY()/2 &&
+          displayWeight.getImageValue("weightmonthly") && displayWeight.wasButtonClicked(x, y)){
+        displayWeight = new Button("mockups/weightoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
       }
+
+      // displaying the second image
+      if(dist(displayWeight.getPosX(), displayWeight.getPosY() + displayWeight.getSizeY(), mouseX, mouseY) < displayWeight.getSizeY()/2 &&
+          displayWeight.getImageValue("weightoverview")){
+        displayWeight = new Button("mockups/weightmonthly", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
+      }
+      temp = displayWeight;
+
     } else if(displaySleep.wasButtonClicked(x, y) && displaySleep.isButtonVisible()){
+
+      // displaying the first image
+      if(displaySleep.isButtonVisible() && dist(displaySleep.getPosX(), displaySleep.getPosY() + 150, mouseX, mouseY) < displaySleep.getSizeY()/2 &&
+          displaySleep.getImageValue("sleepmonthly") && displaySleep.wasButtonClicked(x, y)){
+        displaySleep = new Button("mockups/sleepoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
+      }
+
+      // displaying the second image
+      if(dist(displaySleep.getPosX(), displaySleep.getPosY() + displaySleep.getSizeY(), mouseX, mouseY) < displaySleep.getSizeY()/2 &&
+          displaySleep.getImageValue("sleepoverview")){
+        displaySleep = new Button("mockups/sleepmonthly", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
+      }
+      temp = displaySleep;
 
     } else if(displaySteps.wasButtonClicked(x, y) && displaySteps.isButtonVisible()){
 
+      // displaying the first image
+      if(displaySteps.isButtonVisible() && dist(displaySteps.getPosX(), displaySteps.getPosY() + 150, mouseX, mouseY) < displaySteps.getSizeY()/2 &&
+          displaySteps.getImageValue("stepsmonthly") && displaySteps.wasButtonClicked(x, y)){
+        displaySteps = new Button("mockups/stepsoverview", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
+      }
+
+      // displaying the second image
+      if(dist(displaySteps.getPosX(), displaySteps.getPosY() + displaySteps.getSizeY(), mouseX, mouseY) < displaySteps.getSizeY()/2 &&
+          displaySteps.getImageValue("stepsoverview")){
+        displaySteps = new Button("mockups/stepsmonthly", getPosX()+40, getPosY(), getSizeX()-40, getSizeX(), true);
+      }
+      temp = displaySteps;
+
     }
 
+    currentImage = temp;
     setDisplayImage(temp);
   }
 
