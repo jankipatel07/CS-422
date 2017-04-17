@@ -12,7 +12,7 @@ class Draggable extends Application{
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
-        
+
         hover = false;
         appVisible = true;
         locked = false;
@@ -195,7 +195,8 @@ class Draggable extends Application{
         console.log("exit button was clicked from ", getApplicationName());
         // turning off the visibility
         setAppVisible(false);
-      }
+        return;
+      } 
 
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
@@ -217,7 +218,7 @@ class Draggable extends Application{
           for(Button b : buttons){
             b.drawButton();
           }
-        } 
+        }
         else {
           getHover(); // checks to see if mouse is hovering over the app
           getResize();
