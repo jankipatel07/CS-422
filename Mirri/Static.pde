@@ -12,20 +12,6 @@ class Static extends Application{
           b.setButtonSelected(true);
           buttonClicked = true;
           setClickedApp(b.imageValue);
-
-          if(getApplicationName().equals("timer") && b.getImageValue().equals("uparrow")){
-            for(Button b : buttons){
-              if(b.getImageValue().equals("displayBox")){
-                b.setDisplayText("", "up");
-              }
-            }
-          } else if(getApplicationName().equals("timer") && b.getImageValue().equals("downarrow")){
-              for(Button b : buttons){
-                if(b.getImageValue().equals("displayBox")){
-                  b.setDisplayText("", "down");
-                }
-              }
-          }
           setClickedApp(getApplicationName());
         }
         else{

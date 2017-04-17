@@ -7,7 +7,7 @@ class Startup extends Static {
     if(appName.equals("createStartupLanguage")){
       setAppVisible(true);
     }
-  } 
+  }
 
   // @Override
   public void applicationMouseClicked(int x, int y){
@@ -22,10 +22,13 @@ class Startup extends Static {
           } else if(getApplicationName().equals("createUserName") && b.getImageValue().equals("rightarrow")){
             setClickedApp("createUserNameRightArrow");
             return true;
-          } else if (b.getImageValue().equals("rightarrow")){
+          } else if(getApplicationName().equals("confirmPassword") && b.getImageValue().equals("rightarrow")){
+            setClickedApp("confirmPasswordRightArrow");
+            return true;
+          }else if (b.getImageValue().equals("rightarrow")){
             setClickedApp(b.getImageValue());
             return true;
-          }
+          } 
 
 
         }else{

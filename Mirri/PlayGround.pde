@@ -63,7 +63,7 @@ class PlayGround{
       //language options
       //applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //Apps for startup
-      //DO NOT CHANGE ORDER 
+      //DO NOT CHANGE ORDER
       applications.add(new Builder().createNewApplication("createStartupLanguage"));
       applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("wifiPassword"));
@@ -195,71 +195,9 @@ class PlayGround{
       //   }
       // }
 
-      for(Application a : applications){  
-        if(a.applicationMouseClicked(x, y)){
+      for(Application a : applications){
+        if(a.applicationMouseClicked(x, y))
           console.log("app name; " + a.getApplicationName());
-          if(a.getApplicationName().equals("createStartupLanguage") && a.isAppVisible()){
-            if(a.clickedApp().equals("rightarrow")){
-              makeAppVisible(false, "createStartupLanguage");
-              makeAppVisible(true, "availablewifi");
-              makeAppVisible(false, "wifiPassword");
-              makeAppVisible(false, "createUserName");
-              makeAppVisible(false, "userPassword");
-              makeAppVisible(false, "confirmPassword");
-            }
-          } 
-          else if(a.getApplicationName().equals("availablewifi") && a.isAppVisible()){
-            if(a.clickedApp().equals("rightarrow")){
-              makeAppVisible(false, "createStartupLanguage");
-              makeAppVisible(false, "availablewifi");
-              makeAppVisible(true, "wifiPassword");
-              makeAppVisible(false, "createUserName");
-              makeAppVisible(false, "userPassword");
-              makeAppVisible(false, "confirmPassword");
-            }
-          }
-         else if(a.getApplicationName().equals("wifiPassword") && a.isAppVisible()){
-            if(a.clickedApp().equals("wifiPasswordRightArrow")){
-              console.log("wifi Password");
-              makeAppVisible(false, "createStartupLanguage");
-              makeAppVisible(false, "availablewifi");
-              makeAppVisible(false, "wifiPassword");
-              makeAppVisible(true, "createUserName");
-              makeAppVisible(false, "userPassword");
-              makeAppVisible(false, "confirmPassword");
-            }
-          } 
-          else if(a.getApplicationName().equals("createUserName") && a.isAppVisible()){
-            if(a.clickedApp().equals("createUserNameRightArrow")){
-              console.log("createUserName");
-              makeAppVisible(false, "createStartupLanguage");
-              makeAppVisible(false, "availablewifi");
-              makeAppVisible(false, "wifiPassword");
-              makeAppVisible(false, "createUserName");
-              makeAppVisible(true, "userPassword");
-              makeAppVisible(false, "confirmPassword");
-            }
-          } 
-          else if(a.getApplicationName().equals("userPassword") && a.isAppVisible()){
-            if(a.clickedApp().equals("rightarrow")){
-              makeAppVisible(false, "createStartupLanguage");
-              makeAppVisible(false, "availablewifi");
-              makeAppVisible(false, "wifiPassword");
-              makeAppVisible(false, "createUserName");
-              makeAppVisible(false, "userPassword");
-              makeAppVisible(true, "confirmPassword");
-            } 
-          }
-          // if(a.getApplicationName().equals("confirmPassword") && a.isAppVisible()){
-          //   if(a.clickedApp().equals("rightarrow")){
-          //     makeAppVisible(false, "createStartupLanguage");
-          //     makeAppVisible(false, "availablewifi");
-          //     makeAppVisible(false, "wifiPassword");
-          //     makeAppVisible(false, "createUserName");
-          //     makeAppVisible(false, "userPassword");
-          //     makeAppVisible(false, "confirmPassword");
-          //   }
-          // }
 
           //appdrawer
           if(a.getApplicationName().equals("app_drawer")){
@@ -293,10 +231,8 @@ class PlayGround{
               makeAppVisible(false, "health");
               makeAppVisible(false, "timer");
               makeAppVisible(true, "settings");
-            } 
+            }
           }
-
-        }
       }
     }
 
@@ -326,15 +262,78 @@ class PlayGround{
           musicList.drawApplication();
 
           if(musicWidget.showMusicList() == true){
-              musicList.setAppVisible(true) ;  
+              musicList.setAppVisible(true) ;
           }else{
-            musicList.setAppVisible(false) ; 
+            musicList.setAppVisible(false) ;
           }
        }
 
       // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
+
+        // start up logic
+        if(a.getApplicationName().equals("createStartupLanguage") && a.isAppVisible()){
+          if(a.clickedApp().equals("rightarrow")){
+            makeAppVisible(false, "createStartupLanguage");
+            makeAppVisible(true, "availablewifi");
+            makeAppVisible(false, "wifiPassword");
+            makeAppVisible(false, "createUserName");
+            makeAppVisible(false, "userPassword");
+            makeAppVisible(false, "confirmPassword");
+          }
+        }
+        else if(a.getApplicationName().equals("availablewifi") && a.isAppVisible()){
+          if(a.clickedApp().equals("rightarrow")){
+            makeAppVisible(false, "createStartupLanguage");
+            makeAppVisible(false, "availablewifi");
+            makeAppVisible(true, "wifiPassword");
+            makeAppVisible(false, "createUserName");
+            makeAppVisible(false, "userPassword");
+            makeAppVisible(false, "confirmPassword");
+          }
+        }
+       else if(a.getApplicationName().equals("wifiPassword") && a.isAppVisible()){
+          if(a.clickedApp().equals("wifiPasswordRightArrow")){
+            console.log("wifi Password");
+            makeAppVisible(false, "createStartupLanguage");
+            makeAppVisible(false, "availablewifi");
+            makeAppVisible(false, "wifiPassword");
+            makeAppVisible(true, "createUserName");
+            makeAppVisible(false, "userPassword");
+            makeAppVisible(false, "confirmPassword");
+          }
+        }
+        else if(a.getApplicationName().equals("createUserName") && a.isAppVisible()){
+          if(a.clickedApp().equals("createUserNameRightArrow")){
+            console.log("createUserName");
+            makeAppVisible(false, "createStartupLanguage");
+            makeAppVisible(false, "availablewifi");
+            makeAppVisible(false, "wifiPassword");
+            makeAppVisible(false, "createUserName");
+            makeAppVisible(true, "userPassword");
+            makeAppVisible(false, "confirmPassword");
+          }
+        }
+        else if(a.getApplicationName().equals("userPassword") && a.isAppVisible()){
+          if(a.clickedApp().equals("rightarrow")){
+            makeAppVisible(false, "createStartupLanguage");
+            makeAppVisible(false, "availablewifi");
+            makeAppVisible(false, "wifiPassword");
+            makeAppVisible(false, "createUserName");
+            makeAppVisible(false, "userPassword");
+            makeAppVisible(true, "confirmPassword");
+          }
+        } else if(a.getApplicationName().equals("confirmPassword") && a.isAppVisible()){
+          if(a.clickedApp().equals("confirmPasswordRightArrow")){
+            makeAppVisible(false, "createStartupLanguage");
+            makeAppVisible(false, "availablewifi");
+            makeAppVisible(false, "wifiPassword");
+            makeAppVisible(false, "createUserName");
+            makeAppVisible(false, "userPassword");
+            makeAppVisible(false, "confirmPassword");
+          }
+        }
       }
     }
 

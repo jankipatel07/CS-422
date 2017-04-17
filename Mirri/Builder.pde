@@ -87,7 +87,7 @@ class Builder{
       return createSettings(appName);
     }
   }
-  
+
 
 
   private Application createMusicPlayer(String appName){
@@ -96,7 +96,7 @@ class Builder{
 
         // button for list of music
         s.addNewButton(new Button("music",s.getPosX()+20, s.getPosY()+20,80,80,true));// list button
-        
+
         // update the name for the current song
         int i = 1;
         for(String b : buttons){
@@ -194,7 +194,7 @@ class Builder{
   }
 
   private Application createTimer(String appName){
-    Static s = new Static(appName, 282.0, 520.0, 520, 700);
+    Timer s = new Timer(appName, 282.0, 520.0, 520, 700);
     s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 150, false));
     s.addNewButton(new Button("uparrow", 492.0, 700.0, 100, 100, true));
     s.addNewButton(new InputField("displayBox", appName, 392.0, 820, 300, 100, false));
@@ -205,9 +205,10 @@ class Builder{
 
   private Application createTimerStarted(String appName){
     Static s = new Static(appName, 155.0, 1316.0, 490, 200);
-    s.addNewButton(new Button("pause", 155.0, 1416.0, 268, 125, true));
-    s.addNewButton(new Button("stop", 425.0, 1416.0, 222, 125, true));
-    s.addNewButton(new Button("resume", 143.0, 1416.0, 300, 125, true));
+    s.addNewButton(new InputField("displayBox", "displayTimer", 20.0, 1300.0, 200, 100, false));
+    s.addNewButton(new Button("pause", 20.0, 1416.0, 200, 100, true));
+    s.addNewButton(new Button("stop", 230.0, 1416.0, 200, 100, true));
+    s.addNewButton(new Button("resume", 20.0, 1416.0, 200, 100, true));
     return s;
   }
 

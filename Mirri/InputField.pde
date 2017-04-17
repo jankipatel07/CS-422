@@ -45,7 +45,10 @@ class InputField extends Button{
     fill(0);
     if(appName.equals("timer")){
       text(getDisplayText(), getPosX() + 100, getPosY() + 80);
-    } else {
+    } else if(appName.equals("displayTimer")){
+      textFont(font, 120);
+      text(getDisplayText(), getPosX() + 100, getPosY() + 80);
+    }else {
       text(getDisplayText(), getPosX() + 250, getPosY() + 80);
     }
   }

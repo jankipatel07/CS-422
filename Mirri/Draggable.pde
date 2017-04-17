@@ -3,7 +3,7 @@ class Draggable extends Application{
     // exclusive for Draggable class
     private boolean hover, locked;
     private float diffX, diffY;
-    public Button exitButton;
+    private Button exitButton;
     private Button resizeButton;
     private boolean resizeBool;
     private int startSizeX, startSizeY;
@@ -190,13 +190,14 @@ class Draggable extends Application{
     // @Overwrite
     public void applicationMouseClicked(int x, int y){
       if(exitButton.wasButtonClicked(x, y)){
+        console.log("exit button was clicked from ", getApplicationName());
         // turning off the visibility
         setAppVisible(false);
         //return;
       }
 
       for(Button b : buttons){
-        if(b.wasButtonClicked(x, y) && b.isButtonVisible()){
+        if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
           setClickedApp(b.getImageValue());
         }else {
@@ -206,7 +207,7 @@ class Draggable extends Application{
     }
 
 
-    
+
     public void drawApplication(){
       // checking if the app is visible in the first place before drawing
       // no need to go through all the methods if the app is not even visible
@@ -228,7 +229,7 @@ class Draggable extends Application{
             drawResizeButton();
           }
       }
-    
+
     }
 
     public boolean isClashingWithOtherApplication(Application a){
