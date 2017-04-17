@@ -77,15 +77,6 @@ class PlayGround{
       keyboardApplication = new Builder().createNewApplication("keyboard");
       musicWidget = new Builder().createNewApplication("music");
       musicList = new Builder().createNewApplication("musicList");
-<<<<<<< HEAD
-    
-
-      Startup s = new Startup();
-      //s.showLanguageOptions();
-=======
-      //keyboardApplication.setDiplayTagText("Wifi Password");
-      //startup = new Startup();
->>>>>>> startup
     }
 
     public void showAppsAfterLogin(String appName){
@@ -500,13 +491,8 @@ class PlayGround{
       } else if(hr >= 17 && hr < 21) {
         msg = "Good Evening ";
             nightMode = true;
-<<<<<<< HEAD
     	} else if(hr >= 21 || hr < 4) {
     		msg = "Good Night ";
-=======
-      } else if(hr >= 21 && hr < 4) {
-        msg = "Good Night ";
->>>>>>> startup
             nightMode = true;
       } else {
         msg = "Good Morning ";
