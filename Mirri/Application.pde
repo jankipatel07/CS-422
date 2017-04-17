@@ -144,7 +144,9 @@ class Application{
     // Mirri -> PlayGround -> Application -> Button
     public void applicationMouseClicked(int x, int y){
       for(Button b : buttons){
-        if(b.wasButtonClicked(x, y)){
+        if(b.isButtonSelected() && b.wasButtonClicked(x, y)){
+          b.setButtonSelected(false);
+        } else if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
           buttonClicked = true;
           setClickedApp(b.imageValue);
@@ -164,7 +166,7 @@ class Application{
         }
         else{
             buttonClicked = false;
-            b.setButtonSelected(false);
+            //b.setButtonSelected(false);
         }
       }
     }

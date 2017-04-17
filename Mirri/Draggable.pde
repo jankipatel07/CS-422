@@ -195,8 +195,8 @@ class Draggable extends Application{
         console.log("exit button was clicked from ", getApplicationName());
         // turning off the visibility
         setAppVisible(false);
-        return;
-      } 
+        //return;
+      }
 
       for(Button b : buttons){
         if(b.wasButtonClicked(x, y)){
