@@ -21,6 +21,11 @@ class PlayGround{
     private String currentMode; // startup, idle, inuse
     private int timerVal=0;
     private boolean isTimerOn;
+    private Application musicWidget;
+    private Application musicList;
+
+    
+   
     
     PlayGround(){
 
@@ -48,24 +53,22 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
-      // load the music Player
-      applications.add(new Builder().createNewApplication("music"));
-      //load music list
-      applications.add(new Builder().createNewApplication("musicList"));
       //health
-      applications.add(new Builder().createNewApplication("health"));
+       applications.add(new Builder().createNewApplication("health"));
       //timer
-      applications.add(new Builder().createNewApplication("timer"));
+        applications.add(new Builder().createNewApplication("timer"));
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
-      //applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //wifi
       applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
       //applications.add(new Builder().createNewApplication("settings"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
+      musicWidget = new Builder().createNewApplication("music");
+      musicList = new Builder().createNewApplication("musicList");
     }
 
     public void showAppsAfterLogin(String appName){
@@ -129,8 +132,11 @@ class PlayGround{
       //   // add code to handle quick hide scenarios
       //   return;
       // }
-
+      
       keyboardApplication.applicationMouseClicked(x, y);
+      musicWidget.applicationMouseClicked(x, y);
+      musicList.applicationMouseClicked(x, y);
+      
 
       for(Application a : applications){
         a.applicationMouseClicked(x, y);
@@ -152,7 +158,13 @@ class PlayGround{
     private void drawAllApplications(){
       // drawing the keyboard app
       keyboardApplication.drawApplication();
-
+      musicWidget.drawApplication();
+      musicList.drawApplication();
+      if(musicWidget.showMusicList() == true){
+          musicList.setAppVisible(true) ;  
+      }else{
+        musicList.setAppVisible(false) ; 
+      }
       // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
@@ -173,7 +185,7 @@ class PlayGround{
         showTime();
         greetingUserMsg();
         getWeather(1); // default gets Farenheit
-       // getMusicPlayer();
+       
     }
 
     public void drawPlayGround(){
@@ -251,6 +263,24 @@ class PlayGround{
     	text(greetingByTime() + "Siri", midWidth, yCordTime+115);
     	textAlign(CENTER);
     }
+    
+    //@Override
+    public void applicationMouseClicked(int x, int y){
+    for(Button b : buttons){
+        if(b.wasButtonClicked(x, y)){
+            b.setButtonSelected(true);
+            buttonClicked = true;
+            //setClickedApp(applicationName);
+            if(b.getImageValue().equals("song1") || b.getImageValue().equals("song2")|| b.getImageValue().equals("song3")){
+                alert();
+                musicWidget.playMusic();
+            }
+        }else{
+          buttonClicked = false;
+          b.setButtonSelected(false);
+        }
+    }
+  }
 
     private String greetingByTime() {
     	int hr = hour();
@@ -331,4 +361,6 @@ class PlayGround{
         draggedApplication.setPosY(mouseY - draggedApplication.getDiffY());
       }
     }
+  
+    
 }

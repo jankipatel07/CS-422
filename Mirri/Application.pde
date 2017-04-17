@@ -99,6 +99,9 @@ class Application{
         b.drawButton();
       }
     }
+    public Application getApplication(){
+          return this;
+    }
 
     private void drawApplicationBox(){
       strokeWeight(8);
@@ -139,6 +142,8 @@ class Application{
      }
 
     }
+    
+    
 
     // gets called from PlayGround.pde when a user clicks anywhere on the app
     // path
@@ -149,6 +154,7 @@ class Application{
           b.setButtonSelected(true);
           buttonClicked = true;
           setClickedApp(b.imageValue);
+           
         }
         else{
             buttonClicked = false;
