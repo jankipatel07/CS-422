@@ -20,11 +20,11 @@ class Static extends Application{
               }
             }
           } else if(getApplicationName().equals("timer") && b.getImageValue().equals("downarrow")){
-            for(Button b : buttons){
-              if(b.getImageValue().equals("displayBox")){
-                b.setDisplayText("", "down");
+              for(Button b : buttons){
+                if(b.getImageValue().equals("displayBox")){
+                  b.setDisplayText("", "down");
+                }
               }
-            }
           }
           setClickedApp(getApplicationName());
         }

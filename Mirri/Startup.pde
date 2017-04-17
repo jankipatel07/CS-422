@@ -1,16 +1,8 @@
-class Startup extends Static{
-  private String[] appsList = {"createStartupLanguage", "availablewifi", "wifipassword", "username", "userpin", "userpin2"}; 
-  private int index = 0;
-
+class Startup extends Static {
   Startup(String appName, float x, float y, int dx, int dy){
-        super(appName, x, y, dx, dy);
-        appVisible = true;
-        //createExitButton();
+    super(appName, x, y, dx, dy);
+    appVisible = false;
   } 
-
-  public void createExitButton(){
-    return new Button();
-  }
 
   // @Override
   public void applicationMouseClicked(int x, int y){
@@ -18,9 +10,10 @@ class Startup extends Static{
       if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
           buttonClicked = true;
+
           if(b.getImageValue().equals("rightarrow")){
-           console.log("app name fromstartup; " + getApplicationName());
-           
+            setClickedApp(b.getImageValue());
+            return true;
           }
         }else{
           buttonClicked = false;
