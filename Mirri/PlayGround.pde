@@ -19,7 +19,8 @@ class PlayGround{
     private boolean nightMode = false;
     private ArrayList<User> users;
     private String currentMode; // startup, idle, inuse
-    private int timerVal=0;
+    private int timerVal=0, timer, minuteCounter, secondCounter, previousTime;
+    private String displayTime;
     private boolean isTimerOn;
     
     PlayGround(){
@@ -45,7 +46,7 @@ class PlayGround{
       // side_bar_left
       applications.add(new Builder().createNewApplication("side_bar_left"));
       //news feed
-      //applications.add(new Builder().createNewApplication("newsfeed"));
+      applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
       // load the music Player
@@ -55,7 +56,7 @@ class PlayGround{
       //health
       applications.add(new Builder().createNewApplication("health"));
       //timer
-      //applications.add(new Builder().createNewApplication("timer"));
+      applications.add(new Builder().createNewApplication("timer"));
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
@@ -63,7 +64,7 @@ class PlayGround{
       //wifi
       //applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("clearmode"));
-      //applications.add(new Builder().createNewApplication("settings"));
+      applications.add(new Builder().createNewApplication("settings"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
     }
@@ -119,6 +120,44 @@ class PlayGround{
       isTimerOn = false;
     }
 
+
+    public void setTimeOn(boolean b, String t){
+      if(b){
+        timer = int(t);
+        
+        timer--;
+        secondCounter = 60;
+        displayTime = "" + timer + " mins";
+      }
+      timerOn = b;
+    }
+
+    public void startTimer(){
+      isTimerOn = true;
+    // increments every second
+      int time = floor(millis()/1000);
+      if(previousTime < time){
+        displayTime++;
+        previousTime++;
+
+        if(isTimerOn){
+          if(secondCounter == 0){
+              timer--;
+              secondCounter = 60;
+            }
+            secondCounter--;
+            displayTime = "" + timer + " mins: " + secondCounter + " seconds";
+
+            if(timer == 0 && secondCounter == 0){
+              textToDisplay = "Done";
+              playBeep = true;
+              setTimeOn(false, ""+0);
+            }
+        }
+      }
+      console.log("displayTime: " + displayTime);
+    }
+
     // gets called from Mirri.pde when the user clicks anywhere on the app
     // the program will perform sequential checks on all the buttons for all the applications, starting with QuickHide
     // if any of the buttons are found clicked, the function returns
@@ -138,8 +177,58 @@ class PlayGround{
         if(a.clickedApp().equals("loginCalendar")){
           showAppsAfterLogin("loginCalendar");
         }
-        if(a.clickedApp().equals("uparrow") || a.clickedApp().equals("downarrow")){
-          incrementTimerVal(a.clickedApp());
+        if(a.getApplicationName().equals("timer")){
+          if(a.clickedApp().equals("uparrow") || a.clickedApp().equals("downarrow")){
+            incrementTimerVal(a.clickedApp());
+          }
+          if(a.clickedApp().equals("start")){
+            setTimeOn(true, getTimerVal());
+            makeAppVisible(false, "timer");
+            makeAppVisible(true, "timerStarted");
+            startTimer();
+          }
+        }
+        //cheking btn clicked from appdrawer
+        if(a.getApplicationName().equals("app_drawer")){
+          if(a.clickedApp().equals("social")){
+            makeAppVisible(true, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("newspaper")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(true, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("health")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(true, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("alarm")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(true, "timer");
+            makeAppVisible(false, "settings");
+          } if(a.clickedApp().equals("settings")){
+            makeAppVisible(false, "social_media");
+            makeAppVisible(false, "newsfeed");
+            makeAppVisible(false, "health");
+            makeAppVisible(false, "timer");
+            makeAppVisible(true, "settings");
+          } 
+        }
+      }
+    }
+
+    private void makeAppVisible(boolean val, String name){
+      for(Application a : applications){
+        if(a.getApplicationName().equals(name)){
+          a.setAppVisible(val);
         }
       }
     }
@@ -147,6 +236,10 @@ class PlayGround{
     private void setUpCanvas(){
         size(canvasWidth, canvasHeight); //canvas size
         background(204, 204, 204);
+        timer = 0;
+        secondCounter = 0;
+        displayTime="";
+        previousTime = floor(millis()/1000);
     }
 
     private void drawAllApplications(){
@@ -178,6 +271,7 @@ class PlayGround{
 
     public void drawPlayGround(){
         drawCanvas();
+        startTimer();
     }
 
     public void setAllLocksFalse(){

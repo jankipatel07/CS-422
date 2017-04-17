@@ -23,11 +23,11 @@ class Application{
         sizeY = dy;
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
-        if(appName.equals("musicList")){
-            appVisible = false;
+        if(appName.equals("app_drawer") || appName.equals("music") || appName.equals("clearmode") || appName.equals("side_bar_left")){
+            appVisible = true;
         }
         else{
-            appVisible = true;
+            appVisible = false;
         }
 
         //buttons.add(new Button(appName, x, y, dx, dy));
@@ -161,7 +161,6 @@ class Application{
               }
             }
           }
-
         }
         else{
             buttonClicked = false;
