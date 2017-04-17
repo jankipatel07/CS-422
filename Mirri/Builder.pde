@@ -16,7 +16,7 @@ class Builder{
   private float xCordWeather = 20, yCordWeather = 20;
   private float xcordkey = 1060.0, ycordkey = 673;
   private int deltaKey = 576, deltakeyY = 670;
-  private Button closeList ; 
+  private Button closeList ;
   //language variables
   private float xCordLang = 716.0, yCordLang = 520.0;
   private int widthLang = 1300, heightLang = 700;
@@ -143,8 +143,31 @@ class Builder{
     d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
 
+    d.setNavigateArrow(new Button("greyrightarrow", d.getPosX()+650, d.getPosY(), d.getSizeX()-650, d.getSizeX(), true));
+    d.setNavigateArrow(new Button("greyleftarrow", d.getPosX()+650, d.getPosY(), d.getSizeX()-650, d.getSizeX(), true));  
+    //showFacebookMockup(d.getPosX(), d.getPosY(), d.getSizeX(), d.getSizeY(), d);
+    //mockups for facebook
+    for (int i=1; i<7; i++){
+      d.setDisplayImage(new Button("mockups/facebook/facebook"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    }
+
+    //mockups for twitter
+    for(int i=1; i<7; i++){
+      d.setDisplayImage(new Button("mockups/twitter/twitter"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    }
+
+    //mockups for youtube
+    for(int i=1; i<7; i++){
+      d.setDisplayImage(new Button("mockups/youtube/youtube"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    }
     return d;
   }
+
+  // public void showFacebookMockup(float posX, float posY, int sizeX, int sizeY, Draggable d){
+  //   for (int i=1; i<7; i++){
+  //     d.setDisplayImage(new Button("mockups/facebook/facebook"+i, posX+40, posY, sizeX-40, sizeX, false));
+  //   }
+  // }
 
   private Application createNewsFeed(String appName){
     Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
@@ -158,6 +181,19 @@ class Builder{
     d.addNewButton(new Button("scale", d.getPosX(), d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("sleeping", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("footsteps", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
+    
+    //scale
+    d.setDisplayImage(new Button("mockups/weightoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    d.setDisplayImage(new Button("mockups/weightmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+
+    //sleep
+    d.setDisplayImage(new Button("mockups/sleepoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    d.setDisplayImage(new Button("mockups/sleepmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+
+    //footsteps
+    d.setDisplayImage(new Button("mockups/stepsoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+    d.setDisplayImage(new Button("mockups/stepsmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
+
     return d;
   }
 
@@ -165,6 +201,7 @@ class Builder{
     Static s = new Static(appName, 282.0, 520.0, 520, 700);
     s.addNewButton(new Button("selecttime", 392.0, 540.0, 300, 150, false));
     s.addNewButton(new Button("uparrow", 492.0, 700.0, 100, 100, true));
+    s.addNewButton(new InputField("displayBox", appName, 392.0, 820, 300, 100, false));
     s.addNewButton(new Button("downarrow", 492.0, 970.0, 100, 100, true));
     s.addNewButton(new Button("start", 440.0, 1120.0, 200, 100, true));
     return s;
@@ -198,7 +235,7 @@ class Builder{
   private Application createLanguageOptions(String appName){
     Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
     float langX = xCordLang+20;
-    float langY = yCordLang+20; 
+    float langY = yCordLang+20;
     String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
 
     s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
@@ -252,5 +289,5 @@ class Builder{
 
     s.setAppVisible(false);
     return s;
-  } 
+  }
 }

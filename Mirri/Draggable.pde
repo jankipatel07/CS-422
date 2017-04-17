@@ -8,18 +8,20 @@ class Draggable extends Application{
     private boolean resizeBool;
     private int startSizeX, startSizeY;
     private Button displayImage;
+    private Button navigateArrows;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
         
         hover = false;
-        appVisible = true;
+        appVisible = false;
         locked = false;
         diffX = 0.0;
         diffY = 0.0;
         startSizeX = dx;
         startSizeY = dy;
         displayImage = null;
+        navigateArrows = null;
         if(appName.equals("musicList") || appName.equals("createLanguageOptions") || appName.equals("settings")){
             applicationDraggable = false;
         }else{
@@ -38,6 +40,10 @@ class Draggable extends Application{
 
     public void setDisplayImage(Button b){
       displayImage = b;
+    }
+
+    public void setNavigateArrow(Button b){
+      navigateArrows = b;
     }
 
     public int getStartSizeX(){
@@ -123,11 +129,19 @@ class Draggable extends Application{
       if(displayImage == null) return;
       if(getApplicationName().equals("newsfeed")){
         drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 80);
+        displayImage.setSizeY(getSizeY() - 120);
       } else {
         drawApplicationButtons(displayImage, getPosX() + 20, getPosY() + 150);
+        displayImage.setSizeY(getSizeY() - 190);
       }
       displayImage.setSizeX(getSizeX() - 40);
-      displayImage.setSizeY(getSizeY() - 120);
+    }
+
+    private void drawNavigateArrow(){
+      if(navigateArrows == null) return;
+      drawApplicationButtons(navigateArrows, getPosX() + 50, getPosY() + 200);
+      navigateArrows.setSizeY(getSizeY() - 540);
+      navigateArrows.setSizeX(getSizeX() - 650);
     }
 
     private void drawApplicationButtons(Button b, int disX, int disY){
@@ -218,6 +232,7 @@ class Draggable extends Application{
           drawAllButtons();
           drawExitButton();
           drawDisplayImageButton();
+          drawNavigateArrow();
           drawResizeButton();
         }
       }
