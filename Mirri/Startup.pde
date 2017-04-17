@@ -4,9 +4,9 @@ class Startup extends Static {
     super(appName, x, y, dx, dy);
     appVisible = false;
 
-    if(appName.equals("createStartupLanguage")){
-      setAppVisible(true);
-    }
+    // if(appName.equals("createStartupLanguage")){
+    //   setAppVisible(true);
+    // }
   } 
 
   // @Override

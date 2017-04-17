@@ -296,6 +296,21 @@ class PlayGround{
             } 
           }
 
+          //calendar
+          if(a.clickedApp().equals("loginCalendar") && a.isAppVisible()){
+            console.log("in login cal in pg");
+            makeAppVisible(false, a.getApplicationName());
+            keyboardApplication.setAppVisible(true);
+            keyboardApplication.setDiplayTagText("Calendar Login");
+            keyboardApplication.setInputFieldText("");
+            console.log("------ " + keyboardApplication.okPressed());
+            if(keyboardApplication.okPressed()){
+
+              keyboardApplication.setOkPressed(false);
+              keyboardApplication.setDiplayTagText("Calendar Password");
+              keyboardApplication.setInputFieldText("");
+            }
+          }
         }
       }
     }
