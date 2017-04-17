@@ -83,7 +83,7 @@ class Builder{
   private Application createMusicPlayer(String appName){
         MusicPlayer s = new MusicPlayer(appName, 670.0, 1400.0, 1350, 120);
         String[] buttons = {"reverseforward", "play", "fastforward", "shuffle", "volumedown","volumeup"}; // add button for shuffle
-         
+
         // button for list of music
         s.addNewButton(new Button("music",s.getPosX()+20, s.getPosY()+20,80,80,true)); // list button
         // update the name for the current song
@@ -92,10 +92,10 @@ class Builder{
              s.addNewButton(new Button(b,s.getPosX()+(i*110)+600, s.getPosY()+20,80,80,true));
              i++;
         }
-        
+
         return s;
   }
- 
+
   private Application createMusicList(String appName){
         Static s = new Static(appName, 670.0, 1000.0, 1350, 400);
         String[] buttons = {"song1", "song2", "song3"};
@@ -109,7 +109,7 @@ class Builder{
 
 
   private Application createAppDrawer(String appName){
-    Static s = new Static(appName, 20.0, 320.0, 150, 900);
+    AppDrawer s = new AppDrawer(appName, 20.0, 320.0, 150, 900);
     String[] buttons = {"social", "newspaper", "health", "alarm", "settings"};
     int i = 1;
     for(String b : buttons){
@@ -140,28 +140,11 @@ class Builder{
 
   //new Draggable("social_media", 282.0, 520.0, 520, 700);
   private Application createSocialMedia(String appName){
-    Draggable d = new Draggable("social_media", 282.0, 520.0, 520, 700);
+    SocialMedia d = new SocialMedia("social_media", 282.0, 520.0, 520, 700);
     d.addNewButton(new Button("facebook", d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("twitter", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("youtube", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
 
-    d.setNavigateArrow(new Button("greyrightarrow", d.getPosX()+650, d.getPosY(), d.getSizeX()-650, d.getSizeX(), true));
-    d.setNavigateArrow(new Button("greyleftarrow", d.getPosX()+650, d.getPosY(), d.getSizeX()-650, d.getSizeX(), true));  
-    //showFacebookMockup(d.getPosX(), d.getPosY(), d.getSizeX(), d.getSizeY(), d);
-    //mockups for facebook
-    for (int i=1; i<7; i++){
-      d.setDisplayImage(new Button("mockups/facebook/facebook"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-    }
-
-    //mockups for twitter
-    for(int i=1; i<7; i++){
-      d.setDisplayImage(new Button("mockups/twitter/twitter"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-    }
-
-    //mockups for youtube
-    for(int i=1; i<7; i++){
-      d.setDisplayImage(new Button("mockups/youtube/youtube"+i, d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
-    }
     return d;
   }
 
@@ -183,7 +166,7 @@ class Builder{
     d.addNewButton(new Button("scale", d.getPosX(), d.getPosX() + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("sleeping", d.getPosX() + (buttonInsideAppDrawerSize * 2), d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
     d.addNewButton(new Button("footsteps", d.getPosX() + (buttonInsideAppDrawerSize * 3) + 40, d.getPosY() + 40, buttonInsideAppDrawerSize, buttonInsideAppDrawerSize, true));
-    
+
     //scale
     d.setDisplayImage(new Button("mockups/weightoverview", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
     d.setDisplayImage(new Button("mockups/weightmonthly", d.getPosX()+40, d.getPosY(), d.getSizeX()-40, d.getSizeX(), false));
@@ -224,7 +207,7 @@ class Builder{
   }
 
   private Application createSettings(String appName){
-    Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
+    Settings d = new Settings(appName, 282.0, 520.0, 520, 700);
     String btn = {"language", "settingsweather", "newuser", "logout"};
     int index = 0;
     for(String s : btn){
