@@ -69,6 +69,8 @@ class Builder{
       return createTimerStarted(appName);
     } else if(appName.equals("createLanguageOptions")){
       return createLanguageOptions(appName);
+    } else if(appName.equals("createStartupLanguage")){
+      return createStartupLanguage(appName);
     } else if(appName.equals("availablewifi")){
       return createWifi(appName);
     } else if(appName.equals("clearmode")){
@@ -233,7 +235,7 @@ class Builder{
   }
 
   private Application createLanguageOptions(String appName){
-    Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
+    Static s = new Static(appName, xCordLang, yCordLang, widthLang, heightLang);
     float langX = xCordLang+20;
     float langY = yCordLang+20;
     String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
@@ -250,8 +252,27 @@ class Builder{
     return s;
   }
 
+  private Application createStartupLanguage(String appName){
+    Startup s = new Startup(appName, xCordLang, yCordLang, widthLang, heightLang);
+    float langX = xCordLang+20;
+    float langY = yCordLang+20;
+    String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
+
+    s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
+    int index = -1;
+    for(int i=1; i <= 3; i++){ //cols
+      for(int j=0; j<3; j++){ //rows
+        index++;
+        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), langY+30+(150*(i)+(10*(i+1))), 300, 150, true));
+      }
+    }
+    s.addNewButton(new Button("portuguese", 1696.0, 740.0, 300, 150, true));
+    s.addNewButton(new Button("rightarrow", 1896.0, 1080.0, 100, 100, true));
+    return s;
+  }
+
   private Application createWifi(String appName){
-    Static s = new Static(appName, 1060.0, 520.0, 700, 700);
+    Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
     s.addNewButton(new Button("availablewifi", 1160.0, 540.0, 500, 160, false));
     String[] btn = {"wifi1", "wifi2", "wifi3", "wifi3"};
     int i=0;
@@ -259,6 +280,8 @@ class Builder{
       s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
       i++;
     }
+    s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
+    s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
     return s;
   }
 
