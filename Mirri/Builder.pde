@@ -223,37 +223,41 @@ class Builder{
 
   private Application createSettings(String appName){
     Draggable d = new Draggable(appName, 282.0, 520.0, 520, 700);
-    String btn = {"language", "settingsweather", "newuser", "logout"};
-    int index = 0;
+    String btn = {"language", "newuser", "logout"};
+    int index = 1;
+    int cnt = 0;
+    d.addNewButton(new Button("farenheit", 367.0,560, 160, 125, true));
+    d.addNewButton(new Button("celcius", 545.0,560, 160, 125, true));
     for(String s : btn){
-      d.addNewButton(new Button(btn[index], 367.0, 520.0+(125*index)+40*(index+1), 350, 125, true));
+      d.addNewButton(new Button(btn[cnt], 367.0, 520.0+(125*index)+40*(index+1), 350, 125, true));
       index++;
+      cnt++;
     }
     return d;
   }
 
   private Application createLanguageOptions(String appName){
-    Draggable s = new Draggable(appName, xCordLang, yCordLang, widthLang, heightLang);
+    Static s = new Static(appName, xCordLang, yCordLang, widthLang, heightLang);
     float langX = xCordLang+20;
     float langY = yCordLang+20;
-    String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch"};
+    String[] buttons = {"english", "polish", "spanish", "hindi", "italian", "hebrew", "gujarati", "german", "dutch","portuguese","cancel"};
 
-    s.addNewButton(new Button("seleclang", 1066.0, langY, 600, 200, false));
+    s.addNewButton(new Button("seleclang", 1066.0, langY, 750, 200, false));
     int index = -1;
     for(int i=1; i <= 3; i++){ //cols
-      for(int j=0; j<3; j++){ //rows
+      for(int j=0; j<=3; j++){ //rows
         index++;
-        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), langY+30+(150*(i)+(10*(i+1))), 300, 150, true));
+        s.addNewButton(new Button(buttons[index], langX+(300*j)+(20*j), langY+30+(150*(i)+(10*(i+1))), 300, 130, true));
       }
     }
-    s.addNewButton(new Button("portuguese", 1696.0, 740.0, 300, 150, true));
+
     return s;
   }
 
   private Application createWifi(String appName){
     Static s = new Static(appName, 1060.0, 520.0, 700, 700);
     s.addNewButton(new Button("availablewifi", 1160.0, 540.0, 500, 160, false));
-    String[] btn = {"wifi1", "wifi2", "wifi3", "wifi3"};
+    String[] btn = {"wifi1", "wifi2", "wifi3", "skip" };
     int i=0;
     for(String b : btn){
       s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));

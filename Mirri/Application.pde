@@ -27,7 +27,7 @@ class Application{
             appVisible = true;
         }
         else{
-            appVisible = false;
+            appVisible = true;
         }
 
         //buttons.add(new Button(appName, x, y, dx, dy));
