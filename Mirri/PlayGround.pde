@@ -328,10 +328,13 @@ class PlayGround{
             console.log("a.getApplicationName: ", a.getApplicationName());
             a.setAppVisible(false);
           }
+          musicWidget.setAppVisible(false);
+          musicList.setAppVisible(false);
         } else if (!clearModeBool){
           makeAppVisible(true, "app_drawer");
           makeAppVisible(true, "side_bar_left");
           makeAppVisible(true, "calendar");
+          musicWidget.setAppVisible(true);
         }
 
         // displaying timer
