@@ -1,5 +1,5 @@
 
-import processing.sound.*;
+
 
 class Builder{
 
@@ -20,7 +20,8 @@ class Builder{
   //language variables
   private float xCordLang = 716.0, yCordLang = 520.0;
   private int widthLang = 1300, heightLang = 700;
-
+  private int selectedMusic = 1;
+  private Audio nowPlay = new Audio();
 
   Builder(){}
 
@@ -78,23 +79,29 @@ class Builder{
   }
 
   private Application createMusicPlayer(String appName){
-        Static s = new Static(appName, 670.0, 1400.0, 1350, 120);
-        String[] buttons = {"reverseforward", "play", "fastforward", "play", "volumedown","volumeup"}; // add button for shuffle
-
+        MusicPlayer s = new MusicPlayer(appName, 670.0, 1400.0, 1350, 120);
+        String[] buttons = {"reverseforward", "play", "fastforward", "shuffle", "volumedown","volumeup"}; // add button for shuffle
+         
         // button for list of music
-        s.addNewButton(new Button("test",s.getPosX()+20, s.getPosY()+20,80,80,true)); // list button
+        s.addNewButton(new Button("music",s.getPosX()+20, s.getPosY()+20,80,80,true)); // list button
         // update the name for the current song
         int i = 1;
         for(String b : buttons){
              s.addNewButton(new Button(b,s.getPosX()+(i*110)+600, s.getPosY()+20,80,80,true));
              i++;
         }
+        
         return s;
   }
-
+ 
   private Application createMusicList(String appName){
-        Draggable s = new Draggable(appName, 670.0, 1000.0, 1350, 400);
-        ArrayList<SoundFile> songs;
+        Static s = new Static(appName, 670.0, 1000.0, 1350, 400);
+        String[] buttons = {"song1", "song2", "song3"};
+        int i = 0;
+        for(String b : buttons){
+            s.addNewButton(new Button(b,s.getPosX()+10, s.getPosY()+10+(i*120),1340,120,true));
+            i++;
+        }
         return s;
   }
 

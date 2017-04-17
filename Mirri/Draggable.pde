@@ -27,6 +27,13 @@ class Draggable extends Application{
         }else{
             applicationDraggable = true;
         }
+        
+         //if(appName.equals("musicList")){
+         //   appVisible = false;
+       // }
+        //else{
+        //    appVisible = true;
+        //}
         createExitButton();
         createResizeButton();
     }
