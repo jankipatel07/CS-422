@@ -24,7 +24,10 @@ class PlayGround{
     private boolean isTimerOn;
     private Application musicWidget;
     private Application musicList;
-    
+    private String nextApp = "", prevApp = "";
+    private Startup startup;
+    private AppDrawer appdrawer;
+
     PlayGround(){
 
       canvasWidth = 2732;
@@ -58,19 +61,24 @@ class PlayGround{
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
-      //applications.add(new Builder().createNewApplication("createLanguageOptions"));
-      //applications.add(new Builder().createNewApplication("createStartupLanguage"));
-      //wifi
-      //applications.add(new Builder().createNewApplication("availablewifi"));
+      applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      //Apps for startup
+      //DO NOT CHANGE ORDER 
+      applications.add(new Builder().createNewApplication("createStartupLanguage"));
+      applications.add(new Builder().createNewApplication("availablewifi"));
+      applications.add(new Builder().createNewApplication("wifiPassword"));
+      applications.add(new Builder().createNewApplication("createUserName"));
+      applications.add(new Builder().createNewApplication("userPassword"));
+      applications.add(new Builder().createNewApplication("confirmPassword"));
+      //clearmode
       applications.add(new Builder().createNewApplication("clearmode"));
       applications.add(new Builder().createNewApplication("settings"));
       //keyboard application
       keyboardApplication = new Builder().createNewApplication("keyboard");
       musicWidget = new Builder().createNewApplication("music");
       musicList = new Builder().createNewApplication("musicList");
-
-      Startup s = new Startup();
-      //s.showLanguageOptions();
+      //keyboardApplication.setDiplayTagText("Wifi Password");
+      //startup = new Startup();
     }
 
     public void showAppsAfterLogin(String appName){
@@ -171,16 +179,126 @@ class PlayGround{
       //   // add code to handle quick hide scenarios
       //   return;
       // }
-      
       keyboardApplication.applicationMouseClicked(x, y);
       musicWidget.applicationMouseClicked(x, y);
       musicList.applicationMouseClicked(x, y);
-      
 
-      for(Application a : applications){
-        a.applicationMouseClicked(x, y);
-        console.log("app clickedApp: " + a.clickedApp());
-        if(a.clickedApp().equals("loginCalendar")){
+      // for(Application a : applications){
+      //   startup = new Startup(a.getApplicationName(), a.getPosX(), a.getPosY(), a.getStartX(), a.getStartY());
+      //   console.log("next application: ", startup.getNextApplication(a.getApplicationName()));
+      //   nextApp = startup.getNextApplication(a.getApplicationName());
+      //   if(nextApp){
+      //     a.setAppVisible(false);
+      //     prevApp = a;
+      //     makeAppVisible(true, nextApp);
+      //     break;
+      //   }
+      // }
+
+      for(Application a : applications){  
+        if(a.applicationMouseClicked(x, y)){
+          console.log("app name; " + a.getApplicationName());
+          if(a.getApplicationName().equals("createStartupLanguage") && a.isAppVisible()){
+            if(a.clickedApp().equals("rightarrow")){
+              makeAppVisible(false, "createStartupLanguage");
+              makeAppVisible(true, "availablewifi");
+              makeAppVisible(false, "wifiPassword");
+              makeAppVisible(false, "createUserName");
+              makeAppVisible(false, "userPassword");
+              makeAppVisible(false, "confirmPassword");
+            }
+          } 
+         if(a.getApplicationName().equals("availablewifi") && a.isAppVisible()){
+            if(a.clickedApp().equals("rightarrow")){
+              makeAppVisible(false, "createStartupLanguage");
+              makeAppVisible(false, "availablewifi");
+              makeAppVisible(true, "wifiPassword");
+              makeAppVisible(false, "createUserName");
+              makeAppVisible(false, "userPassword");
+              makeAppVisible(false, "confirmPassword");
+            }
+          }
+          if(a.getApplicationName().equals("wifiPassword") && a.isAppVisible()){
+            if(a.clickedApp().equals("rightarrow")){
+              console.log("wifi Password");
+              makeAppVisible(false, "createStartupLanguage");
+              makeAppVisible(false, "availablewifi");
+              makeAppVisible(false, "wifiPassword");
+              makeAppVisible(true, "createUserName");
+              makeAppVisible(false, "userPassword");
+              makeAppVisible(false, "confirmPassword");
+            }
+          } 
+          if(a.getApplicationName().equals("createUserName") && a.isAppVisible()){
+            if(a.clickedApp().equals("rightarrow")){
+              console.log("createUserName");
+              makeAppVisible(false, "createStartupLanguage");
+              makeAppVisible(false, "availablewifi");
+              makeAppVisible(false, "wifiPassword");
+              makeAppVisible(false, "createUserName");
+              makeAppVisible(true, "userPassword");
+              makeAppVisible(false, "confirmPassword");
+            }
+          } 
+          if(a.getApplicationName().equals("userPassword") && a.isAppVisible()){
+            if(a.clickedApp().equals("rightarrow")){
+              makeAppVisible(false, "createStartupLanguage");
+              makeAppVisible(false, "availablewifi");
+              makeAppVisible(false, "wifiPassword");
+              makeAppVisible(false, "createUserName");
+              makeAppVisible(false, "userPassword");
+              makeAppVisible(true, "confirmPassword");
+            } 
+          }
+          if(a.getApplicationName().equals("confirmPassword") && a.isAppVisible()){
+            if(a.clickedApp().equals("rightarrow")){
+              makeAppVisible(false, "createStartupLanguage");
+              makeAppVisible(false, "availablewifi");
+              makeAppVisible(false, "wifiPassword");
+              makeAppVisible(false, "createUserName");
+              makeAppVisible(false, "userPassword");
+              makeAppVisible(false, "confirmPassword");
+            }
+          }
+
+          //appdrawer
+          if(a.getApplicationName().equals("app_drawer")){
+            if(a.clickedApp().equals("social")){
+              makeAppVisible(true, "social_media");
+              makeAppVisible(false, "newsfeed");
+              makeAppVisible(false, "health");
+              makeAppVisible(false, "timer");
+              makeAppVisible(false, "settings");
+            } if(a.clickedApp().equals("newspaper")){
+              makeAppVisible(false, "social_media");
+              makeAppVisible(true, "newsfeed");
+              makeAppVisible(false, "health");
+              makeAppVisible(false, "timer");
+              makeAppVisible(false, "settings");
+            } if(a.clickedApp().equals("health")){
+              makeAppVisible(false, "social_media");
+              makeAppVisible(false, "newsfeed");
+              makeAppVisible(true, "health");
+              makeAppVisible(false, "timer");
+              makeAppVisible(false, "settings");
+            } if(a.clickedApp().equals("alarm")){
+              makeAppVisible(false, "social_media");
+              makeAppVisible(false, "newsfeed");
+              makeAppVisible(false, "health");
+              makeAppVisible(true, "timer");
+              makeAppVisible(false, "settings");
+            } if(a.clickedApp().equals("settings")){
+              makeAppVisible(false, "social_media");
+              makeAppVisible(false, "newsfeed");
+              makeAppVisible(false, "health");
+              makeAppVisible(false, "timer");
+              makeAppVisible(true, "settings");
+            } 
+          }
+
+        }
+
+        if(a.clickedApp().equals("loginCalendar") && a.isAppVisible()){
           showAppsAfterLogin("loginCalendar");
         }
         if(a.getApplicationName().equals("timer")){
@@ -193,40 +311,6 @@ class PlayGround{
             makeAppVisible(true, "timerStarted");
             startTimer();
           }
-        }
-        //cheking btn clicked from appdrawer
-        if(a.getApplicationName().equals("app_drawer")){
-          if(a.clickedApp().equals("social")){
-            makeAppVisible(true, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("newspaper")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(true, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("health")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(true, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("alarm")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(true, "timer");
-            makeAppVisible(false, "settings");
-          } if(a.clickedApp().equals("settings")){
-            makeAppVisible(false, "social_media");
-            makeAppVisible(false, "newsfeed");
-            makeAppVisible(false, "health");
-            makeAppVisible(false, "timer");
-            makeAppVisible(true, "settings");
-          } 
         }
       }
     }
@@ -308,54 +392,54 @@ class PlayGround{
     }
 
     private void showDate() {
-    	float xcord = xCord+170;
+      float xcord = xCord+170;
 
-    	//get week day and month name
-    	week = new Date().getDay();
-    	string monthname = months[(month()-1)];
+      //get week day and month name
+      week = new Date().getDay();
+      string monthname = months[(month()-1)];
 
-    	textSize(65);
-    	fill(0);
+      textSize(65);
+      fill(0);
       text(dayName[week] + ", " + monthname + " " + day(), 2362, 105);
-    	textAlign(CENTER);
+      textAlign(CENTER);
     }
 
     private void showTime() {
-    	textSize(100);
-    	fill(0);
-    	text(getTime(), midWidth, yCordTime);
-    	textAlign(CENTER);
+      textSize(100);
+      fill(0);
+      text(getTime(), midWidth, yCordTime);
+      textAlign(CENTER);
     }
 
     private String getTime() {
-    	String time;
-    	int hr = hour();
-    	String min;
-    	String am_pm = "AM";
+      String time;
+      int hr = hour();
+      String min;
+      String am_pm = "AM";
 
-		 if(hr > 11) {  //noon
-		   hr -= 12;
-		   am_pm = "PM";
-		 }
+     if(hr > 11) {  //noon
+       hr -= 12;
+       am_pm = "PM";
+     }
 
-		 if(minute() < 10){
-		 	min = "0" + minute();
-		 } else {
-		 	min = minute();
-		 }
-		 if(hr == 0){
-		 	hr = 12;
-		 }
+     if(minute() < 10){
+      min = "0" + minute();
+     } else {
+      min = minute();
+     }
+     if(hr == 0){
+      hr = 12;
+     }
 
-		 time = hr + ":" + min + " " + am_pm;
-		 return time;
+     time = hr + ":" + min + " " + am_pm;
+     return time;
     }
 
     private void greetingUserMsg() {
-    	textSize(65);
-    	fill(0);
-    	text(greetingByTime() + "Siri", midWidth, yCordTime+115);
-    	textAlign(CENTER);
+      textSize(65);
+      fill(0);
+      text(greetingByTime() + "Siri", midWidth, yCordTime+115);
+      textAlign(CENTER);
     }
     
     //@Override
@@ -377,22 +461,22 @@ class PlayGround{
   }
 
     private String greetingByTime() {
-    	int hr = hour();
-    	String msg = "";
-    	if(hr >= 12 && hr < 17) {
-    		msg = "Good Afternoon ";
+      int hr = hour();
+      String msg = "";
+      if(hr >= 12 && hr < 17) {
+        msg = "Good Afternoon ";
             nightMode = false;
-    	} else if(hr >= 17 && hr < 21) {
-    		msg = "Good Evening ";
+      } else if(hr >= 17 && hr < 21) {
+        msg = "Good Evening ";
             nightMode = true;
-    	} else if(hr >= 21 && hr < 4) {
-    		msg = "Good Night ";
+      } else if(hr >= 21 && hr < 4) {
+        msg = "Good Night ";
             nightMode = true;
-    	} else {
-    		msg = "Good Morning ";
+      } else {
+        msg = "Good Morning ";
             nightMode = false;
-    	}
-    	return msg;
+      }
+      return msg;
     }
 
     // getWeather : int m (Temparature Measure) - 1 = Farenheit Image
@@ -431,6 +515,7 @@ class PlayGround{
 
     public void checkMousePressed(){
       // check if the app is draggable before proceeding
+
       for(Application a : applications){
         if(a.getApplicationDraggable() && a.isAppVisible()){
           if(a.getHover()){
@@ -441,7 +526,6 @@ class PlayGround{
             //return;
           }
         }
-
       }
     }
 

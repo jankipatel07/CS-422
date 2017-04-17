@@ -73,6 +73,14 @@ class Builder{
       return createStartupLanguage(appName);
     } else if(appName.equals("availablewifi")){
       return createWifi(appName);
+    } else if(appName.equals("wifiPassword")){
+      return createWifiPassword(appName);
+    } else if(appName.equals("createUserName")){
+      return createUserName(appName);
+    } else if(appName.equals("userPassword")){
+      return createUserPassword(appName);
+    } else if(appName.equals("confirmPassword")){
+      return createConfirmPassword(appName);
     } else if(appName.equals("clearmode")){
       return createClearMode(appName);
     } else if(appName.equals("settings")){
@@ -263,6 +271,44 @@ class Builder{
       s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
       i++;
     }
+    s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
+    s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
+    return s;
+  }
+
+  private Application createWifiPassword(String appName){
+    Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
+    s.addNewButton(new Button("wifiPassword", 1160.0, 540.0, 500, 160, false));
+    //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
+    console.log("createWifiPassword");
+    s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
+    s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
+    return s;
+  }
+
+  private Application createUserName(String appName){
+    Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
+    console.log("createUserName");
+    s.addNewButton(new Button("createUserName", 1160.0, 540.0, 500, 160, false));
+    //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
+    s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
+    s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
+    return s;
+  }
+
+  private Application createUserPassword(String appName){
+    Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
+    s.addNewButton(new Button("userPassword", 1160.0, 540.0, 500, 160, false));
+    //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
+    s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
+    s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
+    return s;
+  }
+
+  private Application createConfirmPassword(String appName){
+    Startup s = new Startup(appName, 1060.0, 520.0, 700, 700);
+    s.addNewButton(new Button("confirmPassword", 1160.0, 540.0, 500, 160, false));
+    //s.addNewButton(new Button(btn[i], 1260.0, 715.0+(i*125), 300, 100, true));
     s.addNewButton(new Button("leftarrow", 1060.0, 1090.0, 100, 100, true));
     s.addNewButton(new Button("rightarrow", 1660.0, 1090.0, 100, 100, true));
     return s;

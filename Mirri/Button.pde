@@ -47,6 +47,10 @@ class Button {
     return clickable;
   }
 
+  public void setClickable(boolean val){
+    clickable = val;
+  }
+
   public void setPosX(float x){
     posX = x;
   }

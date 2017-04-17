@@ -6,7 +6,7 @@ class Application{
     private int sizeX, sizeY;
     private boolean applicationDraggable, appVisible;
     //private boolean buttonClicked = false;
-    private String clickedApp;
+    private String clickedAppName="";
 
     Application(){}
 
@@ -81,11 +81,11 @@ class Application{
     }
 
     public String clickedApp(){
-      return clickedApp;
+      return clickedAppName;
     }
 
     public void setClickedApp(String buttonName){
-      clickedApp = buttonName;
+      clickedAppName = buttonName;
     }
 
     public void setButtonClick(boolean val){
@@ -168,16 +168,14 @@ class Application{
     public void hideApplication(){
       for(Button b : buttons){
         b.setButtonVisibile(false);
+        //b.setClickable(false);
       }
-
-      // for(InputField iF : inputFields){
-      //   iF.setInputFieldVisible(false);
-      // }
     }
 
     public void showApplication(){
       for(Button b : buttons){
         b.setButtonVisibile(true);
+        //b.setClickable(true);
       }
     }
 
