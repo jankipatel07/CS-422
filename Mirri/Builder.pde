@@ -213,7 +213,7 @@ class Builder{
   }
 
   private Application createClearMode(String appName){
-    Static s = new Static(appName, 2617.0, 1420.0, 100, 100);
+    ClearMode s = new ClearMode(appName, 2617.0, 1420.0, 100, 100);
     s.addNewButton(new Button("clearmode", 2617.0, 1420.0, 100, 100, true));
     return s;
   }

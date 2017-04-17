@@ -25,6 +25,9 @@ class Static extends Application{
           if(getApplicationName().equals("loginCalendar") && isAppVisible()){
             return true;
           }
+          if(b.getImageValue().equals("clearmode")){
+            console.log("clear mode button activate");
+          }
         }
         else{
             buttonClicked = false;

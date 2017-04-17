@@ -31,10 +31,14 @@ class PlayGround{
     private String displayTime = "";
     private int timerVal=0, timer = 0, minuteCounter = 0, secondCounter = 0, previousTime;
 
+    // clear mode
+    private boolean clearModeBool;
+
     PlayGround(){
 
       timerOn = false;
       timerRunning = false;
+      clearModeBool = false;
 
       canvasWidth = 2732;
       canvasHeight = 1536;
@@ -193,8 +197,6 @@ class PlayGround{
       for(Application a : applications){
         if(a.applicationMouseClicked(x, y)){
 
-          console.log("app name; " + a.getApplicationName());
-
           //appdrawer
           if(a.getApplicationName().equals("app_drawer")){
             if(a.clickedApp().equals("social")){
@@ -313,6 +315,25 @@ class PlayGround{
       for(Application a : applications){
         a.drawApplication();
 
+        // checking if quick clear is activated
+        if(a.clickedApp().equals("clearModeActivated")){
+          clearModeBool = true;
+        } else if(a.clickedApp().equals("clearModeDeactivate")){
+          clearModeBool = false;
+        }
+
+        if(clearModeBool){
+          //console.log("clearmode activated");
+          if(!a.getApplicationName().equals("clearmode")){
+            console.log("a.getApplicationName: ", a.getApplicationName());
+            a.setAppVisible(false);
+          }
+        } else if (!clearModeBool){
+          makeAppVisible(true, "app_drawer");
+          makeAppVisible(true, "side_bar_left");
+          makeAppVisible(true, "calendar");
+        }
+
         // displaying timer
         if(a.clickedApp().equals("TurnTimerOn")){
           timerOn = true;
@@ -324,7 +345,6 @@ class PlayGround{
               ArrayList<Button> allButton = a.getAllButtons();
               for(Button b : allButton){
                 if(b.getImageValue().equals("displayBox")){
-                  console.log("b.getDisplayText(): ", b.getDisplayText());
                   setTimeOn(true, b.getDisplayText());
                   timerRunning = true;
                   timerOn = false;
