@@ -3,7 +3,7 @@ class Draggable extends Application{
     // exclusive for Draggable class
     private boolean hover, locked;
     private float diffX, diffY;
-    private Button exitButton;
+    public Button exitButton;
     private Button resizeButton;
     private boolean resizeBool;
     private int startSizeX, startSizeY;
@@ -190,14 +190,13 @@ class Draggable extends Application{
     // @Overwrite
     public void applicationMouseClicked(int x, int y){
       if(exitButton.wasButtonClicked(x, y)){
-        console.log("exit button was clicked from ", getApplicationName());
         // turning off the visibility
         setAppVisible(false);
         //return;
       }
 
       for(Button b : buttons){
-        if(b.wasButtonClicked(x, y)){
+        if(b.wasButtonClicked(x, y) && b.isButtonVisible()){
           b.setButtonSelected(true);
           setClickedApp(b.getImageValue());
         }else {
