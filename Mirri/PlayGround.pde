@@ -60,6 +60,7 @@ class PlayGround{
       applications.add(new Builder().createNewApplication("newsfeed"));
       //calendar login
       applications.add(new Builder().createNewApplication("loginCalendar"));
+      applications.add(new Builder().createNewApplication("calendar"));
       //health
       applications.add(new Builder().createNewApplication("health"));
       //timer
@@ -188,18 +189,6 @@ class PlayGround{
       keyboardApplication.applicationMouseClicked(x, y);
       musicWidget.applicationMouseClicked(x, y);
       musicList.applicationMouseClicked(x, y);
-
-      // for(Application a : applications){
-      //   startup = new Startup(a.getApplicationName(), a.getPosX(), a.getPosY(), a.getStartX(), a.getStartY());
-      //   console.log("next application: ", startup.getNextApplication(a.getApplicationName()));
-      //   nextApp = startup.getNextApplication(a.getApplicationName());
-      //   if(nextApp){
-      //     a.setAppVisible(false);
-      //     prevApp = a;
-      //     makeAppVisible(true, nextApp);
-      //     break;
-      //   }
-      // }
 
       for(Application a : applications){
         if(a.applicationMouseClicked(x, y)){
@@ -413,8 +402,28 @@ class PlayGround{
             makeAppVisible(false, "confirmPassword");
           }
         }
-      }
-    }
+
+        //calendar login
+        if(a.clickedApp().equals("loginCalendar") && a.isAppVisible()){
+            keyboardApplication.setAppVisible(true);
+            keyboardApplication.setDiplayTagText("Calendar Login");
+            keyboardApplication.setInputFieldText("");
+        } else if(keyboardApplication.clickedApp().equals("ok") && a.getApplicationName().equals("loginCalendar")){
+          keyboardApplication.setDiplayTagText("Calendar Password");
+        }
+        if(keyboardApplication.getOkButtonCounter() == 2 && a.getApplicationName().equals("loginCalendar")){
+          keyboardApplication.setAppVisible(false);
+          keyboardApplication.setClickedApp("");
+          makeAppVisible(false, "loginCalendar");
+          a.setClickedApp("");
+          keyboardApplication.setOkButtonCounter(0);
+          //show calendar widget
+          makeAppVisible(true, "calendar");
+          console.log("")
+        }
+
+      }//end for loop
+    }//end method
 
     private void drawCanvas(){
         //background(0);

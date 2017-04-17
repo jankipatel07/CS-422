@@ -29,6 +29,7 @@ class Keyboard extends Static{
   private InputField displayTag;
   private InputField inputField;
   private boolean okButton;
+  private int counter = 0;
 
   Keyboard(String appName, float x, float y, int dx, int dy){
     super(appName, x, y, dx, dy);
@@ -67,6 +68,14 @@ class Keyboard extends Static{
     return okButton;
   }
 
+  public void setOkButtonCounter(int i){
+    counter = i;
+  }
+
+  public int getOkButtonCounter(){
+    return counter;
+  }
+
   // gets called from PlayGround.pde when a user clicks anywhere on the app
   // path
   // Mirri -> PlayGround -> Application -> Button
@@ -85,6 +94,10 @@ class Keyboard extends Static{
         } else {
           if(b.getImageValue().equals("ok")){
             setOkPressed(true);
+            setClickedApp(b.getImageValue());
+            setInputFieldText("");
+            setOkButtonCounter(counter+=1);
+            return true;
           }
           else{
             setInputFieldText(getInputFieldText() + b.getImageValue());

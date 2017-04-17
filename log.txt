@@ -132,3 +132,6 @@ Jay
     - timer works—needs right display and stop/resume is not done
     - pushing to pull new code
     - images are able to toggle back and forth in health application
+
+0.8.0
+    - Calendar login works
