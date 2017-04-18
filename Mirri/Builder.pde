@@ -224,8 +224,8 @@ class Builder{
     String btn = {"language", "newuser", "logout"};
     int index = 1;
     int cnt = 0;
-    d.addNewButton(new Button("farenheit", 367.0,560, 160, 125, true));
-    d.addNewButton(new Button("celsius", 545.0,560, 160, 125, true));
+    d.addNewButton(new Button("celsius", 367.0,560, 160, 125, true));
+    d.addNewButton(new Button("farenheit", 545.0,560, 160, 125, true));
     for(String s : btn){
       d.addNewButton(new Button(btn[cnt], 367.0, 520.0+(125*index)+40*(index+1), 350, 125, true));
       index++;
