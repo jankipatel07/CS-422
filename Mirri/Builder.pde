@@ -79,13 +79,16 @@ class Builder{
       return createSettings(appName);
     }
   }
+  
+
 
   private Application createMusicPlayer(String appName){
         MusicPlayer s = new MusicPlayer(appName, 670.0, 1400.0, 1350, 120);
         String[] buttons = {"reverseforward", "play", "fastforward", "shuffle", "volumedown","volumeup"}; // add button for shuffle
 
         // button for list of music
-        s.addNewButton(new Button("music",s.getPosX()+20, s.getPosY()+20,80,80,true)); // list button
+        s.addNewButton(new Button("music",s.getPosX()+20, s.getPosY()+20,80,80,true));// list button
+        
         // update the name for the current song
         int i = 1;
         for(String b : buttons){

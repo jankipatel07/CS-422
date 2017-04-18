@@ -25,6 +25,7 @@ class PlayGround{
     private Application musicWidget;
     private Application musicList;
     
+    
     PlayGround(){
 
       canvasWidth = 2732;
@@ -68,6 +69,7 @@ class PlayGround{
       keyboardApplication = new Builder().createNewApplication("keyboard");
       musicWidget = new Builder().createNewApplication("music");
       musicList = new Builder().createNewApplication("musicList");
+    
 
       Startup s = new Startup();
       //s.showLanguageOptions();
@@ -251,13 +253,16 @@ class PlayGround{
     private void drawAllApplications(){
       // drawing the keyboard app
       keyboardApplication.drawApplication();
-      musicWidget.drawApplication();
-      musicList.drawApplication();
-      if(musicWidget.showMusicList() == true){
-          musicList.setAppVisible(true) ;  
-      }else{
-        musicList.setAppVisible(false) ; 
-      }
+      if(nightMode == false){
+          musicWidget.drawApplication();
+          musicList.drawApplication();
+
+          if(musicWidget.showMusicList() == true){
+              musicList.setAppVisible(true) ;  
+          }else{
+            musicList.setAppVisible(false) ; 
+          }
+       }
       // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
@@ -366,7 +371,6 @@ class PlayGround{
             buttonClicked = true;
             //setClickedApp(applicationName);
             if(b.getImageValue().equals("song1") || b.getImageValue().equals("song2")|| b.getImageValue().equals("song3")){
-                alert();
                 musicWidget.playMusic();
             }
         }else{
@@ -385,7 +389,7 @@ class PlayGround{
     	} else if(hr >= 17 && hr < 21) {
     		msg = "Good Evening ";
             nightMode = true;
-    	} else if(hr >= 21 && hr < 4) {
+    	} else if(hr >= 21 || hr < 4) {
     		msg = "Good Night ";
             nightMode = true;
     	} else {
