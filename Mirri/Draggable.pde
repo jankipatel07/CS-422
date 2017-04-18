@@ -9,7 +9,7 @@ class Draggable extends Application{
     private int startSizeX, startSizeY;
     private Button displayImage;
     private PImage wCelsius, wFaren ;
-    private boolean weatherf = true;
+    private boolean weatherf =false;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -204,11 +204,11 @@ class Draggable extends Application{
           setClickedApp(b.getImageValue());
           if(b.getImageValue().equals("farenheit")){
               image(wFaren,0,0,0,0);
-              weatherf = false;
+              weatherf = true;
           }
           if(b.getImageValue().equals("celsius")){
               image(wCelsius,0,0,0,0);
-              weathert = true ;
+              weathert = false ;
           }
         }else {
           b.setButtonSelected(false);
