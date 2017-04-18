@@ -17,14 +17,14 @@ class PlayGround{
     private PImage wCelsius, wFaren ;
     private Application keyboardApplication;
     private boolean nightMode = false;
-    private ArrayList<User> users;
+    ArrayList<User> users;
     private String currentMode; // startup, idle, inuse
     private int timerVal=0, timer, minuteCounter, secondCounter, previousTime;
     private String displayTime;
     private boolean isTimerOn;
     private Application musicWidget;
     private Application musicList;
-    private String nextApp = "", prevApp = "";
+    private String wifiselected = "", usernameInput="", passwordInput ="";
     private Startup startup;
     private AppDrawer appdrawer;
 
@@ -44,6 +44,8 @@ class PlayGround{
       // creating the quickHide button
       //quickHide = new Button()
       applications = new ArrayList<Application>();
+      users = new ArrayList<User>();
+      //users.add(new User("janki" , "adfj"));
       // applications.add(new Static("test application", 700.0, 800.0, 500, 600));
       applications.add(new Builder().createNewApplication("social_media"));
       // applications.add(new Static("calendar", xCordCal, yCordCal, widthCal, heightCal));
@@ -62,9 +64,8 @@ class PlayGround{
       //timer started
       applications.add(new Builder().createNewApplication("timerStarted"));
       //language options
-      //applications.add(new Builder().createNewApplication("createLanguageOptions"));
+      applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //Apps for startup
-      //DO NOT CHANGE ORDER
       applications.add(new Builder().createNewApplication("createStartupLanguage"));
       applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("wifiPassword"));
@@ -80,17 +81,6 @@ class PlayGround{
       keyboardApplication = new Builder().createNewApplication("keyboard");
       musicWidget = new Builder().createNewApplication("music");
       musicList = new Builder().createNewApplication("musicList");
-    }
-
-    public void showAppsAfterLogin(String appName){
-      //keyboard
-      keyboardApplication.setAppVisible(true);
-      //TODO: Show the bottom apps after go is clicked from the keyboard
-
-      //calendar
-      // if(appName.equals("loginCalendar")){
-      //   applications.add(new Builder().createNewApplication(appName));
-      // }
     }
 
     public int getCanvasWidth(){
@@ -185,7 +175,7 @@ class PlayGround{
       musicList.applicationMouseClicked(x, y);
 
       for(Application a : applications){
-        if(a.applicationMouseClicked(x, y))
+        if(a.applicationMouseClicked(x, y)){
           console.log("app name; " + a.getApplicationName());
 
           //appdrawer
@@ -221,9 +211,10 @@ class PlayGround{
               makeAppVisible(false, "timer");
               makeAppVisible(true, "settings");
             }
-          }
-      }
-    }
+          }//end of if for app_drawer
+        }
+      }//end of for loop
+  }//end of function
 
     private void makeAppVisible(boolean val, String name){
       for(Application a : applications){
@@ -264,12 +255,14 @@ class PlayGround{
         // start up logic
         if(a.getApplicationName().equals("createStartupLanguage") && a.isAppVisible()){
           if(a.clickedApp().equals("rightarrow")){
+            keyboardApplication.setInputFieldText("");
             makeAppVisible(false, "createStartupLanguage");
             makeAppVisible(true, "availablewifi");
             makeAppVisible(false, "wifiPassword");
             makeAppVisible(false, "createUserName");
             makeAppVisible(false, "userPassword");
             makeAppVisible(false, "confirmPassword");
+            makeAppVisible(false, "rightarrow");
           }
         }
         else if(a.getApplicationName().equals("availablewifi") && a.isAppVisible()){
@@ -280,11 +273,28 @@ class PlayGround{
             makeAppVisible(false, "createUserName");
             makeAppVisible(false, "userPassword");
             makeAppVisible(false, "confirmPassword");
+          } else if(a.clickedApp().equals("leftarrow")){
+            makeAppVisible(true, "createStartupLanguage");
+            makeAppVisible(false, "availablewifi");
+            makeAppVisible(false, "wifiPassword");
+            makeAppVisible(false, "createUserName");
+            makeAppVisible(false, "userPassword");
+            makeAppVisible(false, "confirmPassword");
+          }
+          if(a.clickedApp().equals("wifi1")){
+            wifiselected = "Hack_it";
+          } else if(a.clickedApp().equals("wifi2")){
+            wifiselected = "Keep_Coding";
+          } else if(a.clickedApp().equals("wifi3")){
+            wifiselected = "Apple_Guest";
           }
         }
        else if(a.getApplicationName().equals("wifiPassword") && a.isAppVisible()){
+          keyboardApplication.setAppVisible(true);
+          keyboardApplication.setDiplayTagText(wifiselected);
+
           if(a.clickedApp().equals("wifiPasswordRightArrow")){
-            console.log("wifi Password");
+            keyboardApplication.setInputFieldText("");
             makeAppVisible(false, "createStartupLanguage");
             makeAppVisible(false, "availablewifi");
             makeAppVisible(false, "wifiPassword");
@@ -294,8 +304,12 @@ class PlayGround{
           }
         }
         else if(a.getApplicationName().equals("createUserName") && a.isAppVisible()){
+          keyboardApplication.setAppVisible(true);
+          keyboardApplication.setDiplayTagText("Enter User Name");
+
           if(a.clickedApp().equals("createUserNameRightArrow")){
-            console.log("createUserName");
+            usernameInput = keyboardApplication.getInputFieldText();
+            keyboardApplication.setInputFieldText("");
             makeAppVisible(false, "createStartupLanguage");
             makeAppVisible(false, "availablewifi");
             makeAppVisible(false, "wifiPassword");
@@ -305,7 +319,11 @@ class PlayGround{
           }
         }
         else if(a.getApplicationName().equals("userPassword") && a.isAppVisible()){
+          keyboardApplication.setAppVisible(true);
+          keyboardApplication.setDiplayTagText("Enter Password");
+
           if(a.clickedApp().equals("rightarrow")){
+            keyboardApplication.setInputFieldText("");
             makeAppVisible(false, "createStartupLanguage");
             makeAppVisible(false, "availablewifi");
             makeAppVisible(false, "wifiPassword");
@@ -314,13 +332,28 @@ class PlayGround{
             makeAppVisible(true, "confirmPassword");
           }
         } else if(a.getApplicationName().equals("confirmPassword") && a.isAppVisible()){
+          keyboardApplication.setAppVisible(true);
+          keyboardApplication.setDiplayTagText("confirmPassword");
+
           if(a.clickedApp().equals("confirmPasswordRightArrow")){
+            passwordInput = keyboardApplication.getInputFieldText();
+
             makeAppVisible(false, "createStartupLanguage");
             makeAppVisible(false, "availablewifi");
             makeAppVisible(false, "wifiPassword");
             makeAppVisible(false, "createUserName");
             makeAppVisible(false, "userPassword");
             makeAppVisible(false, "confirmPassword");
+            makeAppVisible(true, "loginCalendar");
+            keyboardApplication.setAppVisible(false);
+
+            //make everything in the app visible
+            makeAppVisible(true, "app_drawer");
+            musicWidget.setAppVisible(true);
+            musicList.setAppVisible(true);
+            makeAppVisible(true, "clearmode");
+            makeAppVisible(true, "side_bar_left");
+            makeAppVisible(true, "makeAppVisible");
           }
         }
 
@@ -465,7 +498,7 @@ class PlayGround{
             nightMode = false;
       } else if(hr >= 17 && hr < 21) {
         msg = "Good Evening ";
-            nightMode = true;
+            nightMode = false;
     	} else if(hr >= 21 || hr < 4) {
     		msg = "Good Night ";
             nightMode = true;

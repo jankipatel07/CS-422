@@ -15,6 +15,7 @@ class Startup extends Static {
           b.setButtonSelected(true);
           buttonClicked = true;
 
+          //right arrow
           if(getApplicationName().equals("wifiPassword") && b.getImageValue().equals("rightarrow")){
             setClickedApp("wifiPasswordRightArrow");
             return true;
@@ -27,8 +28,25 @@ class Startup extends Static {
           }else if (b.getImageValue().equals("rightarrow")){
             setClickedApp(b.getImageValue());
             return true;
-          } 
+          } else{
+            setClickedApp(b.getImageValue());
+            return true;
+          }
 
+          //leftarrow
+          if(getApplicationName().equals("wifiPassword") && b.getImageValue().equals("leftarrow")){
+            setClickedApp("wifiPasswordLeftArrow");
+            return true;
+          } else if(getApplicationName().equals("createUserName") && b.getImageValue().equals("leftarrow")){
+            setClickedApp("createUserNameLeftArrow");
+            return true;
+          } else if(getApplicationName().equals("confirmPassword") && b.getImageValue().equals("leftarrow")){
+            setClickedApp("confirmPasswordLeftArrow");
+            return true;
+          }else if (b.getImageValue().equals("leftarrow")){
+            setClickedApp(b.getImageValue());
+            return true;
+          }
 
         }else{
           buttonClicked = false;
