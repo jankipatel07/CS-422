@@ -33,13 +33,15 @@ class PlayGround{
     private int timerVal=0, timer = 0, minuteCounter = 0, secondCounter = 0, previousTime;
 
     // clear mode
-    private boolean clearModeBool;
+    private boolean clearModeBool, startupBool, showCalendarBool;
 
     PlayGround(){
 
       timerOn = false;
       timerRunning = false;
       clearModeBool = false;
+      startupBool = true;
+      showCalendarBool = false;
 
       canvasWidth = 2732;
       canvasHeight = 1536;
@@ -319,12 +321,18 @@ class PlayGround{
           musicWidget.setAppVisible(false);
           musicList.setAppVisible(false);
         } else if (!clearModeBool){
-          makeAppVisible(true, "app_drawer");
-          makeAppVisible(true, "side_bar_left");
-          makeAppVisible(true, "calendar");
-          musicWidget.setAppVisible(true);
-          musicWidget.changeMusicListDisplay(false);
-        }
+          if(!startupBool){
+            makeAppVisible(true, "app_drawer");
+            makeAppVisible(true, "side_bar_left");
+            if(showCalendarBool){
+              makeAppVisible(true, "calendar");
+            } else {
+              makeAppVisible(true, "showCalendar");
+            }
+            musicWidget.setAppVisible(true);
+            makeAppVisible(true, "clearmode"); 
+          }
+        } 
 
         // displaying timer
         if(a.clickedApp().equals("TurnTimerOn")){
@@ -447,13 +455,15 @@ class PlayGround{
             makeAppVisible(true, "loginCalendar");
             keyboardApplication.setAppVisible(false);
 
-            //make everything in the app visible
-            makeAppVisible(true, "app_drawer");
-            musicWidget.setAppVisible(true);
-            musicList.setAppVisible(true);
             makeAppVisible(true, "clearmode");
-            makeAppVisible(true, "side_bar_left");
-            makeAppVisible(true, "makeAppVisible");
+            //make everything in the app visible
+            // makeAppVisible(true, "app_drawer");
+            // musicWidget.setAppVisible(true);
+            // musicList.setAppVisible(true);
+            // makeAppVisible(true, "clearmode");
+            // makeAppVisible(true, "side_bar_left");
+            // makeAppVisible(true, "makeAppVisible");
+            startupBool = false;
           }
         }
 
@@ -473,7 +483,7 @@ class PlayGround{
           keyboardApplication.setOkButtonCounter(0);
           //show calendar widget
           makeAppVisible(true, "calendar");
-          console.log("")
+          showCalendarBool = true;
         }
 
       }//end for loop
