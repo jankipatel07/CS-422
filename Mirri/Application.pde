@@ -23,12 +23,7 @@ class Application{
         sizeY = dy;
         buttons = new ArrayList<Button>();
         inputFields = new ArrayList<InputField>();
-        if(appName.equals("app_drawer") || appName.equals("music") || appName.equals("clearmode") || appName.equals("side_bar_left") || appName.equals("loginCalendar")){
-            appVisible = true;
-        }
-        else{
-            appVisible = false;
-        }
+        appVisible = false;
 
         //buttons.add(new Button(appName, x, y, dx, dy));
     }
