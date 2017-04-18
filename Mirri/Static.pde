@@ -26,6 +26,12 @@ class Static extends Application{
               }
             }
           }
+          setClickedApp(getApplicationName());
+        }
+        else{
+            buttonClicked = false;
+            //b.setButtonSelected(false);
+            setClickedApp("");
         }
       }
     }

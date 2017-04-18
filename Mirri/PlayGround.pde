@@ -25,7 +25,6 @@ class PlayGround{
     private Application musicWidget;
     private Application musicList;
     
-    
     PlayGround(){
 
       canvasWidth = 2732;
@@ -106,7 +105,7 @@ class PlayGround{
       }
         if(timerVal > 0 && timerVal <= 10){
           if(btnPressed.equals("downarrow")){
-          timerVal--; 
+          timerVal--;
         }
       }
       setTimerVal(timerVal);
@@ -130,7 +129,7 @@ class PlayGround{
     public void setTimeOn(boolean b, String t){
       if(b){
         timer = int(t);
-        
+
         timer--;
         secondCounter = 60;
         displayTime = "" + timer + " mins";
@@ -173,15 +172,14 @@ class PlayGround{
       //   // add code to handle quick hide scenarios
       //   return;
       // }
-      
+
       keyboardApplication.applicationMouseClicked(x, y);
       musicWidget.applicationMouseClicked(x, y);
       musicList.applicationMouseClicked(x, y);
-      
+
 
       for(Application a : applications){
         a.applicationMouseClicked(x, y);
-        console.log("app clickedApp: " + a.clickedApp());
         if(a.clickedApp().equals("loginCalendar")){
           showAppsAfterLogin("loginCalendar");
         }
@@ -228,7 +226,7 @@ class PlayGround{
             makeAppVisible(false, "health");
             makeAppVisible(false, "timer");
             makeAppVisible(true, "settings");
-          } 
+          }
         }
       }
     }
@@ -253,6 +251,7 @@ class PlayGround{
     private void drawAllApplications(){
       // drawing the keyboard app
       keyboardApplication.drawApplication();
+
       if(nightMode == false){
           musicWidget.drawApplication();
           musicList.drawApplication();
@@ -263,6 +262,7 @@ class PlayGround{
             musicList.setAppVisible(false) ; 
           }
        }
+
       // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
@@ -283,7 +283,7 @@ class PlayGround{
         showTime();
         greetingUserMsg();
         getWeather(1); // default gets Farenheit
-       
+
     }
 
     public void drawPlayGround(){
@@ -362,7 +362,7 @@ class PlayGround{
     	text(greetingByTime() + "Siri", midWidth, yCordTime+115);
     	textAlign(CENTER);
     }
-    
+
     //@Override
     public void applicationMouseClicked(int x, int y){
     for(Button b : buttons){
@@ -459,6 +459,6 @@ class PlayGround{
         draggedApplication.setPosY(mouseY - draggedApplication.getDiffY());
       }
     }
-  
-    
+
+
 }
