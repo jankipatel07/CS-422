@@ -325,7 +325,6 @@ class PlayGround{
         if(clearModeBool){
           //console.log("clearmode activated");
           if(!a.getApplicationName().equals("clearmode")){
-            console.log("a.getApplicationName: ", a.getApplicationName());
             a.setAppVisible(false);
           }
           musicWidget.setAppVisible(false);
