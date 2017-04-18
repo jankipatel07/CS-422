@@ -19,6 +19,7 @@ class PlayGround{
     private boolean nightMode = false;
     private ArrayList<User> users;
     private String currentMode; // startup, idle, inuse
+    private boolean weatherMode;
 
     // music
     private Application musicWidget;
@@ -35,7 +36,7 @@ class PlayGround{
 
       timerOn = false;
       timerRunning = false;
-
+      weatherMode = true;
       canvasWidth = 2732;
       canvasHeight = 1536;
       midWidth = canvasWidth/2;
@@ -71,12 +72,13 @@ class PlayGround{
       //applications.add(new Builder().createNewApplication("createLanguageOptions"));
       //Apps for startup
       //DO NOT CHANGE ORDER
-      applications.add(new Builder().createNewApplication("createStartupLanguage"));
+      //applications.add(new Builder().createNewApplication("createStartupLanguage"));
       applications.add(new Builder().createNewApplication("availablewifi"));
       applications.add(new Builder().createNewApplication("wifiPassword"));
       applications.add(new Builder().createNewApplication("createUserName"));
       applications.add(new Builder().createNewApplication("userPassword"));
       applications.add(new Builder().createNewApplication("confirmPassword"));
+      
 
       //clearmode
       applications.add(new Builder().createNewApplication("clearmode"));
@@ -194,7 +196,9 @@ class PlayGround{
         if(a.applicationMouseClicked(x, y)){
 
           console.log("app name; " + a.getApplicationName());
-
+          // setting
+         
+          
           //appdrawer
           if(a.getApplicationName().equals("app_drawer")){
             if(a.clickedApp().equals("social")){
@@ -227,6 +231,7 @@ class PlayGround{
               makeAppVisible(false, "health");
               makeAppVisible(false, "timer");
               makeAppVisible(true, "settings");
+              
             }
           }
 
@@ -257,6 +262,18 @@ class PlayGround{
         }
       }
     }
+    
+    
+    private boolean getWeatherchange(String name){
+      for(Application a : applications){
+        if(a.getApplicationName().equals(name)){
+          return a.getWeatherStatus();
+        }
+      }
+    }
+    
+    
+    
 
     private void setUpCanvas(){
         size(canvasWidth, canvasHeight); //canvas size
@@ -308,7 +325,7 @@ class PlayGround{
             musicList.setAppVisible(false) ;
           }
        }
-
+       weatherMode = getWeatherchange("settings");
       // drawing all the other application
       for(Application a : applications){
         a.drawApplication();
@@ -438,7 +455,12 @@ class PlayGround{
         showDate();
         showTime();
         greetingUserMsg();
-        getWeather(1); // default gets Farenheit
+        if(weatherMode == true){
+            getWeather(1); // default gets Farenheit
+        }
+        else{
+           getWeather(0);
+        }
 
     }
 
@@ -560,6 +582,7 @@ class PlayGround{
     private void getWeather(int m){
        if(m == 1){
           image(wFaren,xCordWeather,yCordWeather,widthWeather, heightWeather);
+         
        }
        else if (m == 0){
           image(wCelsius,xCordWeather,yCordWeather,widthWeather, heightWeather);

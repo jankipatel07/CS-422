@@ -85,7 +85,7 @@ class Builder{
       return createClearMode(appName);
     } else if(appName.equals("settings")){
       return createSettings(appName);
-    }
+    } 
   }
 
 

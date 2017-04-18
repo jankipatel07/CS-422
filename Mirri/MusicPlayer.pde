@@ -14,7 +14,7 @@ class MusicPlayer extends Static{
    MusicPlayer(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
         selectedMusic = 1;
-        showList = true;
+        showList = false;
         play = false;
         currSong = new Audio("images/song1.mp3");
         nextSong = new Audio("images/song2.mp3");
