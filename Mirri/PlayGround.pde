@@ -335,6 +335,7 @@ class PlayGround{
           makeAppVisible(true, "side_bar_left");
           makeAppVisible(true, "calendar");
           musicWidget.setAppVisible(true);
+          musicWidget.changeMusicListDisplay(false);
         }
 
         // displaying timer
