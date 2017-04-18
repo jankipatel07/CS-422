@@ -8,6 +8,8 @@ class Draggable extends Application{
     private boolean resizeBool;
     private int startSizeX, startSizeY;
     private Button displayImage;
+    private PImage wCelsius, wFaren ;
+    private boolean weatherf = true;
 
     Draggable(String appName, float x, float y, int dx, int dy){
         super(appName, x, y, dx, dy);
@@ -26,12 +28,8 @@ class Draggable extends Application{
             applicationDraggable = true;
         }
 
-         //if(appName.equals("musicList")){
-         //   appVisible = false;
-       // }
-        //else{
-        //    appVisible = true;
-        //}
+        wCelsius = loadImage("images/weather_notselected.png");
+        wFaren = loadImage("images/weather_selected.png");
         createExitButton();
         createResizeButton();
     }
@@ -182,8 +180,12 @@ class Draggable extends Application{
         }
         i++;
       }
+    } 
+    
+    public boolean getWeatherStatus(){
+            return weatherf;
     }
-
+    
     // gets called from PlayGround.pde when a user clicks anywhere on the app
     // path
     // Mirri -> PlayGround -> Application -> Button
@@ -200,6 +202,14 @@ class Draggable extends Application{
         if(b.wasButtonClicked(x, y)){
           b.setButtonSelected(true);
           setClickedApp(b.getImageValue());
+          if(b.getImageValue().equals("farenheit")){
+              image(wFaren,0,0,0,0);
+              weatherf = false;
+          }
+          if(b.getImageValue().equals("celsius")){
+              image(wCelsius,0,0,0,0);
+              weathert = true ;
+          }
         }else {
           b.setButtonSelected(false);
         }
