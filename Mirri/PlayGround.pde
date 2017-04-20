@@ -614,7 +614,11 @@ class PlayGround{
     private void greetingUserMsg() {
       textSize(65);
       fill(0);
-      text(greetingByTime() + "Siri", midWidth, yCordTime+115);
+      if(startupBool){
+      	text(greetingByTime(), midWidth, yCordTime+115);
+      } else {
+      	text(greetingByTime() + "Siri", midWidth, yCordTime+115);
+      }
       textAlign(CENTER);
     }
 
