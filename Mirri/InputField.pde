@@ -49,7 +49,7 @@ class InputField extends Button{
       textFont(font, 40);
       text(getDisplayText(), getPosX() + 200, getPosY() + 80);
     }else {
-      text(getDisplayText(), getPosX() + 250, getPosY() + 80);
+      text(getDisplayText(), getPosX() + 20, getPosY() + 80);
     }
   }
 

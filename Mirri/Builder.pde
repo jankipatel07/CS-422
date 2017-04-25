@@ -208,7 +208,7 @@ class Builder{
     s.addNewButton(new InputField("displayBox", "displayTimer", 20.0, 1300.0, 200, 100, false));
     s.addNewButton(new Button("pause", 20.0, 1416.0, 200, 100, true));
     s.addNewButton(new Button("stop", 230.0, 1416.0, 200, 100, true));
-    s.addNewButton(new Button("resume", 20.0, 1416.0, 200, 100, true));
+    //s.addNewButton(new Button("resume", 20.0, 1416.0, 200, 100, true));
     return s;
   }
 

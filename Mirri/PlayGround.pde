@@ -529,16 +529,18 @@ class PlayGround{
         drawAllApplications();
 
         //show date and time
-        showDate();
-        showTime();
-        greetingUserMsg();
-        if(weatherMode == true){
+        if(!startupBool){
+          showDate();
+          showTime();
+          greetingUserMsg();
+        
+          if(weatherMode == true){
             getWeather(1); // default gets Farenheit
-        }
-        else{
-           getWeather(0);
-        }
-
+          }
+          else{
+             getWeather(0);
+          }
+      }
     }
 
     public void drawPlayGround(){
